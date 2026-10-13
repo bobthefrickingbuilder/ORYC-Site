@@ -54,6 +54,12 @@
   ['City of Ottawa', 'Ottawa Community Foundation', 'Choirs Ontario', 'Choral Canada'].forEach((n, i) =>
     S('FOOTER-FUNDERS-0' + (i + 1), 'Footer · Funders', 'Logo / Partner', n + ' logo, single colour or full colour on white', '3:1', 'SVG or 600×200', 'none', 'rect', n + ' logo'));
 
+  // Real photos. Add one line per slot: 'SLOT-ID': ['path', 'alt text'].
+  const SRC = {
+    'HOME-JOIN-01': ['photos/home-join-01.jpg', 'A chorister holding an open score of Misa a Buenos Aires at the Kyrie'],
+  };
+  R.forEach(r => { const x = SRC[r.id]; if (x) { r.src = x[0]; if (x[1]) r.alt = x[1]; } });
+
   window.ORYC_PHOTOS = Object.fromEntries(R.map(r => [r.id, r]));
   window.ORYC_PHOTO_LIST = R;
 })();
