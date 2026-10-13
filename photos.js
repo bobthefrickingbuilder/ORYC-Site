@@ -16,7 +16,7 @@
   S('HOME-SUPPORT-01', 'Home · Support', 'Rehearsal', 'Section rehearsal, singers with scores', '3:2', '1800×1200', 'none', 'rect', 'Choristers rehearsing with their scores');
 
   S('ABOUT-HERO-01', 'About · Hero', 'Group Portrait', 'Full choir posed group photo', '21:9', '2560×1100', 'none', 'bleed', 'The full Ottawa Regional Youth Choir');
-  ['Jamie Loback', 'Aude Urbancic', 'Cara Gilbertson', 'Madox Terrell'].forEach((n, i) =>
+  ['Jamie Loback', 'Aude Urbancic', 'Cara Gilbertson', 'Matthew Menard', 'Victor Toma', 'Madox Terrell'].forEach((n, i) =>
     S('ABOUT-TEAM-0' + (i + 1), 'About · Artistic team', 'Headshot', n + ', head and shoulders, plain background', '1:1', '800×800', 'none', 'circle', 'Portrait of ' + n));
   ['James Clemens', 'Pirahashini Thayanithy', 'Matthew Ouellette'].forEach((n, i) =>
     S('ABOUT-MGMT-0' + (i + 1), 'About · Management', 'Headshot', n + ', head and shoulders, plain background', '1:1', '800×800', 'none', 'circle', 'Portrait of ' + n));
@@ -38,7 +38,7 @@
   g.forEach(([s, d, r], i) => S('GALLERY-' + String(i + 1).padStart(2, '0'), 'Events · Gallery', s, d, r, r === '3:2' ? '1800×1200' : r === '4:5' ? '1200×1500' : '1200×1200', 'none', 'rect'));
 
   S('SING-HERO-01', 'Sing with Us · Hero', 'Chorister Candid', 'Young singers mid-song, joyful, close range', '16:9', '2560×1440', 'none', 'bleed', 'Young singers singing joyfully');
-  [['Vocal check at the piano', 'A new singer at the piano during a vocal check'], ['Meeting Jamie and Cara', 'A new singer chatting with Jamie and Cara'], ['First rehearsal', 'A new chorister at their first rehearsal']].forEach(([d, a], i) =>
+  [['Voice placement at the piano', 'A new singer at the piano during a voice placement'], ['Meeting Jamie and Cara', 'A new singer chatting with Jamie and Cara'], ['First rehearsal', 'A new chorister at their first rehearsal']].forEach(([d, a], i) =>
     S('SING-STEP-0' + (i + 1), 'Sing with Us · How joining works', 'Rehearsal', d, '1:1', '800×800', 'none', 'circle', a));
   [['Rehearsal', 'Weekly Tuesday rehearsal'], ['Bootcamp / Social', 'Saturday Bootcamp breakfast'], ['Rehearsal', 'Individual voice lesson'], ['Rehearsal', 'ORYC Studio beginner session'], ['Rehearsal', 'Chorister conducting the choir']].forEach(([s, d], i) =>
     S('SING-EXPECT-0' + (i + 1), 'Sing with Us · What to expect', s, d, '3:2', '1800×1200', 'none', 'rect'));

@@ -41,8 +41,8 @@
         <div style="flex:1.2 1 460px;display:flex;flex-direction:column;gap:22px;">
           <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Mission</span>
           <h2 id="mission-h" style="margin:0;font-weight:700;font-size:clamp(36px,4.4cqw,64px);line-height:.98;text-transform:uppercase;text-wrap:balance;">The bridge between children's choirs and adult ensembles</h2>
-          <p style="margin:0;font-size:19px;max-width:620px;">The Ottawa Regional Youth Choir is an SATB choir of about 50 singers aged 15–25. We rehearse on Tuesday evenings at St. Joseph's Parish in Sandy Hill and perform there and at other Ottawa venues.</p>
-          <p style="margin:0;font-size:19px;max-width:620px;">Our repertoire balances the choral-symphonic canon, from Messiah and the Mozart and Brahms Requiems to Monteverdi's Vespers and Palmeri's MisaTango, with contemporary Canadian works, including premieres by our own choristers. We have sung with the National Arts Centre Orchestra, the Ottawa Symphony Orchestra, the Ottawa Choral Society, Music and Beyond, Capital Chamber Choir and Cantata Singers of Ottawa.</p>
+          <p style="margin:0;font-size:19px;max-width:620px;">Founded in 1982, the Ottawa Regional Youth Choir (ORYC) is one of Canada's leading youth choirs. About 50 singers aged 15 to 25 come together from across the National Capital Region in pursuit of artistic excellence, rehearsing on Tuesday evenings at St. Joseph's Parish in Sandy Hill and performing across Ottawa.</p>
+          <p style="margin:0;font-size:19px;max-width:620px;">The ORYC performs a broad range of choral repertoire spanning many centuries, languages, cultures, and musical traditions, from Messiah and the Mozart and Brahms Requiems to Monteverdi's Vespers and Palmeri's MisaTango. Alongside these masterworks, the ORYC is committed to performing works by Canadian composers, presenting premieres, and commissioning new music, including works by our own choristers. The choir has performed with the National Arts Centre Orchestra, the Ottawa Symphony Orchestra, the Ottawa Choral Society, Music and Beyond, Capital Chamber Choir, and Cantata Singers of Ottawa.</p>
         </div>
         <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:16px;">
           <div style="background:#000;color:#fff;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;">
@@ -52,7 +52,7 @@
           <div style="background:#DFEDEA;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;">
             <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">Values</span>
             <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-weight:700;font-size:20px;">
-              <li>Artistic excellence</li><li>Accessibility and inclusion</li><li>Youth leadership</li><li>Community</li>
+              <li>Artistic excellence</li><li>Community</li><li>Growth</li><li>Inclusion</li><li>Dedication</li><li>Impact</li>
             </ul>
           </div>
         </div>
@@ -156,7 +156,7 @@
             <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Meet the choir</span>
             <h2 id="choir-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">About 50 voices, four sections</h2>
           </div>
-          <p style="margin:0;font-size:19px;max-width:420px;">Singers aged 15–25 from across the Ottawa region.</p>
+          <p style="margin:0;font-size:19px;max-width:420px;">Singers aged 15 to 25 from across the National Capital Region.</p>
         </div>
         <dc-import name="PhotoSlot" id="ABOUT-CHOIR-01" hint-size="100%,700px"></dc-import>
         <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;">
@@ -216,7 +216,7 @@ class Component extends DCLogic {
   state = { bio: this.props.openBio ?? -1 };
   renderVals() {
     if (!this.__vp) { this.__vp = 1; this.__narrow = window.innerWidth < 1120; window.addEventListener('resize', () => { const n = window.innerWidth < 1120; if (n !== this.__narrow) { this.__narrow = n; this.setState({ __narrow: n }); } }); }
-    const teamRaw = [['Jamie Loback', 'Artistic Director (since 2013)'], ['Aude Urbancic', 'Pianist & Vocal Coach'], ['Cara Gilbertson', 'Vocal Instructor'], ['Madox Terrell', 'Tenor/Bass Vocal Coach']];
+    const teamRaw = [['Jamie Loback', 'Artistic Director (since 2013)'], ['Aude Urbancic', 'Collaborative Pianist'], ['Cara Gilbertson', 'Vocal Instructor'], ['Matthew Menard', 'Assistant Conductor'], ['Victor Toma', 'Assistant Collaborative Pianist'], ['Madox Terrell', 'Tenor/Bass Vocal Coach']];
     const team = teamRaw.map(([name, role], i) => {
       const isOpen = this.state.bio === i;
       return { name, role, slot: 'ABOUT-TEAM-0' + (i + 1), isOpen, ring: isOpen ? '#E41E26' : '#fff', cta: isOpen ? 'Bio open' : 'Read bio', open: () => this.setState({ bio: isOpen ? -1 : i }) };
