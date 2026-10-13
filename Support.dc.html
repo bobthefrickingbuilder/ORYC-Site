@@ -25,11 +25,11 @@
 <div data-screen-label="Support" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
   <dc-import name="SiteHeader" mobile="{{ mobile }}" active="support" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
   <main>
-    <section aria-labelledby="sup-h" style="position:relative;min-height:clamp(480px,42cqw,620px);display:flex;flex-direction:column;justify-content:flex-end;background:#E41E26;color:#fff;overflow:hidden;">
+    <section data-parallax-root="" aria-labelledby="sup-h" style="position:relative;min-height:clamp(480px,42cqw,620px);display:flex;flex-direction:column;justify-content:flex-end;background:#E41E26;color:#fff;overflow:hidden;">
       <dc-import name="PhotoSlot" id="SUPPORT-HERO-01" fill="{{ true }}" labelPos="top" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
-      <div style="position:relative;padding:0 clamp(20px,5.5cqw,80px) clamp(36px,4.4cqw,64px);display:flex;flex-direction:column;gap:22px;">
+      <div data-stagger="" style="position:relative;padding:0 clamp(20px,5.5cqw,80px) clamp(36px,4.4cqw,64px);display:flex;flex-direction:column;gap:22px;">
         <span style="font-style:italic;font-size:18px;letter-spacing:.1em;text-transform:uppercase;">Support us</span>
-        <h1 id="sup-h" style="margin:0;font-weight:700;font-size:clamp(60px,9.4cqw,152px);line-height:.84;text-transform:uppercase;max-width:1100px;">Keep young Ottawa singing</h1>
+        <h1 id="sup-h" style="margin:0;font-weight:700;font-size:clamp(60px,9.4cqw,152px);line-height:.84;text-transform:uppercase;max-width:1100px;" data-title=""><span data-reveal="" data-delay="100" data-depth="10" style="display:inline-block;">Keep</span> <span data-reveal="" data-delay="190" data-depth="-16" style="display:inline-block;">young</span> <span data-reveal="" data-delay="280" data-depth="14" style="display:inline-block;">Ottawa</span> <span data-reveal="" data-delay="370" data-depth="-9" style="display:inline-block;">singing</span></h1>
         <nav aria-label="On this page"><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
           <sc-for list="{{ anchors }}" as="a" hint-placeholder-count="5"><li><a href="{{ a.href }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">{{ a.label }}</a></li></sc-for>
         </ul></nav>
@@ -90,7 +90,7 @@
           <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">Sponsorship</span>
           <h2 id="spo-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Put your name to something specific</h2>
           <p style="margin:0;font-size:19px;">Talk to us about a targeted sponsorship.</p>
-          <a href="mailto:info@oryc.ca" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">info@oryc.ca</a>
+          <a data-magnetic="" href="mailto:info@oryc.ca" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">info@oryc.ca</a>
         </div>
         <ol style="flex:1.4 1 460px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;">
           <sc-for list="{{ sponsor }}" as="s" hint-placeholder-count="5">
@@ -120,7 +120,7 @@
                 </div>
               </fieldset>
               <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:6px;"><label for="vo-msg" style="font-weight:700;font-size:16px;">Availability or notes</label><textarea id="vo-msg" rows="3" style="padding:16px 20px;border-radius:22px;border:2px solid #000;background:#fff;font:inherit;font-size:17px;resize:vertical;"></textarea></div>
-              <div style="grid-column:1/-1;"><button type="submit" style="font:inherit;min-height:56px;padding:0 32px;border-radius:999px;border:0;background:#E41E26;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;">Send</button></div>
+              <div style="grid-column:1/-1;"><button data-magnetic="" type="submit" style="font:inherit;min-height:56px;padding:0 32px;border-radius:999px;border:0;background:#E41E26;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;">Send</button></div>
             </form>
           </sc-if>
           <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}"><div data-enter="" role="status" style="display:flex;flex-direction:column;gap:10px;"><h3 style="margin:0;font-weight:700;font-size:34px;text-transform:uppercase;">Thank you</h3><p style="margin:0;font-size:19px;">We'll be in touch about upcoming volunteer shifts.</p></div></sc-if>
@@ -146,8 +146,8 @@
   <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
     <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
-      <a href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
-      <a href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+      <a data-magnetic="" href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a data-magnetic="" href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
     </div>
   </sc-if>
 </div>

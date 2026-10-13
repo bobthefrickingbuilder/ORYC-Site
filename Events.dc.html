@@ -25,11 +25,11 @@
 <div data-screen-label="Events" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
   <dc-import name="SiteHeader" mobile="{{ mobile }}" active="events" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
   <main>
-    <section aria-labelledby="ev-h" style="position:relative;min-height:clamp(480px,42cqw,620px);display:flex;flex-direction:column;justify-content:flex-end;background:#E41E26;color:#fff;overflow:hidden;">
+    <section data-parallax-root="" aria-labelledby="ev-h" style="position:relative;min-height:clamp(480px,42cqw,620px);display:flex;flex-direction:column;justify-content:flex-end;background:#E41E26;color:#fff;overflow:hidden;">
       <dc-import name="PhotoSlot" id="EVENTS-HERO-01" fill="{{ true }}" labelPos="top" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
-      <div style="position:relative;padding:0 clamp(20px,5.5cqw,80px) clamp(36px,4.4cqw,64px);display:flex;flex-direction:column;gap:18px;">
+      <div data-stagger="" style="position:relative;padding:0 clamp(20px,5.5cqw,80px) clamp(36px,4.4cqw,64px);display:flex;flex-direction:column;gap:18px;">
         <span style="font-style:italic;font-size:18px;letter-spacing:.1em;text-transform:uppercase;">Events</span>
-        <h1 id="ev-h" style="margin:0;font-weight:700;font-size:clamp(64px,11cqw,180px);line-height:.82;text-transform:uppercase;letter-spacing:-.02em;">2026–27 Season</h1>
+        <h1 id="ev-h" style="margin:0;font-weight:700;font-size:clamp(64px,11cqw,180px);line-height:.82;text-transform:uppercase;letter-spacing:-.02em;" data-title=""><span data-reveal="" data-delay="100" data-depth="10" style="display:inline-block;">2026–27</span> <span data-reveal="" data-delay="190" data-depth="-16" style="display:inline-block;">Season</span></h1>
         <p style="margin:0;font-size:clamp(19px,1.6cqw,23px);max-width:620px;">Duruflé, Handel, Rachmaninoff and Gjeilo, a showcase run by our own choristers, a multi-choir fundraiser and a collaboration with the Canadian Centennial Choir.</p>
       </div>
     </section>
@@ -113,7 +113,7 @@
             </div>
           </sc-for>
         </div>
-        <a href="https://youtube.com" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">YouTube channel</a>
+        <a data-magnetic="" href="https://youtube.com" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">YouTube channel</a>
         <div data-stagger="" style="columns:3 260px;column-gap:16px;margin-top:16px;">
           <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="12"><div style="break-inside:avoid;margin-bottom:16px;"><dc-import name="PhotoSlot" id="{{ g }}" hint-size="100%,260px"></dc-import></div></sc-for>
         </div>
@@ -123,8 +123,8 @@
   <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
     <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
-      <a href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
-      <a href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+      <a data-magnetic="" href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a data-magnetic="" href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
     </div>
   </sc-if>
 </div>

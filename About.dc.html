@@ -26,10 +26,10 @@
   <dc-import name="SiteHeader" mobile="{{ mobile }}" active="about" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
   <main>
     <div style="position:relative;height:clamp(300px,42.86cqw,620px);"><dc-import name="PhotoSlot" id="ABOUT-HERO-01" fill="{{ true }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import></div>
-    <section aria-labelledby="about-h" style="padding:clamp(48px,6cqw,96px) clamp(20px,5.5cqw,80px) 0;">
+    <section data-parallax-root="" aria-labelledby="about-h" style="padding:clamp(48px,6cqw,96px) clamp(20px,5.5cqw,80px) 0;">
       <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:28px;">
         <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">About ORYC</span>
-        <h1 id="about-h" style="margin:0;font-weight:700;font-size:clamp(56px,8.4cqw,136px);line-height:.88;text-transform:uppercase;">Who we are</h1>
+        <h1 id="about-h" style="margin:0;font-weight:700;font-size:clamp(56px,8.4cqw,136px);line-height:.88;text-transform:uppercase;" data-title=""><span data-reveal="" data-delay="100" data-depth="10" style="display:inline-block;">Who</span> <span data-reveal="" data-delay="190" data-depth="-16" style="display:inline-block;">we</span> <span data-reveal="" data-delay="280" data-depth="14" style="display:inline-block;">are</span></h1>
         <nav aria-label="On this page"><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
           <sc-for list="{{ anchors }}" as="a" hint-placeholder-count="8"><li><a href="{{ a.href }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#DFEDEA;color:#000;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">{{ a.label }}</a></li></sc-for>
         </ul></nav>
@@ -205,8 +205,8 @@
   <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
     <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
-      <a href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
-      <a href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+      <a data-magnetic="" href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a data-magnetic="" href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
     </div>
   </sc-if>
 </div>

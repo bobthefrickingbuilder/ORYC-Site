@@ -1,7 +1,7 @@
 // ORYC motion layer. Attribute-driven, Web Animations API only (never rewrites React-managed styles except `translate`).
 // data-reveal[=fade|scale] data-delay · data-stagger (children reveal) · data-countup=N · data-sweep (highlight)
 // data-magnetic · data-parallax-root + data-depth · data-spin=s · data-float · data-marquee=s · data-hover-root + data-hover-drop
-// data-enter (animates on mount) · data-drag-scroll. Honors prefers-reduced-motion and <html data-motion="full|subtle|off">.
+// data-enter (animates on mount) · data-drag-scroll · data-title (heading whose words carry their own reveal/depth; skipped by data-stagger). Honors prefers-reduced-motion and <html data-motion="full|subtle|off">.
 (function () {
   if (window.__orycMotion) return; window.__orycMotion = true;
   const rm = matchMedia('(prefers-reduced-motion: reduce)');
@@ -49,7 +49,7 @@
     q('[data-reveal]').forEach(el => { if (!once(el, 'r')) reveal(el, +el.dataset.delay || 0, el.dataset.reveal); });
     q('[data-stagger]').forEach(el => {
       if (once(el, 's')) return;
-      [...el.children].filter(c => !c.hasAttribute('data-stagger') && !c.hasAttribute('data-reveal') && getComputedStyle(c).position !== 'absolute')
+      [...el.children].filter(c => !c.hasAttribute('data-stagger') && !c.hasAttribute('data-reveal') && !c.hasAttribute('data-title') && getComputedStyle(c).position !== 'absolute')
         .forEach((c, i) => { if (!once(c, 'r')) reveal(c, (i % 4) * 100, el.dataset.stagger); });
     });
     q('[data-countup]').forEach(el => {
