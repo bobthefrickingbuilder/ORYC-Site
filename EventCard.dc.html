@@ -11,7 +11,7 @@
 <article data-hover-root="" style="background:#DFEDEA;color:#000;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;height:100%;font-family:'Glacial Indifference',sans-serif;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s;" style-hover="transform:translateY(-8px);box-shadow:0 20px 44px rgba(0,0,0,.16);">
   <div style="position:relative;">
     <dc-import name="PhotoSlot" id="{{ slotId }}" radius="0px" labelPos="top" hint-size="100%,360px"></dc-import>
-    <img data-hover-drop="" src="assets/pennant-black.png" alt="" style="position:absolute;top:0;right:18px;width:46px;display:block;">
+    <sc-if value="{{ noPoster }}" hint-placeholder-val="{{ true }}"><img data-hover-drop="" src="assets/pennant-black.png" alt="" style="position:absolute;top:0;right:18px;width:46px;display:block;"></sc-if>
   </div>
   <div style="padding:22px 24px 24px;display:flex;flex-direction:column;gap:14px;flex:1;">
     <span style="align-self:flex-start;background:#fff;border-radius:999px;padding:4px 12px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;">{{ ev.cat }}</span>
@@ -36,7 +36,8 @@ class Component extends DCLogic {
     const i = Number(this.props.idx ?? 1);
     const ev = ((window.ORYC_CONTENT || {}).season || [])[i - 1] || {};
     const cta = ev.n === 4 ? { label: 'Plan to attend', href: '/contact' } : ev.n === 6 ? { label: 'Tickets (CCC)', href: 'https://zeffy.com' } : { label: 'Tickets ' + (ev.price || ''), href: 'https://zeffy.com' };
-    return { hasDetail: ev.slug === 'durufle', ev, cta, slotId: 'EVENT-CARD-0' + i };
+    const slotId = 'EVENT-CARD-0' + i;
+    return { hasDetail: ev.slug === 'durufle', ev, cta, slotId, noPoster: !((window.ORYC_PHOTOS || {})[slotId] || {}).src };
   }
 }
 </script>

@@ -8,7 +8,7 @@
   S('HOME-HERO-01', 'Home · Hero A', 'Performance – Wide', 'Full choir on stage mid-concert, conductor in frame', '16:9', '2560×1440', 'duotone', 'bleed', 'The Ottawa Regional Youth Choir performing on stage with its conductor');
   S('HOME-HEROB-01', 'Home · Hero B', 'Performance – Close', 'Two or three choristers mid-phrase, faces lit, shallow depth of field', '4:5', '1600×2000', 'none', 'arch', 'Young choristers singing in concert');
   S('HOME-HEROB-02', 'Home · Hero B', 'Chorister Candid', 'One chorister laughing between songs, tight crop on face', '1:1', '800×800', 'none', 'circle', 'A chorister laughing at rehearsal');
-  S('HOME-NEXT-01', 'Home · Next concert', 'Event Poster Image', "Image for Duruflé's Requiem: candlelit or contemplative church interior", '4:5', '1200×1500', 'bw', 'rect', 'Candlelit church interior');
+  S('HOME-NEXT-01', 'Home · Next concert', 'Event Poster Image', "Concert poster for Duruflé's Requiem", '1:1', '1080×1080', 'none', 'rect', "Concert poster for Duruflé's Requiem");
   S('HOME-JOIN-01', 'Home · No auditions block', 'Chorister Candid', 'Choristers laughing or singing together at rehearsal', '3:4', '1200×1600', 'none', 'arch', 'Choristers laughing together at rehearsal');
   S('HOME-QUOTE-01', 'Home · Testimonial', 'Headshot', 'Chorister being quoted', '1:1', '800×800', 'none', 'circle', 'Portrait of the quoted chorister');
   S('HOME-LEGACY-01', 'Home · Since 1982', 'Archival / Historical', 'Early ORYC photo, 1980s–90s', '4:3', '1600×1200', 'bw', 'rect', 'The Ottawa Regional Youth Choir in its early years');
@@ -31,8 +31,8 @@
 
   S('EVENTS-HERO-01', 'Events · Hero', 'Performance – Wide', 'Concert with audience visible', '16:9', '2560×1440', 'duotone', 'bleed', 'The choir performing to a full audience');
   ["Duruflé's Requiem", "Handel's Messiah", "Young Maestros' Showcase", "Songs for St. Joe's Supper Table", 'From Darkness to Light', 'Canadian Centennial Choir 60th Anniversary'].forEach((n, i) =>
-    S('EVENT-CARD-0' + (i + 1), 'Events · Season cards', 'Event Poster Image', 'Poster image for ' + n, '4:5', '1200×1500', 'bw', 'rect', 'Image for ' + n));
-  S('EVENT-DETAIL-HERO', 'Event detail', 'Event Poster Image', 'Concert-specific image', '3:2', '2400×1600', 'bw', 'rect', 'Concert image');
+    S('EVENT-CARD-0' + (i + 1), 'Events · Season cards', 'Event Poster Image', 'Poster image for ' + n, '1:1', '1080×1080', 'none', 'rect', 'Concert poster for ' + n));
+  S('EVENT-DETAIL-HERO', 'Event detail', 'Event Poster Image', 'Concert poster', '1:1', '1080×1080', 'none', 'rect', 'Concert poster');
   S('EVENT-DETAIL-VENUE', 'Event detail', 'Venue', 'Exterior or interior of the venue', '3:2', '1800×1200', 'none', 'rect', 'The concert venue');
   const g = [['Performance – Wide', 'Full choir and orchestra from the back of the hall', '3:2'], ['Performance – Close', 'Soprano section mid-phrase', '4:5'], ['Rehearsal', 'Jamie conducting a Tuesday rehearsal', '1:1'], ['Bootcamp / Social', 'Saturday Bootcamp breakfast table', '3:2'], ['Performance – Close', 'Soloist at the front of the choir', '4:5'], ['Rehearsal', 'Sectional around the piano', '3:2'], ['Bootcamp / Social', 'Team-building game at Bootcamp', '1:1'], ['Performance – Wide', 'Candlelit concert, wide', '4:5'], ['Rehearsal', 'Choristers marking scores', '3:2'], ['Performance – Close', 'Tenors and basses singing', '3:2'], ['Bootcamp / Social', 'Group selfie after a concert', '4:5'], ['Performance – Wide', 'Bow at the end of a concert', '1:1']];
   g.forEach(([s, d, r], i) => S('GALLERY-' + String(i + 1).padStart(2, '0'), 'Events · Gallery', s, d, r, r === '3:2' ? '1800×1200' : r === '4:5' ? '1200×1500' : '1200×1200', 'none', 'rect'));
@@ -58,6 +58,13 @@
   const SRC = {
     'HOME-LEGACY-01': ['photos/home-legacy-01.jpg', 'A stack of ORYC recordings, including the 20th and 25th anniversary CDs'],
     'HOME-SUPPORT-01': ['photos/home-support-01.jpg', 'Choristers laughing together with their scores at rehearsal'],
+    'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
+    'EVENT-DETAIL-HERO': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
+    'EVENT-CARD-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem"],
+    'EVENT-CARD-02': ['photos/posters/messiah.jpg', "Poster for Handel's Messiah, Part I"],
+    'EVENT-CARD-03': ['photos/posters/maestros.jpg', "Poster for the Young Maestros' Showcase"],
+    'EVENT-CARD-04': ['photos/posters/supper-table.jpg', "Poster for Songs for St. Joe's Supper Table"],
+    'EVENT-CARD-05': ['photos/posters/darkness-to-light.jpg', 'Poster for From Darkness to Light: Rachmaninoff All-Night Vigil and Gjeilo Sunrise Mass'],
     'HOME-JOIN-01': ['photos/home-join-01.jpg', 'A chorister holding an open score of Misa a Buenos Aires at the Kyrie'],
   };
   R.forEach(r => { const x = SRC[r.id]; if (x) { r.src = x[0]; if (x[1]) r.alt = x[1]; } });
