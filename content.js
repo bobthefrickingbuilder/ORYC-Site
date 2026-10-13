@@ -1,7 +1,7 @@
 window.ORYC_CONTENT = {
   season: [
     { n: 1, slug: 'durufle', title: "Duruflé's Requiem", day: 'Sun', date: 'Nov 8, 2026', iso: '2026-11-08T15:00:00-05:00', time: '3:00 pm', place: 'St. Barnabas Apostle and Martyr, 70 James St.', price: '$25', cat: 'ORYC Concerts', info: 'Tickets $25 on Zeffy' },
-    { n: 2, slug: 'messiah', title: "Handel's Messiah", day: 'Sat', date: 'Dec 12, 2026', iso: '2026-12-12T19:30:00-05:00', time: '7:30 pm', place: "St. Joseph's Parish", price: '$25', cat: 'ORYC Concerts', info: 'With guest instrumentalists · $25' },
+    { n: 2, slug: 'messiah', title: "Handel's Messiah", day: 'Sat', date: 'Dec 12, 2026', iso: '2026-12-12T19:00:00-05:00', time: '7:00 pm', place: "St. Joseph's Parish", price: '$25', cat: 'ORYC Concerts', info: 'With guest instrumentalists · $25' },
     { n: 3, slug: 'maestros', title: "Young Maestros' Showcase", day: 'Sun', date: 'Jan 31, 2027', iso: '2027-01-31T15:00:00-05:00', time: '3:00 pm', place: "St. Joseph's Parish", price: '$25', cat: 'ORYC Concerts', info: 'Choristers perform, conduct and program · $25' },
     { n: 4, slug: 'supper-table', title: "Songs for St. Joe's Supper Table", day: 'Sun', date: 'Mar 7, 2027', iso: '2027-03-07T15:00:00-05:00', time: '3:00 pm', place: "St. Joseph's Parish", price: 'By donation', cat: 'Fundraiser', info: 'Admission by donation at the door' },
     { n: 5, slug: 'darkness-to-light', title: 'From Darkness to Light', day: 'Sun', date: 'Apr 25, 2027', iso: '2027-04-25T15:00:00-04:00', time: '3:00 pm', place: "St. Joseph's Parish", price: '$30', cat: 'ORYC Concerts', info: 'Rachmaninoff Vespers & Gjeilo Sunrise Mass · $30' },

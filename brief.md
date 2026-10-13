@@ -186,7 +186,7 @@ The brand is described as **"modern, young and playful."** Assets should be **ph
 **2026–27 season** (tickets on Zeffy; individual tickets $25 unless noted):
 
 1. **Duruflé's Requiem** — Sun Nov 8, 2026, 3:00 pm. St. Barnabas Apostle and Martyr, 70 James St. $25. "Requiems are often heavy, but Duruflé's take is different. It is built entirely on warmth, comfort, and floating melodies…"
-2. **Handel's Messiah** — Sat Dec 12, 2026, 7:30 pm. St. Joseph's Parish. $25. With guest instrumentalists.
+2. **Handel's Messiah** — Sat Dec 12, 2026, 7:00 pm. St. Joseph's Parish. $25. With guest instrumentalists.
 3. **Young Maestros' Showcase** — Sun Jan 31, 2027, 3:00 pm. St. Joseph's Parish. $25. Choristers act as performers, conductors, ensemble leaders and programmers.
 4. **Songs for St. Joe's Supper Table** — Sun Mar 7, 2027, 3:00 pm. St. Joseph's Parish. Admission by donation at the door. The annual multi-choir fundraiser for St. Joseph's Supper Table meal program.
 5. **From Darkness to Light** — Sun Apr 25, 2027, 3:00 pm. St. Joseph's Parish. $30. Rachmaninoff's All-Night Vigil (Vespers) and Ola Gjeilo's Sunrise Mass.
