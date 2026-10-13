@@ -1,0 +1,7 @@
+# Design-phase files: kept in the repo, not published to the live site
+brief.md
+uploads/
+_ds/
+.thumbnail
+ORYC Website.dc.html
+ORYC Website (standalone).html

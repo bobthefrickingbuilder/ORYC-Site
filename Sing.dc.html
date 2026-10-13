@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Sing with Us | Ottawa Regional Youth Choir</title>
+<base href="/">
+<meta name="description" content="The Ottawa Regional Youth Choir (ORYC) is a non-auditioned youth choir rehearsing Tuesdays at St. Joseph&#39;s Parish in Sandy Hill, Ottawa. Concerts, membership and ways to support the choir.">
+<link rel="canonical" href="https://oryc.ca/sing">
+<meta property="og:title" content="Sing with Us | Ottawa Regional Youth Choir">
+<meta property="og:description" content="The Ottawa Regional Youth Choir (ORYC) is a non-auditioned youth choir rehearsing Tuesdays at St. Joseph&#39;s Parish in Sandy Hill, Ottawa. Concerts, membership and ways to support the choir.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oryc.ca/sing">
+<meta name="theme-color" content="#E41E26">
+<link rel="icon" type="image/png" href="/assets/pennant-teal.png">
+<link rel="apple-touch-icon" href="/assets/emblem-white-on-black.png">
+<script src="/site.js"></script>
+<script src="/content.js"></script>
+<script src="/photos.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -18,8 +32,8 @@
         <h1 id="sing-h" style="margin:0;font-weight:700;font-size:clamp(46px,6.6cqw,104px);line-height:.9;text-transform:uppercase;text-wrap:balance;">Join the choir. No audition required.</h1>
         <p style="margin:0;font-size:clamp(18px,1.5cqw,21px);max-width:580px;">Book a short vocal check and feedback session. There is nothing to prepare, and every voice type is welcome.</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;">
-          <a href="#vocal-check" data-magnetic="" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Book a Vocal Check</a>
-          <a href="#how" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">How it works</a>
+          <a href="/sing#vocal-check" data-magnetic="" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Book a Vocal Check</a>
+          <a href="/sing#how" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">How it works</a>
         </div>
       </div>
     </section>
@@ -146,7 +160,7 @@
             <form onSubmit="{{ submit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;">
               <div style="display:flex;flex-direction:column;gap:6px;"><label for="vc-name" style="font-weight:700;font-size:16px;">Full name</label><input id="vc-name" required="" autocomplete="name" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;"></div>
               <div style="display:flex;flex-direction:column;gap:6px;"><label for="vc-email" style="font-weight:700;font-size:16px;">Email</label><input id="vc-email" type="email" required="" autocomplete="email" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;"></div>
-              <div style="display:flex;flex-direction:column;gap:6px;"><label for="vc-age" style="font-weight:700;font-size:16px;">Age</label><select id="vc-age" required="" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;background:#fff;"><option value="">Select</option><sc-for list="{{ ages }}" as="a" hint-placeholder-count="11"><option>{{ a }}</option></sc-for></select></div>
+              <div style="display:flex;flex-direction:column;gap:6px;"><label for="vc-age" style="font-weight:700;font-size:16px;">Age</label><select id="vc-age" required="" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;background:#fff;"><option value="">Select</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option></select></div>
               <div style="display:flex;flex-direction:column;gap:6px;"><label for="vc-parent" style="font-weight:700;font-size:16px;">Parent/guardian email <span style="font-weight:400;font-style:italic;">(if under 18)</span></label><input id="vc-parent" type="email" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;"></div>
               <fieldset style="grid-column:1/-1;border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;">
                 <legend style="font-weight:700;font-size:16px;margin-bottom:10px;">Voice part</legend>
@@ -180,8 +194,8 @@
   <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
     <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
-      <a href="#events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
-      <a href="#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+      <a href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
     </div>
   </sc-if>
 </div>
@@ -190,8 +204,9 @@
 class Component extends DCLogic {
   state = { sent: false };
   renderVals() {
+    if (!this.__vp) { this.__vp = 1; this.__narrow = window.innerWidth < 1120; window.addEventListener('resize', () => { const n = window.innerWidth < 1120; if (n !== this.__narrow) { this.__narrow = n; this.setState({ __narrow: n }); } }); }
     return {
-      mobile: !!this.props.mobile,
+      mobile: !!this.props.mobile || !!this.__narrow,
       steps: [
         { n: 1, slot: 'SING-STEP-01', title: 'Book a vocal check', text: 'Pick a Tuesday evening or the Saturday afternoon session. It is short, and there is nothing to prepare.' },
         { n: 2, slot: 'SING-STEP-02', title: 'Meet Jamie & Cara', text: 'Sing a little with our Artistic Director and Vocal Instructor, get feedback and ask anything.' },

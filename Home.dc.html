@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Ottawa Regional Youth Choir</title>
+<base href="/">
+<meta name="description" content="The Ottawa Regional Youth Choir (ORYC) is a non-auditioned youth choir rehearsing Tuesdays at St. Joseph&#39;s Parish in Sandy Hill, Ottawa. Concerts, membership and ways to support the choir.">
+<link rel="canonical" href="https://oryc.ca/">
+<meta property="og:title" content="Ottawa Regional Youth Choir">
+<meta property="og:description" content="The Ottawa Regional Youth Choir (ORYC) is a non-auditioned youth choir rehearsing Tuesdays at St. Joseph&#39;s Parish in Sandy Hill, Ottawa. Concerts, membership and ways to support the choir.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oryc.ca/">
+<meta name="theme-color" content="#E41E26">
+<link rel="icon" type="image/png" href="/assets/pennant-teal.png">
+<link rel="apple-touch-icon" href="/assets/emblem-white-on-black.png">
+<script src="/site.js"></script>
+<script src="/content.js"></script>
+<script src="/photos.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -49,7 +63,7 @@
           <p style="margin:0;font-size:20px;line-height:1.55;max-width:560px;">Requiems are often heavy, but Duruflé's take is different. It is built entirely on warmth, comfort, and floating melodies…</p>
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;">
             <a href="https://zeffy.com" data-magnetic="" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#E41E26;color:#fff;border:2px solid #E41E26;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;border-color:#fff;color:#000;">Buy Tickets · $25</a>
-            <a href="#event-detail" style="font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#fff;">Concert details</a>
+            <a href="/events/durufle" style="font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#fff;">Concert details</a>
           </div>
         </div>
       </div>
@@ -70,7 +84,7 @@
             <li style="display:flex;align-items:center;gap:10px;background:#DFEDEA;border-radius:999px;padding:10px 20px 10px 12px;font-weight:700;font-size:17px;"><span aria-hidden="true" style="width:14px;height:14px;border-radius:50%;background:#004238;"></span>Ages 15–25</li>
             <li style="display:flex;align-items:center;gap:10px;background:#DFEDEA;border-radius:999px;padding:10px 20px 10px 12px;font-weight:700;font-size:17px;"><span aria-hidden="true" style="width:14px;height:14px;border-radius:50%;background:#004238;"></span>All voice types welcome</li>
           </ul>
-          <div><a href="#vocal-check" data-magnetic="" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#E41E26;color:#fff;border:2px solid #E41E26;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;border-color:#B8141B;color:#fff;">Book a Vocal Check</a></div>
+          <div><a href="/sing#vocal-check" data-magnetic="" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#E41E26;color:#fff;border:2px solid #E41E26;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;border-color:#B8141B;color:#fff;">Book a Vocal Check</a></div>
         </div>
       </div>
     </section>
@@ -83,7 +97,7 @@
         </div>
         <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-start;">
           <span style="font-size:17px;">Season Bundle: four concerts for <strong>$94.50</strong></span>
-          <a href="#events" style="font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#000;">Full season</a>
+          <a href="/events" style="font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#000;">Full season</a>
           <div style="display:flex;gap:8px;margin-top:6px;">
             <button onClick="{{ prev }}" aria-label="Previous concerts" style="width:52px;height:52px;border-radius:50%;border:2px solid #000;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .25s,color .25s;" style-hover="background:#000;color:#fff;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg></button>
             <button onClick="{{ next }}" aria-label="Next concerts" style="width:52px;height:52px;border-radius:50%;border:2px solid #000;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background-color .25s,border-color .25s;" style-hover="background:#E41E26;border-color:#E41E26;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
@@ -111,7 +125,7 @@
           </div>
           <h2 id="legacy-h" style="margin:0;font-weight:700;font-size:clamp(28px,2.8cqw,40px);line-height:1.05;text-transform:uppercase;max-width:600px;">The bridge between children's choirs and adult ensembles</h2>
           <p style="margin:0;font-size:19px;max-width:580px;">Barbara Clark, C.M., founded the Ottawa Regional Youth Choir in 1982, and it was incorporated in 1983. Four decades on, ORYC remains the bridge between children's choirs and adult ensembles.</p>
-          <a href="#history" style="font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#000;align-self:flex-start;">Our history</a>
+          <a href="/about#history" style="font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#000;align-self:flex-start;">Our history</a>
         </div>
         <div style="flex:1 1 380px;max-width:560px;"><dc-import name="PhotoSlot" id="HOME-LEGACY-01" hint-size="100%,420px"></dc-import></div>
       </div>
@@ -149,17 +163,17 @@
           <div style="background:#E41E26;color:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s;" style-hover="transform:translateY(-8px);box-shadow:0 20px 44px rgba(0,0,0,.16);">
             <h3 style="margin:0;font-weight:700;font-size:32px;text-transform:uppercase;">Donate</h3>
             <p style="margin:0;font-size:18px;">Donations over $25 receive a tax receipt. Zeffy passes 100% of your donation to ORYC.</p>
-            <a href="#donate" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Donate</a>
+            <a href="/support#donate" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Donate</a>
           </div>
           <div style="background:#DFEDEA;color:#000;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s;" style-hover="transform:translateY(-8px);box-shadow:0 20px 44px rgba(0,0,0,.16);">
             <h3 style="margin:0;font-weight:700;font-size:32px;text-transform:uppercase;">Volunteer</h3>
             <p style="margin:0;font-size:18px;">Ushers, stagehands, box office, photography, grants, IT, communications and marketing.</p>
-            <a href="#volunteer" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Volunteer</a>
+            <a href="/support#volunteer" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Volunteer</a>
           </div>
           <div style="background:#000;color:#fff;border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:14px;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s;" style-hover="transform:translateY(-8px);box-shadow:0 20px 44px rgba(0,0,0,.16);">
             <h3 style="margin:0;font-weight:700;font-size:32px;text-transform:uppercase;">Sponsor</h3>
             <p style="margin:0;font-size:18px;">Fund the Inclusion Fund, the music retreat, musicians, concert production or new music.</p>
-            <a href="#sponsor" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">Sponsor</a>
+            <a href="/support#sponsor" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">Sponsor</a>
           </div>
         </div>
       </div>
@@ -168,8 +182,8 @@
   <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
     <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
-      <a href="#events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
-      <a href="#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+      <a href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
     </div>
   </sc-if>
 </div>
@@ -182,13 +196,14 @@ class Component extends DCLogic {
   componentWillUnmount() { clearInterval(this._t); }
   scrollBy(dir) { const el = this.scroller.current; if (!el) return; const card = el.querySelector('div'); el.scrollBy({ left: dir * ((card ? card.offsetWidth : 330) + 20), behavior: 'smooth' }); }
   renderVals() {
+    if (!this.__vp) { this.__vp = 1; this.__narrow = window.innerWidth < 1120; window.addEventListener('resize', () => { const n = window.innerWidth < 1120; if (n !== this.__narrow) { this.__narrow = n; this.setState({ __narrow: n }); } }); }
     const ms = Math.max(0, new Date('2026-11-08T15:00:00-05:00') - this.state.now);
     const pad = n => String(n).padStart(2, '0');
     const countdown = [['Days', Math.floor(ms / 864e5)], ['Hrs', Math.floor(ms / 36e5) % 24], ['Min', Math.floor(ms / 6e4) % 60], ['Sec', Math.floor(ms / 1e3) % 60]].map(([l, v]) => ({ l, v: pad(v) }));
     const facts = ['No auditions', 'Ages 15–25', 'Tuesdays 7–9 pm', 'All voices welcome', 'Since 1982', 'Sandy Hill, Ottawa'];
     const dots = ['#E41E26', '#56C4C4', '#004238', '#AAC738'];
     const ticker = [...facts, ...facts].map((label, i) => ({ label, dot: dots[i % 4] }));
-    return { mobile: !!this.props.mobile, hero: this.props.hero || 'A', countdown, ticker, scroller: this.scroller, prev: () => this.scrollBy(-1), next: () => this.scrollBy(1), cards: [1, 2, 3, 4, 5, 6] };
+    return { mobile: !!this.props.mobile || !!this.__narrow, hero: this.props.hero || 'A', countdown, ticker, scroller: this.scroller, prev: () => this.scrollBy(-1), next: () => this.scrollBy(1), cards: [1, 2, 3, 4, 5, 6] };
   }
 }
 </script>

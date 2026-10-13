@@ -1,0 +1,49 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/Home.dc.html" },
+    { "source": "/about", "destination": "/About.dc.html" },
+    { "source": "/events", "destination": "/Events.dc.html" },
+    { "source": "/events/durufle", "destination": "/EventDetail.dc.html" },
+    { "source": "/sing", "destination": "/Sing.dc.html" },
+    { "source": "/support", "destination": "/Support.dc.html" },
+    { "source": "/contact", "destination": "/Contact.dc.html" }
+  ],
+  "redirects": [
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/choir-events", "destination": "/events", "permanent": true },
+    { "source": "/sing-with-us", "destination": "/sing", "permanent": true },
+    { "source": "/support-us", "destination": "/support", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+    { "source": "/donate", "destination": "/support#donate", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/events/durufle.ics",
+      "headers": [
+        { "key": "Content-Type", "value": "text/calendar; charset=utf-8" },
+        { "key": "Content-Disposition", "value": "attachment; filename=\"oryc-durufle.ics\"" }
+      ]
+    },
+    {
+      "source": "/(fonts|vendor)/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

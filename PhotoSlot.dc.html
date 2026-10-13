@@ -60,14 +60,14 @@ class Component extends DCLogic {
     const centered = crop === 'circle' || !!p.compact;
     return {
       id: p.id, shot: d.shot, desc: d.desc, specs, alt: d.alt,
-      tip: p.id + ' — ' + d.shot + ': ' + d.desc + ' (' + specs + ')',
+      tip: window.ORYC_SHOW_SLOT_SPECS ? p.id + ' — ' + d.shot + ': ' + d.desc + ' (' + specs + ')' : undefined,
       ar: p.fill ? 'auto' : rw + ' / ' + rh,
       h: p.fill ? '100%' : 'auto',
       radius, bg: pal[0], fg: pal[1],
       src: d.src, hasSrc: !!d.src,
       filter: d.treat === 'none' ? 'none' : 'grayscale(1) contrast(1.05)',
       isDuo: d.treat === 'duotone',
-      showFull: !d.src && !centered, showCenter: !d.src && centered,
+      showFull: !d.src && !centered && !!window.ORYC_SHOW_SLOT_SPECS, showCenter: !d.src && centered && !!window.ORYC_SHOW_SLOT_SPECS,
       circleText: !!p.circleText,
       justify: p.labelPos === 'top' ? 'flex-start' : 'flex-end'
     };

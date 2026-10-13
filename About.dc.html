@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>About | Ottawa Regional Youth Choir</title>
+<base href="/">
+<meta name="description" content="The Ottawa Regional Youth Choir (ORYC) is a non-auditioned youth choir rehearsing Tuesdays at St. Joseph&#39;s Parish in Sandy Hill, Ottawa. Concerts, membership and ways to support the choir.">
+<link rel="canonical" href="https://oryc.ca/about">
+<meta property="og:title" content="About | Ottawa Regional Youth Choir">
+<meta property="og:description" content="The Ottawa Regional Youth Choir (ORYC) is a non-auditioned youth choir rehearsing Tuesdays at St. Joseph&#39;s Parish in Sandy Hill, Ottawa. Concerts, membership and ways to support the choir.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oryc.ca/about">
+<meta name="theme-color" content="#E41E26">
+<link rel="icon" type="image/png" href="/assets/pennant-teal.png">
+<link rel="apple-touch-icon" href="/assets/emblem-white-on-black.png">
+<script src="/site.js"></script>
+<script src="/content.js"></script>
+<script src="/photos.js"></script>
+<script src="/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -89,7 +103,7 @@
             </div>
           </sc-for>
           <sc-for list="{{ recruiting }}" as="r" hint-placeholder-count="3">
-            <a href="#volunteer" style="display:flex;align-items:center;gap:18px;background:#000;color:#fff;border-radius:24px;padding:20px;text-decoration:none;" style-hover="background:#004238;color:#fff;">
+            <a href="/support#volunteer" style="display:flex;align-items:center;gap:18px;background:#000;color:#fff;border-radius:24px;padding:20px;text-decoration:none;" style-hover="background:#004238;color:#fff;">
               <span aria-hidden="true" style="flex:0 0 96px;height:96px;border-radius:50%;border:3px solid #56C4C4;display:flex;align-items:center;justify-content:center;font-size:40px;color:#56C4C4;">+</span>
               <span style="display:flex;flex-direction:column;gap:4px;"><span style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">We're recruiting</span><span style="font-weight:700;font-size:20px;line-height:1.15;text-transform:uppercase;">{{ r }}</span></span>
             </a>
@@ -127,7 +141,7 @@
         <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:14px;">
           <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;">Core volunteers</span>
           <h2 id="vol-h" style="margin:0;font-weight:700;font-size:clamp(36px,4cqw,60px);line-height:.95;text-transform:uppercase;">Behind every concert</h2>
-          <a href="#volunteer" style="font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;align-self:flex-start;">Volunteer with us</a>
+          <a href="/support#volunteer" style="font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;align-self:flex-start;">Volunteer with us</a>
         </div>
         <ul data-stagger="" style="flex:2 1 480px;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:4px 32px;font-size:18px;">
           <sc-for list="{{ volunteers }}" as="v" hint-placeholder-count="6"><li style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:2px solid #fff;"><strong>[Volunteer name]</strong><span style="font-style:italic;">[Role]</span></li></sc-for>
@@ -183,7 +197,7 @@
           <h2 id="mem-h" style="margin:0;font-weight:400;font-size:clamp(40px,4.6cqw,64px);line-height:1;">Barbara Clark, C.M.</h2>
           <span style="font-size:18px;">Died August 5, 2025</span>
           <p style="margin:0;font-size:19px;max-width:560px;">Barbara Clark founded the Ottawa Regional Youth Choir in 1982 and led it until 2007. Her vision was a choir where young singers could keep growing between children's choirs and adult ensembles. She was appointed a Member of the Order of Canada in 2001.</p>
-          <a href="#obituary" style="color:#fff;font-size:18px;align-self:flex-start;">Read the obituary</a>
+          <a href="/about#memoriam" style="color:#fff;font-size:18px;align-self:flex-start;">Read the obituary</a>
         </div>
       </div>
     </section>
@@ -191,8 +205,8 @@
   <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
   <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
     <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
-      <a href="#events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
-      <a href="#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+      <a href="/events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a href="/support#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
     </div>
   </sc-if>
 </div>
@@ -201,6 +215,7 @@
 class Component extends DCLogic {
   state = { bio: this.props.openBio ?? -1 };
   renderVals() {
+    if (!this.__vp) { this.__vp = 1; this.__narrow = window.innerWidth < 1120; window.addEventListener('resize', () => { const n = window.innerWidth < 1120; if (n !== this.__narrow) { this.__narrow = n; this.setState({ __narrow: n }); } }); }
     const teamRaw = [['Jamie Loback', 'Artistic Director (since 2013)'], ['Aude Urbancic', 'Pianist & Vocal Coach'], ['Cara Gilbertson', 'Vocal Instructor'], ['Madox Terrell', 'Tenor/Bass Vocal Coach']];
     const team = teamRaw.map(([name, role], i) => {
       const isOpen = this.state.bio === i;
@@ -211,8 +226,8 @@ class Component extends DCLogic {
     let k = 0;
     const grp = (label, names) => ({ label, people: names.map(name => ({ name, initials: initials(name), slot: 'ABOUT-BOARD-' + String(++k).padStart(2, '0') })) });
     return {
-      mobile: !!this.props.mobile,
-      anchors: [['Mission', '#mission'], ['Artistic team', '#team'], ['Management', '#management'], ['Board', '#board'], ['Volunteers', '#volunteers'], ['Meet the choir', '#choir'], ['History', '#history'], ['In memoriam', '#memoriam']].map(([label, href]) => ({ label, href })),
+      mobile: !!this.props.mobile || !!this.__narrow,
+      anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Meet the choir', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
       team, hasBio: !!b,
       bio: b ? { ...b, text: '[Biography placeholder: 80–120 words to be supplied for ' + b.name + '.]' } : { name: '', role: '', slot: 'ABOUT-TEAM-01', text: '' },
       closeBio: () => this.setState({ bio: -1 }),
