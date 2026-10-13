@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}body{margin:0}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="content.js"></script><script src="motion.js"></script></helmet>
+<div data-screen-label="Events" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
+  <dc-import name="SiteHeader" mobile="{{ mobile }}" active="events" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
+  <main>
+    <section aria-labelledby="ev-h" style="position:relative;min-height:clamp(480px,42cqw,620px);display:flex;flex-direction:column;justify-content:flex-end;background:#E41E26;color:#fff;overflow:hidden;">
+      <dc-import name="PhotoSlot" id="EVENTS-HERO-01" fill="{{ true }}" labelPos="top" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+      <div style="position:relative;padding:0 clamp(20px,5.5cqw,80px) clamp(36px,4.4cqw,64px);display:flex;flex-direction:column;gap:18px;">
+        <span style="font-style:italic;font-size:18px;letter-spacing:.1em;text-transform:uppercase;">Events</span>
+        <h1 id="ev-h" style="margin:0;font-weight:700;font-size:clamp(64px,11cqw,180px);line-height:.82;text-transform:uppercase;letter-spacing:-.02em;">2026–27 Season</h1>
+        <p style="margin:0;font-size:clamp(19px,1.6cqw,23px);max-width:620px;">Duruflé, Handel, Rachmaninoff and Gjeilo, a showcase run by our own choristers, a multi-choir fundraiser and a collaboration with the Canadian Centennial Choir.</p>
+      </div>
+    </section>
+
+    <section aria-label="Ticket options" style="padding:clamp(48px,6cqw,88px) clamp(20px,5.5cqw,80px) 0;">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;">
+        <div style="background:#000;color:#fff;border-radius:28px;padding:clamp(28px,3.4cqw,44px);display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center;">
+          <div style="display:flex;flex-direction:column;"><span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">Season Bundle · 10% off</span><span style="font-weight:700;font-size:clamp(64px,7cqw,96px);line-height:.95;">$94.50</span></div>
+          <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:14px;">
+            <p style="margin:0;font-size:18px;">All four ORYC concerts: Duruflé's Requiem, Handel's Messiah, Young Maestros' Showcase and From Darkness to Light.</p>
+            <a href="https://zeffy.com" data-magnetic="" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">Buy the bundle</a>
+          </div>
+        </div>
+        <div style="background:#56C4C4;color:#000;border-radius:28px;padding:clamp(28px,3.4cqw,44px);display:flex;flex-direction:column;gap:12px;justify-content:center;">
+          <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">Pay what you can</span>
+          <p style="margin:0;font-weight:700;font-size:clamp(24px,2.4cqw,32px);line-height:1.2;">If the ticket price is a barrier, pay what you can at the door.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="concerts-h" style="padding:clamp(56px,7cqw,104px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:28px;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;">
+          <h2 id="concerts-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Concerts</h2>
+          <div role="group" aria-label="Filter concerts" style="display:flex;flex-wrap:wrap;gap:8px;">
+            <sc-for list="{{ chips }}" as="c" hint-placeholder-count="4">
+              <button onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="font:inherit;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid #000;background:{{ c.bg }};color:{{ c.fg }};font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;">{{ c.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:24px;">
+          <sc-for list="{{ shown }}" as="n" hint-placeholder-count="6"><dc-import name="EventCard" idx="{{ n }}" hint-size="100%,760px"></dc-import></sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="archive" aria-labelledby="past-h" style="background:#DFEDEA;padding:clamp(56px,7cqw,104px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px clamp(40px,6cqw,96px);">
+        <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;">Archive</span>
+          <h2 id="past-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Past seasons</h2>
+        </div>
+        <div style="flex:2 1 520px;display:flex;flex-direction:column;gap:32px;">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h3 style="margin:0;font-weight:700;font-size:26px;">2025–26</h3>
+            <ul data-stagger="" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px;">
+              <li style="background:#fff;border-radius:18px;padding:16px 20px;"><strong style="display:block;font-size:19px;">Monteverdi Vespers</strong><span style="font-style:italic;">by candlelight</span></li>
+              <li style="background:#fff;border-radius:18px;padding:16px 20px;"><strong style="display:block;font-size:19px;">A Very French Christmas</strong><span style="font-style:italic;">Saint-Saëns Christmas Oratorio</span></li>
+              <li style="background:#fff;border-radius:18px;padding:16px 20px;"><strong style="display:block;font-size:19px;">April in Argentina</strong><span style="font-style:italic;">Palmeri MisaTango</span></li>
+              <li style="background:#fff;border-radius:18px;padding:16px 20px;"><strong style="display:block;font-size:19px;">Young Maestros' Coffeehouse</strong></li>
+            </ul>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <h3 style="margin:0;font-weight:700;font-size:26px;">Earlier seasons</h3>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
+              <li style="background:#004238;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700;">Brahms Requiem · May 2023</li>
+              <li style="background:#004238;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700;">Haydn Lord Nelson Mass</li>
+              <li style="background:#004238;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700;">Mozart Requiem</li>
+              <li style="background:#004238;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700;">Vivaldi Gloria</li>
+              <li style="background:#004238;color:#fff;border-radius:999px;padding:8px 18px;font-weight:700;">Monteverdi L'Orfeo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" aria-labelledby="gal-h" style="padding:clamp(56px,7cqw,104px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:32px;">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Gallery &amp; media</span>
+          <h2 id="gal-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">See and hear us</h2>
+        </div>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px;">
+          <sc-for list="{{ videos }}" as="v" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div role="img" aria-label="YouTube video embed: {{ v.title }}" style="position:relative;aspect-ratio:16/9;border-radius:18px;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+                <span style="width:72px;height:72px;border-radius:50%;background:#E41E26;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+                <span style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;">YouTube embed · video ID TBC</span>
+              </div>
+              <span style="font-weight:700;font-size:19px;">{{ v.title }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <a href="https://youtube.com" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:50px;padding:0 24px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">YouTube channel</a>
+        <div data-stagger="" style="columns:3 260px;column-gap:16px;margin-top:16px;">
+          <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="12"><div style="break-inside:avoid;margin-bottom:16px;"><dc-import name="PhotoSlot" id="{{ g }}" hint-size="100%,260px"></dc-import></div></sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
+      <a href="#events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a href="#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { filter: 'All' };
+  componentDidMount() { if (!window.ORYC_CONTENT) this._t = setInterval(() => { if (window.ORYC_CONTENT) { clearInterval(this._t); this.forceUpdate(); } }, 60); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const season = (window.ORYC_CONTENT || {}).season || [];
+    const f = this.state.filter;
+    return {
+      mobile: !!this.props.mobile,
+      chips: ['All', 'ORYC Concerts', 'Fundraiser', 'Collaborations'].map(label => ({ label, on: label === f, bg: label === f ? '#000' : '#fff', fg: label === f ? '#fff' : '#000', pick: () => this.setState({ filter: label }) })),
+      shown: season.filter(e => f === 'All' || e.cat === f).map(e => e.n),
+      videos: [{ title: 'Monteverdi Vespers by candlelight [video TBC]' }, { title: 'April in Argentina: Palmeri MisaTango [video TBC]' }, { title: 'Brahms Requiem, May 2023 [video TBC]' }],
+      gallery: Array.from({ length: 12 }, (_, i) => 'GALLERY-' + String(i + 1).padStart(2, '0'))
+    };
+  }
+}
+</script>
+</body>
+</html>

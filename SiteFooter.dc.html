@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}</style></helmet>
+<footer style="background:#004238;color:#fff;font-family:'Glacial Indifference',sans-serif;padding:clamp(56px,6cqw,96px) clamp(20px,5.5cqw,80px) 32px;display:flex;flex-direction:column;gap:56px;">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;align-items:flex-end;">
+    <div aria-label="Ottawa Regional Youth Choir" role="img" style="display:flex;flex-direction:column;gap:10px;">
+      <div style="font-weight:700;font-size:clamp(76px,9cqw,128px);line-height:.8;letter-spacing:-.02em;display:flex;"><span>O</span><span style="margin-left:-.15em;opacity:.8;">R</span><span>Y</span><span>C</span></div>
+      <div style="font-weight:700;font-size:clamp(13px,1.2cqw,17px);letter-spacing:.3em;">OTTAWA REGIONAL YOUTH CHOIR</div>
+    </div>
+    <form onSubmit="{{ subscribe }}" style="flex:0 1 460px;display:flex;flex-direction:column;gap:10px;">
+      <label for="footer-email" style="font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.04em;">Subscribe for updates</label>
+      <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input id="footer-email" type="email" required="" placeholder="you@example.com" autocomplete="email" style="flex:1 1 220px;min-height:52px;padding:0 22px;border-radius:999px;border:2px solid #fff;background:#fff;color:#000;font:inherit;font-size:17px;">
+          <button type="submit" style="min-height:52px;padding:0 26px;border-radius:999px;border:2px solid #fff;background:#E41E26;color:#fff;font:inherit;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;">Subscribe</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}"><p data-enter="" role="status" style="margin:0;font-size:18px;">Thanks. Check your inbox to confirm.</p></sc-if>
+      <span style="font-size:14px;font-style:italic;">Season news a few times a year, sent with Mailchimp.</span>
+    </form>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:36px;font-size:17px;line-height:1.55;">
+    <nav aria-label="Footer"><div style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Menu</div>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;"><li><a href="#about" style="color:#fff;">About</a></li><li><a href="#events" style="color:#fff;">Events</a></li><li><a href="#sing" style="color:#fff;">Sing with Us</a></li><li><a href="#support" style="color:#fff;">Support</a></li><li><a href="#contact" style="color:#fff;">Contact</a></li><li><a href="https://choirbook.app" style="color:#fff;">Member Login (Choirbook)</a></li></ul></nav>
+    <div><div style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Email</div>
+      <div style="display:flex;flex-direction:column;gap:6px;"><a href="mailto:info@oryc.ca" style="color:#fff;">info@oryc.ca</a><span>Website issues: <a href="mailto:website@oryc.ca" style="color:#fff;">website@oryc.ca</a></span></div></div>
+    <div><div style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Mailing address</div>
+      <address style="font-style:normal;">Ottawa Regional Youth Choir<br>c/o St. Joseph's Parish<br>151 Laurier Ave. E.<br>Ottawa ON K1N 6N8</address></div>
+    <div><div style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Follow</div>
+      <div style="display:flex;gap:10px;">
+        <a href="https://facebook.com" aria-label="Facebook" style="width:48px;height:48px;border-radius:50%;background:#fff;color:#004238;display:flex;align-items:center;justify-content:center;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#56C4C4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        <a href="https://instagram.com" aria-label="Instagram" style="width:48px;height:48px;border-radius:50%;background:#fff;color:#004238;display:flex;align-items:center;justify-content:center;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#56C4C4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><path d="M17.5 6.5h.01"></path></svg></a>
+        <a href="https://youtube.com" aria-label="YouTube" style="width:48px;height:48px;border-radius:50%;background:#fff;color:#004238;display:flex;align-items:center;justify-content:center;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#56C4C4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24 24 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24 24 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z"></path></svg></a>
+      </div></div>
+  </div>
+  <div style="background:#fff;color:#000;border-radius:24px;padding:24px clamp(20px,3cqw,36px);display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;">
+    <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;flex:0 0 auto;">With support from</span>
+    <div style="flex:1 1 520px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;">
+      <dc-import name="PhotoSlot" id="FOOTER-FUNDERS-01" compact="{{ true }}" radius="12px" hint-size="100%,60px"></dc-import>
+      <dc-import name="PhotoSlot" id="FOOTER-FUNDERS-02" compact="{{ true }}" radius="12px" hint-size="100%,60px"></dc-import>
+      <dc-import name="PhotoSlot" id="FOOTER-FUNDERS-03" compact="{{ true }}" radius="12px" hint-size="100%,60px"></dc-import>
+      <dc-import name="PhotoSlot" id="FOOTER-FUNDERS-04" compact="{{ true }}" radius="12px" hint-size="100%,60px"></dc-import>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;line-height:1.5;">
+    <p style="margin:0;font-style:italic;max-width:820px;">[Land acknowledgement — wording to be supplied by ORYC.]</p>
+    <div style="display:flex;flex-wrap:wrap;gap:6px 24px;"><span>© Ottawa Regional Youth Choir</span><span>Registered charity #11907 1827 RR0001</span></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  state = { done: false };
+  renderVals() {
+    return { done: this.state.done, notDone: !this.state.done, subscribe: e => { e.preventDefault(); this.setState({ done: true }); } };
+  }
+}
+</script>
+</body>
+</html>

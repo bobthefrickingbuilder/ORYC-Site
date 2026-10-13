@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><script src="content.js"></script><script src="motion.js"></script></helmet>
+<article data-hover-root="" style="background:#DFEDEA;color:#000;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;height:100%;font-family:'Glacial Indifference',sans-serif;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s;" style-hover="transform:translateY(-8px);box-shadow:0 20px 44px rgba(0,0,0,.16);">
+  <div style="position:relative;">
+    <dc-import name="PhotoSlot" id="{{ slotId }}" radius="0px" labelPos="top" hint-size="100%,360px"></dc-import>
+    <img data-hover-drop="" src="assets/pennant-black.png" alt="" style="position:absolute;top:0;right:18px;width:46px;display:block;">
+  </div>
+  <div style="padding:22px 24px 24px;display:flex;flex-direction:column;gap:14px;flex:1;">
+    <span style="align-self:flex-start;background:#fff;border-radius:999px;padding:4px 12px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;">{{ ev.cat }}</span>
+    <h3 style="margin:0;font-style:italic;font-weight:700;font-size:28px;line-height:1.02;text-transform:uppercase;text-wrap:balance;">{{ ev.title }}</h3>
+    <dl style="margin:0;display:flex;flex-direction:column;gap:10px;">
+      <div><dt style="font-style:italic;font-size:13px;letter-spacing:.1em;text-transform:uppercase;">Date</dt><dd style="margin:2px 0 0;font-weight:700;font-size:17px;">{{ ev.day }} {{ ev.date }} · {{ ev.time }}</dd></div>
+      <div><dt style="font-style:italic;font-size:13px;letter-spacing:.1em;text-transform:uppercase;">Place</dt><dd style="margin:2px 0 0;font-weight:700;font-size:17px;">{{ ev.place }}</dd></div>
+      <div><dt style="font-style:italic;font-size:13px;letter-spacing:.1em;text-transform:uppercase;">Information</dt><dd style="margin:2px 0 0;font-weight:700;font-size:17px;">{{ ev.info }}</dd></div>
+    </dl>
+    <div style="margin-top:auto;padding-top:8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <a href="{{ cta.href }}" style="display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;color:#fff;">{{ cta.label }}</a>
+      <a href="#event-detail" style="font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#000;">Details</a>
+    </div>
+  </div>
+</article>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:340,&quot;height&quot;:760},&quot;idx&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() { if (!window.ORYC_CONTENT) this._t = setInterval(() => { if (window.ORYC_CONTENT) { clearInterval(this._t); this.forceUpdate(); } }, 60); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const i = Number(this.props.idx ?? 1);
+    const ev = ((window.ORYC_CONTENT || {}).season || [])[i - 1] || {};
+    const cta = ev.n === 4 ? { label: 'Plan to attend', href: '#event-detail' } : ev.n === 6 ? { label: 'Tickets (CCC)', href: 'https://zeffy.com' } : { label: 'Tickets ' + (ev.price || ''), href: 'https://zeffy.com' };
+    return { ev, cta, slotId: 'EVENT-CARD-0' + i };
+  }
+}
+</script>
+</body>
+</html>

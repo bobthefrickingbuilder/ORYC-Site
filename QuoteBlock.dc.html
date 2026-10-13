@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<figure style="margin:0;container-type:inline-size;display:flex;flex-direction:column;gap:28px;font-family:'Glacial Indifference',sans-serif;">
+  <sc-if value="{{ isRed }}" hint-placeholder-val="{{ false }}">
+    <blockquote data-reveal="" style="margin:0;color:#fff;font-style:italic;font-weight:700;font-size:clamp(24px,6cqw,64px);line-height:1.18;text-wrap:pretty;">“{{ before }}<mark data-sweep="" style="background:linear-gradient(#fff,#fff) no-repeat 0 0 / 100% 100%;color:#000;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone;">{{ highlight }}</mark>{{ after }}”</blockquote>
+  </sc-if>
+  <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
+    <blockquote data-reveal="" style="margin:0;color:#000;font-style:italic;font-weight:700;font-size:clamp(24px,6cqw,64px);line-height:1.18;text-wrap:pretty;">“{{ before }}<mark data-sweep="" style="background:linear-gradient(#56C4C4,#56C4C4) no-repeat 0 0 / 100% 100%;color:#000;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone;">{{ highlight }}</mark>{{ after }}”</blockquote>
+  </sc-if>
+  <figcaption style="display:flex;align-items:center;gap:16px;color:{{ fg }};">
+    <div style="width:76px;flex:0 0 76px;"><dc-import name="PhotoSlot" id="{{ slotId }}" compact="{{ true }}" hint-size="76px,76px"></dc-import></div>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <span style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em;">{{ name }}</span>
+      <span style="font-style:italic;font-size:16px;">{{ role }}</span>
+    </div>
+  </figcaption>
+</figure>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:420},&quot;tone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;red&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slotId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;HOME-QUOTE-01&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;before&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;highlight&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;after&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;role&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const red = p.tone === 'red';
+    return {
+      isRed: red, isLight: !red, fg: red ? '#fff' : '#000',
+      slotId: p.slotId || 'HOME-QUOTE-01',
+      before: p.before ?? '[Placeholder chorister quote: one or two sentences about ',
+      highlight: p.highlight ?? 'what singing with ORYC means',
+      after: p.after ?? ' to them.]',
+      name: p.name ?? '[Chorister name]',
+      role: p.role ?? '[Voice part] · Chorister since [year]'
+    };
+  }
+}
+</script>
+</body>
+</html>

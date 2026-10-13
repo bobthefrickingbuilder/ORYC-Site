@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}body{margin:0}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="motion.js"></script></helmet>
+<div data-screen-label="Support" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
+  <dc-import name="SiteHeader" mobile="{{ mobile }}" active="support" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
+  <main>
+    <section aria-labelledby="sup-h" style="position:relative;min-height:clamp(480px,42cqw,620px);display:flex;flex-direction:column;justify-content:flex-end;background:#E41E26;color:#fff;overflow:hidden;">
+      <dc-import name="PhotoSlot" id="SUPPORT-HERO-01" fill="{{ true }}" labelPos="top" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
+      <div style="position:relative;padding:0 clamp(20px,5.5cqw,80px) clamp(36px,4.4cqw,64px);display:flex;flex-direction:column;gap:22px;">
+        <span style="font-style:italic;font-size:18px;letter-spacing:.1em;text-transform:uppercase;">Support us</span>
+        <h1 id="sup-h" style="margin:0;font-weight:700;font-size:clamp(60px,9.4cqw,152px);line-height:.84;text-transform:uppercase;max-width:1100px;">Keep young Ottawa singing</h1>
+        <nav aria-label="On this page"><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ anchors }}" as="a" hint-placeholder-count="5"><li><a href="{{ a.href }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">{{ a.label }}</a></li></sc-for>
+        </ul></nav>
+      </div>
+    </section>
+
+    <section id="donate" aria-labelledby="don-h" style="padding:clamp(64px,8cqw,120px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:36px;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Donate</span>
+            <h2 id="don-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Three ways to give</h2>
+          </div>
+          <p style="margin:0;font-size:18px;max-width:440px;">Donations over $25 receive a tax receipt. Registered charity #11907 1827 RR0001.</p>
+        </div>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;">
+          <div style="background:#E41E26;color:#fff;border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">Online · fastest</span>
+            <h3 style="margin:0;font-weight:700;font-size:32px;text-transform:uppercase;">Zeffy</h3>
+            <p style="margin:0;font-size:18px;">Zeffy passes 100% of your donation to ORYC. Your tax receipt arrives by email.</p>
+            <a href="https://zeffy.com" data-magnetic="" style="margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Donate on Zeffy</a>
+          </div>
+          <div style="background:#DFEDEA;border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">Interac</span>
+            <h3 style="margin:0;font-weight:700;font-size:32px;text-transform:uppercase;">e-Transfer</h3>
+            <p style="margin:0;font-size:18px;">Send to <a href="mailto:finance@oryc.ca"><strong>finance@oryc.ca</strong></a> and write <strong>DONATION</strong> in the message.</p>
+          </div>
+          <div style="background:#DFEDEA;border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">By mail</span>
+            <h3 style="margin:0;font-weight:700;font-size:32px;text-transform:uppercase;">Cheque</h3>
+            <address style="font-style:normal;font-size:18px;">Ottawa Regional Youth Choir<br>c/o St. Joseph's Parish<br>151 Laurier Ave. E.<br>Ottawa ON K1N 6N8</address>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" aria-labelledby="imp-h" style="background:#004238;color:#fff;padding:clamp(64px,8cqw,120px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">Where your money goes</span>
+          <h2 id="imp-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Three priorities</h2>
+        </div>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:28px;">
+          <sc-for list="{{ funds }}" as="f" hint-placeholder-count="3">
+            <article style="display:flex;flex-direction:column;gap:16px;">
+              <dc-import name="PhotoSlot" id="{{ f.slot }}" hint-size="100%,280px"></dc-import>
+              <h3 style="margin:0;font-weight:700;font-size:28px;line-height:1.05;text-transform:uppercase;">{{ f.title }}</h3>
+              <p style="margin:0;font-size:18px;">{{ f.text }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsor" aria-labelledby="spo-h" style="background:#000;color:#fff;padding:clamp(64px,8cqw,120px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px clamp(40px,6cqw,96px);">
+        <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:16px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">Sponsorship</span>
+          <h2 id="spo-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Put your name to something specific</h2>
+          <p style="margin:0;font-size:19px;">Talk to us about a targeted sponsorship.</p>
+          <a href="mailto:info@oryc.ca" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">info@oryc.ca</a>
+        </div>
+        <ol style="flex:1.4 1 460px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;">
+          <sc-for list="{{ sponsor }}" as="s" hint-placeholder-count="5">
+            <li style="display:flex;align-items:center;gap:20px;padding:20px 0;border-bottom:2px solid #333;"><span style="font-weight:700;font-size:18px;color:#E41E26;min-width:32px;">{{ s.n }}</span><span style="font-weight:700;font-size:clamp(24px,2.6cqw,34px);text-transform:uppercase;line-height:1.05;">{{ s.label }}</span></li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+
+    <section id="volunteer" aria-labelledby="volu-h" style="padding:clamp(64px,8cqw,120px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px clamp(40px,6cqw,96px);">
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:20px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Volunteer</span>
+          <h2 id="volu-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Lend a hand</h2>
+          <p style="margin:0;font-size:19px;">Front of house, backstage or behind a laptop: there is a role for every kind of help.</p>
+          <dc-import name="PhotoSlot" id="SUPPORT-VOL-01" hint-size="100%,300px"></dc-import>
+        </div>
+        <div style="flex:1.2 1 460px;background:#DFEDEA;border-radius:28px;padding:clamp(24px,3.4cqw,44px);">
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ submit }}" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px;">
+              <div style="display:flex;flex-direction:column;gap:6px;"><label for="vo-name" style="font-weight:700;font-size:16px;">Full name</label><input id="vo-name" required="" autocomplete="name" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;background:#fff;font:inherit;font-size:17px;"></div>
+              <div style="display:flex;flex-direction:column;gap:6px;"><label for="vo-email" style="font-weight:700;font-size:16px;">Email</label><input id="vo-email" type="email" required="" autocomplete="email" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;background:#fff;font:inherit;font-size:17px;"></div>
+              <fieldset style="grid-column:1/-1;border:0;margin:0;padding:0;">
+                <legend style="font-weight:700;font-size:16px;margin-bottom:10px;">I can help with</legend>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                  <sc-for list="{{ roles }}" as="r" hint-placeholder-count="8"><label style="display:flex;align-items:center;gap:8px;min-height:46px;padding:0 16px;border-radius:999px;background:#fff;font-size:17px;cursor:pointer;"><input type="checkbox" value="{{ r }}" style="width:20px;height:20px;accent-color:#E41E26;">{{ r }}</label></sc-for>
+                </div>
+              </fieldset>
+              <div style="grid-column:1/-1;display:flex;flex-direction:column;gap:6px;"><label for="vo-msg" style="font-weight:700;font-size:16px;">Availability or notes</label><textarea id="vo-msg" rows="3" style="padding:16px 20px;border-radius:22px;border:2px solid #000;background:#fff;font:inherit;font-size:17px;resize:vertical;"></textarea></div>
+              <div style="grid-column:1/-1;"><button type="submit" style="font:inherit;min-height:56px;padding:0 32px;border-radius:999px;border:0;background:#E41E26;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;">Send</button></div>
+            </form>
+          </sc-if>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}"><div data-enter="" role="status" style="display:flex;flex-direction:column;gap:10px;"><h3 style="margin:0;font-weight:700;font-size:34px;text-transform:uppercase;">Thank you</h3><p style="margin:0;font-size:19px;">We'll be in touch about upcoming volunteer shifts.</p></div></sc-if>
+        </div>
+      </div>
+    </section>
+
+    <section id="board-apply" aria-labelledby="brd-h" style="padding:0 clamp(20px,5.5cqw,80px) clamp(64px,8cqw,120px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;background:#56C4C4;color:#000;border-radius:32px;padding:clamp(28px,4.4cqw,64px);display:flex;flex-wrap:wrap;gap:28px clamp(32px,5cqw,80px);align-items:center;position:relative;overflow:hidden;">
+        <img src="assets/pennant-black.png" alt="" style="position:absolute;top:0;right:clamp(20px,4cqw,56px);width:clamp(52px,5cqw,72px);">
+        <div style="flex:1.2 1 420px;display:flex;flex-direction:column;gap:14px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;">Board recruitment</span>
+          <h2 id="brd-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,72px);line-height:.92;text-transform:uppercase;">Join the Board</h2>
+          <p style="margin:0;font-size:19px;max-width:560px;">About 2–3 hours a month and 6 meetings a year.</p>
+        </div>
+        <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:10px;">
+          <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">Apply to</span>
+          <a href="mailto:jessica.mcclay@oryc.ca" style="font-weight:700;font-size:clamp(20px,2cqw,26px);word-break:break-all;">jessica.mcclay@oryc.ca</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
+      <a href="#events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a href="#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false };
+  renderVals() {
+    return {
+      mobile: !!this.props.mobile,
+      anchors: [['Donate', '#donate'], ['Where it goes', '#impact'], ['Sponsor', '#sponsor'], ['Volunteer', '#volunteer'], ['Join the Board', '#board-apply']].map(([label, href]) => ({ label, href })),
+      funds: [
+        { slot: 'SUPPORT-FUNDS-01', title: 'The Inclusion Fund', text: 'Removes cost as a barrier, so any young singer can join.' },
+        { slot: 'SUPPORT-FUNDS-02', title: 'Artistic Leaders of Tomorrow', text: 'Our internship program, launched in 2021–22.' },
+        { slot: 'SUPPORT-FUNDS-03', title: 'Chamber Orchestra Accompaniment', text: 'Bringing a chamber orchestra to the stage with the choir.' }
+      ],
+      sponsor: ['The Inclusion Fund', 'The music retreat', 'Hiring musicians', 'Concert production', 'New music'].map((label, i) => ({ label, n: String(i + 1).padStart(2, '0') })),
+      roles: ['Usher', 'Stagehand', 'Box office', 'Photography', 'Grants', 'IT', 'Communications', 'Marketing'],
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

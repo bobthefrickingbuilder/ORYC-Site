@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}body{margin:0}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="motion.js"></script></helmet>
+<div data-screen-label="About" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
+  <dc-import name="SiteHeader" mobile="{{ mobile }}" active="about" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
+  <main>
+    <div style="position:relative;height:clamp(300px,42.86cqw,620px);"><dc-import name="PhotoSlot" id="ABOUT-HERO-01" fill="{{ true }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import></div>
+    <section aria-labelledby="about-h" style="padding:clamp(48px,6cqw,96px) clamp(20px,5.5cqw,80px) 0;">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:28px;">
+        <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">About ORYC</span>
+        <h1 id="about-h" style="margin:0;font-weight:700;font-size:clamp(56px,8.4cqw,136px);line-height:.88;text-transform:uppercase;">Who we are</h1>
+        <nav aria-label="On this page"><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ anchors }}" as="a" hint-placeholder-count="8"><li><a href="{{ a.href }}" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#DFEDEA;color:#000;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">{{ a.label }}</a></li></sc-for>
+        </ul></nav>
+      </div>
+    </section>
+
+    <section id="mission" aria-labelledby="mission-h" style="padding:clamp(56px,7cqw,112px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px clamp(40px,6cqw,96px);">
+        <div style="flex:1.2 1 460px;display:flex;flex-direction:column;gap:22px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Mission</span>
+          <h2 id="mission-h" style="margin:0;font-weight:700;font-size:clamp(36px,4.4cqw,64px);line-height:.98;text-transform:uppercase;text-wrap:balance;">The bridge between children's choirs and adult ensembles</h2>
+          <p style="margin:0;font-size:19px;max-width:620px;">The Ottawa Regional Youth Choir is an SATB choir of about 50 singers aged 15–25. We rehearse on Tuesday evenings at St. Joseph's Parish in Sandy Hill and perform there and at other Ottawa venues.</p>
+          <p style="margin:0;font-size:19px;max-width:620px;">Our repertoire balances the choral-symphonic canon, from Messiah and the Mozart and Brahms Requiems to Monteverdi's Vespers and Palmeri's MisaTango, with contemporary Canadian works, including premieres by our own choristers. We have sung with the National Arts Centre Orchestra, the Ottawa Symphony Orchestra, the Ottawa Choral Society, Music and Beyond, Capital Chamber Choir and Cantata Singers of Ottawa.</p>
+        </div>
+        <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:16px;">
+          <div style="background:#000;color:#fff;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">Vision</span>
+            <p style="margin:0;font-weight:700;font-size:24px;line-height:1.25;">To become the most recognized, respected, inclusive and well-funded youth choir in Canada.</p>
+          </div>
+          <div style="background:#DFEDEA;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">Values</span>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-weight:700;font-size:20px;">
+              <li>Artistic excellence</li><li>Accessibility and inclusion</li><li>Youth leadership</li><li>Community</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" aria-labelledby="team-h" style="background:#DFEDEA;padding:clamp(56px,7cqw,112px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;">Artistic team</span>
+          <h2 id="team-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">The people at the piano and the podium</h2>
+        </div>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;">
+          <sc-for list="{{ team }}" as="p" hint-placeholder-count="4">
+            <button onClick="{{ p.open }}" aria-expanded="{{ p.isOpen }}" aria-controls="bio-panel" style="font:inherit;text-align:left;cursor:pointer;background:#fff;color:#000;border:3px solid {{ p.ring }};border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .25s,box-shadow .4s;" style-hover="border-color:#000;transform:translateY(-8px);box-shadow:0 20px 44px rgba(0,0,0,.12);">
+              <div style="width:min(100%,180px);"><dc-import name="PhotoSlot" id="{{ p.slot }}" hint-size="100%,180px"></dc-import></div>
+              <span style="font-weight:700;font-size:23px;line-height:1.1;text-transform:uppercase;">{{ p.name }}</span>
+              <span style="font-style:italic;font-size:17px;">{{ p.role }}</span>
+              <span style="margin-top:auto;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#B8141B;">{{ p.cta }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ hasBio }}" hint-placeholder-val="{{ false }}">
+          <div data-enter="" id="bio-panel" role="region" aria-label="{{ bio.name }} biography" style="background:#fff;border-radius:24px;padding:clamp(24px,3.4cqw,48px);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+            <div style="flex:0 0 160px;"><dc-import name="PhotoSlot" id="{{ bio.slot }}" compact="{{ true }}" hint-size="160px,160px"></dc-import></div>
+            <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:12px;">
+              <h3 style="margin:0;font-weight:700;font-size:34px;line-height:1;text-transform:uppercase;">{{ bio.name }}</h3>
+              <span style="font-style:italic;font-size:19px;">{{ bio.role }}</span>
+              <p style="margin:0;font-size:18px;max-width:680px;">{{ bio.text }}</p>
+            </div>
+            <button onClick="{{ closeBio }}" aria-label="Close biography" style="font:inherit;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid #000;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Close</button>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section id="management" aria-labelledby="mgmt-h" style="padding:clamp(56px,7cqw,112px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Management</span>
+          <h2 id="mgmt-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Running the choir</h2>
+        </div>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;">
+          <sc-for list="{{ mgmt }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:18px;background:#fff;border:2px solid #DFEDEA;border-radius:24px;padding:20px;">
+              <div style="flex:0 0 96px;"><dc-import name="PhotoSlot" id="{{ p.slot }}" compact="{{ true }}" hint-size="96px,96px"></dc-import></div>
+              <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-weight:700;font-size:20px;line-height:1.1;text-transform:uppercase;">{{ p.name }}</span><span style="font-style:italic;font-size:17px;">{{ p.role }}</span></div>
+            </div>
+          </sc-for>
+          <sc-for list="{{ recruiting }}" as="r" hint-placeholder-count="3">
+            <a href="#volunteer" style="display:flex;align-items:center;gap:18px;background:#000;color:#fff;border-radius:24px;padding:20px;text-decoration:none;" style-hover="background:#004238;color:#fff;">
+              <span aria-hidden="true" style="flex:0 0 96px;height:96px;border-radius:50%;border:3px solid #56C4C4;display:flex;align-items:center;justify-content:center;font-size:40px;color:#56C4C4;">+</span>
+              <span style="display:flex;flex-direction:column;gap:4px;"><span style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">We're recruiting</span><span style="font-weight:700;font-size:20px;line-height:1.15;text-transform:uppercase;">{{ r }}</span></span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="board" aria-labelledby="board-h" style="padding:0 clamp(20px,5.5cqw,80px) clamp(56px,7cqw,112px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:36px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Board of Directors</span>
+          <h2 id="board-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Governance</h2>
+        </div>
+        <sc-for list="{{ board }}" as="g" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <h3 style="margin:0;font-style:italic;font-weight:400;font-size:18px;letter-spacing:.1em;text-transform:uppercase;">{{ g.label }}</h3>
+            <ul data-stagger="" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:14px;">
+              <sc-for list="{{ g.people }}" as="p" hint-placeholder-count="3">
+                <li style="display:flex;align-items:center;gap:14px;">
+                  <div style="position:relative;flex:0 0 72px;height:72px;">
+                    <div style="position:absolute;inset:0;border-radius:50%;background:#004238;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;letter-spacing:.04em;">{{ p.initials }}</div>
+                  </div>
+                  <span style="display:flex;flex-direction:column;"><span style="font-weight:700;font-size:18px;line-height:1.2;">{{ p.name }}</span><span style="font-size:13px;font-style:italic;">{{ p.slot }} · initials fallback</span></span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="volunteers" aria-labelledby="vol-h" style="background:#DFEDEA;padding:clamp(48px,6cqw,88px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px clamp(40px,6cqw,96px);">
+        <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:14px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;">Core volunteers</span>
+          <h2 id="vol-h" style="margin:0;font-weight:700;font-size:clamp(36px,4cqw,60px);line-height:.95;text-transform:uppercase;">Behind every concert</h2>
+          <a href="#volunteer" style="font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;align-self:flex-start;">Volunteer with us</a>
+        </div>
+        <ul data-stagger="" style="flex:2 1 480px;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:4px 32px;font-size:18px;">
+          <sc-for list="{{ volunteers }}" as="v" hint-placeholder-count="6"><li style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:2px solid #fff;"><strong>[Volunteer name]</strong><span style="font-style:italic;">[Role]</span></li></sc-for>
+        </ul>
+      </div>
+    </section>
+
+    <section id="choir" aria-labelledby="choir-h" style="padding:clamp(56px,7cqw,112px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:32px;">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Meet the choir</span>
+            <h2 id="choir-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">About 50 voices, four sections</h2>
+          </div>
+          <p style="margin:0;font-size:19px;max-width:420px;">Singers aged 15–25 from across the Ottawa region.</p>
+        </div>
+        <dc-import name="PhotoSlot" id="ABOUT-CHOIR-01" hint-size="100%,700px"></dc-import>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;">
+          <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <dc-import name="PhotoSlot" id="{{ s.slot }}" hint-size="100%,220px"></dc-import>
+              <div style="display:flex;align-items:center;gap:12px;"><span aria-hidden="true" style="width:44px;height:44px;border-radius:50%;background:#E41E26;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;">{{ s.letter }}</span><span style="font-weight:700;font-size:24px;text-transform:uppercase;">{{ s.name }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="history" aria-labelledby="hist-h" style="background:#004238;color:#fff;padding:clamp(56px,7cqw,112px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:48px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">History</span>
+          <h2 id="hist-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Four artistic directors since 1982</h2>
+        </div>
+        <ol data-stagger="" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:36px 24px;">
+          <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="4">
+            <li style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;gap:0;"><span aria-hidden="true" data-reveal="scale" data-delay="250" style="width:18px;height:18px;border-radius:50%;background:#56C4C4;flex:0 0 18px;"></span><span aria-hidden="true" style="flex:1;height:4px;background:#56C4C4;"></span></div>
+              <div style="width:min(100%,180px);"><dc-import name="PhotoSlot" id="{{ t.slot }}" hint-size="100%,180px"></dc-import></div>
+              <span style="font-weight:700;font-size:30px;line-height:1;">{{ t.years }}</span>
+              <span style="display:flex;flex-direction:column;"><span style="font-weight:700;font-size:20px;text-transform:uppercase;">{{ t.name }}</span><span style="font-style:italic;font-size:17px;">{{ t.role }}</span></span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </section>
+
+    <section id="memoriam" aria-labelledby="mem-h" style="background:#000;color:#fff;padding:clamp(64px,8cqw,128px) clamp(20px,5.5cqw,80px);">
+      <div data-stagger="" style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:40px clamp(40px,6cqw,96px);align-items:center;">
+        <div style="flex:0 1 380px;"><dc-import name="PhotoSlot" id="ABOUT-MEMORIAM-01" radius="0px" hint-size="100%,475px"></dc-import></div>
+        <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:18px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;">In memoriam</span>
+          <h2 id="mem-h" style="margin:0;font-weight:400;font-size:clamp(40px,4.6cqw,64px);line-height:1;">Barbara Clark, C.M.</h2>
+          <span style="font-size:18px;">Died August 5, 2025</span>
+          <p style="margin:0;font-size:19px;max-width:560px;">Barbara Clark founded the Ottawa Regional Youth Choir in 1982 and led it until 2007. Her vision was a choir where young singers could keep growing between children's choirs and adult ensembles. She was appointed a Member of the Order of Canada in 2001.</p>
+          <a href="#obituary" style="color:#fff;font-size:18px;align-self:flex-start;">Read the obituary</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dc-import name="SiteFooter" hint-size="100%,760px"></dc-import>
+  <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:0;z-index:40;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px 14px;background:#fff;box-shadow:0 -2px 14px rgba(0,0,0,.14);">
+      <a href="#events" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+      <a href="#donate" style="display:flex;align-items:center;justify-content:center;min-height:50px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;openBio&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:-1,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { bio: this.props.openBio ?? -1 };
+  renderVals() {
+    const teamRaw = [['Jamie Loback', 'Artistic Director (since 2013)'], ['Aude Urbancic', 'Pianist & Vocal Coach'], ['Cara Gilbertson', 'Vocal Instructor'], ['Madox Terrell', 'Tenor/Bass Vocal Coach']];
+    const team = teamRaw.map(([name, role], i) => {
+      const isOpen = this.state.bio === i;
+      return { name, role, slot: 'ABOUT-TEAM-0' + (i + 1), isOpen, ring: isOpen ? '#E41E26' : '#fff', cta: isOpen ? 'Bio open' : 'Read bio', open: () => this.setState({ bio: isOpen ? -1 : i }) };
+    });
+    const b = team[this.state.bio];
+    const initials = n => n.split(' ').filter(w => /^[A-Z]/.test(w)).map(w => w[0]).slice(0, 2).join('');
+    let k = 0;
+    const grp = (label, names) => ({ label, people: names.map(name => ({ name, initials: initials(name), slot: 'ABOUT-BOARD-' + String(++k).padStart(2, '0') })) });
+    return {
+      mobile: !!this.props.mobile,
+      anchors: [['Mission', '#mission'], ['Artistic team', '#team'], ['Management', '#management'], ['Board', '#board'], ['Volunteers', '#volunteers'], ['Meet the choir', '#choir'], ['History', '#history'], ['In memoriam', '#memoriam']].map(([label, href]) => ({ label, href })),
+      team, hasBio: !!b,
+      bio: b ? { ...b, text: '[Biography placeholder: 80–120 words to be supplied for ' + b.name + '.]' } : { name: '', role: '', slot: 'ABOUT-TEAM-01', text: '' },
+      closeBio: () => this.setState({ bio: -1 }),
+      mgmt: [['James Clemens', 'Executive Director'], ['Pirahashini Thayanithy', 'Director of Operations'], ['Matthew Ouellette', 'Director of Finance']].map(([name, role], i) => ({ name, role, slot: 'ABOUT-MGMT-0' + (i + 1) })),
+      recruiting: ['Education', 'Marketing & Communications', 'Chorister & Volunteer Engagement'],
+      board: [grp('Chair', ['James Clemens']), grp('Directors', ['Peter Beaman', 'Ashok Kumar Biswas', 'Brie van der Aa', 'Nassim Barakat', 'Ian Fine', 'Jessica McClay']), grp('Chorister Representatives', ['Jacob Morrow', 'Alex Kitt', 'Jace Tessier'])],
+      volunteers: [1, 2, 3, 4, 5, 6],
+      sections: [['S', 'Soprano'], ['A', 'Alto'], ['T', 'Tenor'], ['B', 'Bass']].map(([letter, name], i) => ({ letter, name, slot: 'ABOUT-CHOIR-0' + (i + 2) })),
+      timeline: [['1982–2007', 'Barbara Clark, C.M.', 'Founder'], ['2007–2012', 'Kevin Reeves', 'Artistic Director'], ['2012–2013', 'Marg Stubington', 'Artistic Director'], ['2013–present', 'Jamie Loback', 'Artistic Director']].map(([years, name, role], i) => ({ years, name, role, slot: 'ABOUT-HIST-0' + (i + 1) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

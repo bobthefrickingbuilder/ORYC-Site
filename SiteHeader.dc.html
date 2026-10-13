@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}</style></helmet>
+<div ref="{{ root }}" style="position:relative;">
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+<header style="position:relative;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;box-shadow:0 1px 0 rgba(0,0,0,.08);">
+  <div style="background:#000;color:#fff;height:36px;display:flex;justify-content:flex-end;align-items:center;gap:24px;padding:0 clamp(20px,5.5cqw,80px);font-size:15px;">
+    <a href="https://choirbook.app" target="_blank" rel="noopener" style="color:#fff;text-decoration:none;display:flex;align-items:center;gap:6px;" style-hover="text-decoration:underline;">Member Login <span style="font-style:italic;">(Choirbook)</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
+    <div role="group" aria-label="Language" style="display:flex;border:1.5px solid #fff;border-radius:999px;overflow:hidden;">
+      <button aria-pressed="true" style="font:inherit;font-weight:700;font-size:13px;letter-spacing:.1em;padding:3px 12px;background:#fff;color:#000;border:0;cursor:pointer;">EN</button>
+      <button aria-pressed="false" lang="fr" style="font:inherit;font-weight:700;font-size:13px;letter-spacing:.1em;padding:3px 12px;background:transparent;color:#fff;border:0;cursor:pointer;">FR</button>
+    </div>
+  </div>
+  <div style="height:88px;display:flex;align-items:center;gap:clamp(24px,3cqw,48px);padding:0 clamp(20px,5.5cqw,80px);">
+    <a href="#home" aria-label="Ottawa Regional Youth Choir — home" style="align-self:flex-start;margin-top:-36px;display:block;"><img src="assets/pennant-teal.png" alt="ORYC" style="width:76px;display:block;"></a>
+    <nav aria-label="Main" style="flex:1;">
+      <ul style="list-style:none;margin:0;padding:0;display:flex;gap:clamp(18px,2.4cqw,36px);">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+          <li><a href="{{ item.href }}" aria-current="{{ item.current }}" style="display:block;padding:8px 0;font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;color:#000;text-decoration:none;border-bottom:3px solid {{ item.bar }};transition:border-color .2s;" style-hover="border-bottom-color:#E41E26;">{{ item.label }}</a></li>
+        </sc-for>
+      </ul>
+    </nav>
+    <div style="display:flex;gap:12px;">
+      <a href="#events" style="display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Get Tickets</a>
+      <a href="#donate" data-magnetic="" style="display:inline-flex;align-items:center;min-height:46px;padding:0 24px;border-radius:999px;border:2px solid #E41E26;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;border-color:#B8141B;color:#fff;">Donate</a>
+    </div>
+  </div>
+</header>
+</sc-if>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<header style="position:relative;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;box-shadow:0 1px 0 rgba(0,0,0,.08);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 20px;">
+  <a href="#home" aria-label="Ottawa Regional Youth Choir — home" style="align-self:flex-start;display:block;"><img src="assets/pennant-teal.png" alt="ORYC" style="width:54px;display:block;"></a>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <div role="group" aria-label="Language" style="display:flex;border:1.5px solid #000;border-radius:999px;overflow:hidden;">
+      <button aria-pressed="true" style="font:inherit;font-weight:700;font-size:13px;letter-spacing:.1em;min-height:36px;padding:0 10px;background:#000;color:#fff;border:0;">EN</button>
+      <button aria-pressed="false" lang="fr" style="font:inherit;font-weight:700;font-size:13px;letter-spacing:.1em;min-height:36px;padding:0 10px;background:#fff;color:#000;border:0;">FR</button>
+    </div>
+    <button onClick="{{ openMenu }}" aria-expanded="{{ open }}" aria-label="Open menu" style="font:inherit;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:0;background:#E41E26;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Menu<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+  </div>
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div data-enter="" role="dialog" aria-label="Menu" style="position:absolute;top:0;left:0;right:0;height:844px;background:#E41E26;color:#fff;z-index:100;display:flex;flex-direction:column;padding:0 16px 28px 20px;">
+      <div style="height:68px;display:flex;align-items:center;justify-content:space-between;">
+        <img src="assets/pennant-black.png" alt="ORYC" style="width:54px;align-self:flex-start;display:block;">
+        <button onClick="{{ closeMenu }}" aria-label="Close menu" style="font:inherit;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Close<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <nav aria-label="Main" style="margin-top:40px;">
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;">
+          <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+            <li><a href="{{ item.href }}" style="display:block;padding:8px 0;font-weight:700;font-size:42px;line-height:1;text-transform:uppercase;color:#fff;text-decoration:none;">{{ item.label }}</a></li>
+          </sc-for>
+        </ul>
+      </nav>
+      <div style="margin-top:auto;display:flex;flex-direction:column;gap:12px;">
+        <a href="https://choirbook.app" style="color:#fff;font-size:17px;display:flex;gap:6px;align-items:center;">Member Login <span style="font-style:italic;">(Choirbook)</span></a>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <a href="#events" style="display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Get Tickets</a>
+          <a href="#donate" style="display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Donate</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</header>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:140},&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;events&quot;,&quot;sing&quot;,&quot;support&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;menuOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { open: !!this.props.menuOpen, narrow: false };
+  root = React.createRef();
+  componentDidMount() {
+    const el = this.root.current; if (!el) return;
+    this._ro = new ResizeObserver(() => { const n = el.offsetWidth > 0 && el.offsetWidth < 1120; if (n !== this.state.narrow) this.setState({ narrow: n }); });
+    this._ro.observe(el);
+  }
+  componentWillUnmount() { this._ro && this._ro.disconnect(); }
+  componentDidUpdate(pp) { if (pp.menuOpen !== this.props.menuOpen) this.setState({ open: !!this.props.menuOpen }); }
+  renderVals() {
+    const a = this.props.active;
+    const nav = [['About', '#about', 'about'], ['Events', '#events', 'events'], ['Sing with Us', '#sing', 'sing'], ['Support', '#support', 'support'], ['Contact', '#contact', 'contact']]
+      .map(([label, href, key]) => ({ label, href, current: key === a ? 'page' : undefined, bar: key === a ? '#E41E26' : 'transparent' }));
+    return {
+      nav, root: this.root, mobile: !!this.props.mobile || this.state.narrow, desktop: !this.props.mobile && !this.state.narrow, open: this.state.open,
+      openMenu: () => this.setState({ open: true }), closeMenu: () => this.setState({ open: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><meta name="design_doc_mode" content="canvas"><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}body{margin:0;background:#E6E6E3}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="photos.js"></script><script src="motion.js"></script></helmet>
+<template id="__bundler_thumbnail" data-bg-color="#E41E26"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#E41E26"></rect><text x="600" y="490" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="280" fill="#fff">ORYC</text></svg></template>
+<div style="font-family:'Glacial Indifference',sans-serif;color:#000;padding:96px;display:flex;flex-direction:column;gap:140px;min-width:2100px;">
+  <header style="display:flex;align-items:flex-end;gap:32px;">
+    <img src="assets/pennant-red-white.png" alt="" style="width:110px;">
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <span style="font-style:italic;font-size:22px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">oryc.ca redesign · October 2026</span>
+      <h1 style="margin:0;font-weight:700;font-size:96px;line-height:.9;text-transform:uppercase;">Ottawa Regional Youth Choir</h1>
+      <span style="font-size:22px;">Hero concepts · Design system · 7 pages at 1440 and 390 · Photo shot list</span>
+    </div>
+  </header>
+
+  <section data-screen-label="Hero concepts" style="display:flex;flex-direction:column;gap:40px;">
+    <h2 style="margin:0;font-weight:700;font-size:56px;text-transform:uppercase;">01 · Home hero concepts</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:120px;">
+      <div id="1a" style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;align-items:center;gap:14px;"><span style="background:#000;color:#fff;border-radius:999px;padding:6px 16px;font-weight:700;font-size:22px;">1a</span><span style="font-weight:700;font-size:26px;text-transform:uppercase;">Red duotone + giant wordmark</span></div>
+        <div style="display:flex;gap:60px;align-items:flex-start;">
+          <div style="width:1440px;container-type:inline-size;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="SiteHeader" hint-size="100%,124px"></dc-import><dc-import name="HomeHero" variant="A" hint-size="100%,760px"></dc-import></div>
+          <div style="width:390px;container-type:inline-size;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="SiteHeader" mobile="{{ true }}" hint-size="100%,68px"></dc-import><dc-import name="HomeHero" variant="A" hint-size="100%,640px"></dc-import></div>
+        </div>
+      </div>
+      <div id="1b" style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;align-items:center;gap:14px;"><span style="background:#000;color:#fff;border-radius:999px;padding:6px 16px;font-weight:700;font-size:22px;">1b</span><span style="font-weight:700;font-size:26px;text-transform:uppercase;">Photo-forward + red ring + arch crop</span></div>
+        <div style="display:flex;gap:60px;align-items:flex-start;">
+          <div style="width:1440px;container-type:inline-size;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="SiteHeader" hint-size="100%,124px"></dc-import><dc-import name="HomeHero" variant="B" hint-size="100%,760px"></dc-import></div>
+          <div style="width:390px;container-type:inline-size;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="SiteHeader" mobile="{{ true }}" hint-size="100%,68px"></dc-import><dc-import name="HomeHero" variant="B" hint-size="100%,1100px"></dc-import></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Design system" style="display:flex;flex-direction:column;gap:40px;">
+    <h2 style="margin:0;font-weight:700;font-size:56px;text-transform:uppercase;">02 · Design system</h2>
+    <div style="width:1440px;container-type:inline-size;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);padding:80px;box-sizing:border-box;display:flex;flex-direction:column;gap:88px;font-size:18px;line-height:1.55;">
+
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Colour tokens</h3>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:14px;">
+          <sc-for list="{{ colors }}" as="c" hint-placeholder-count="7">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="height:150px;border-radius:24px;background:{{ c.hex }};box-shadow:inset 0 0 0 2px rgba(0,0,0,.08);"></div>
+              <span style="font-weight:700;font-size:19px;">{{ c.name }}</span>
+              <span style="font-size:15px;line-height:1.35;"><code>{{ c.token }}</code><br>{{ c.hex }}<br><span style="font-style:italic;">{{ c.role }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+          <sc-for list="{{ pairs }}" as="p" hint-placeholder-count="9">
+            <div style="border-radius:20px;padding:18px;background:{{ p.bg }};color:{{ p.fg }};display:flex;flex-direction:column;gap:6px;box-shadow:inset 0 0 0 2px rgba(0,0,0,.06);">
+              <span style="font-weight:700;font-size:26px;text-transform:uppercase;">Aa Sing</span>
+              <span style="font-size:15px;">{{ p.label }}</span>
+              <span style="align-self:flex-start;background:{{ p.tagBg }};color:#fff;border-radius:999px;padding:2px 10px;font-weight:700;font-size:12px;letter-spacing:.1em;">{{ p.verdict }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:64px;">
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Type scale · Glacial Indifference</h3>
+          <sc-for list="{{ type }}" as="t" hint-placeholder-count="7">
+            <div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;padding-bottom:14px;border-bottom:2px solid #F0F0F0;">
+              <span style="font-size:14px;line-height:1.35;"><strong>{{ t.name }}</strong><br>{{ t.spec }}</span>
+              <span style="font-weight:{{ t.w }};font-style:{{ t.s }};font-size:{{ t.px }};line-height:1;text-transform:{{ t.tt }};letter-spacing:{{ t.ls }};">{{ t.sample }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Spacing &amp; radii</h3>
+          <sc-for list="{{ space }}" as="s" hint-placeholder-count="10">
+            <div style="display:flex;align-items:center;gap:16px;"><span style="width:60px;font-size:15px;font-weight:700;">{{ s.v }}</span><span style="height:16px;width:{{ s.w }};background:#56C4C4;border-radius:999px;"></span><span style="font-size:14px;font-style:italic;">{{ s.use }}</span></div>
+          </sc-for>
+          <div style="display:flex;gap:16px;margin-top:12px;">
+            <div style="width:90px;height:90px;border-radius:16px;background:#DFEDEA;display:flex;align-items:flex-end;padding:8px;box-sizing:border-box;font-size:13px;">16 · photo</div>
+            <div style="width:90px;height:90px;border-radius:28px;background:#DFEDEA;display:flex;align-items:flex-end;padding:8px;box-sizing:border-box;font-size:13px;">20–28 · card</div>
+            <div style="width:140px;height:52px;border-radius:999px;background:#DFEDEA;display:flex;align-items:center;justify-content:center;font-size:13px;align-self:center;">999 · pill</div>
+          </div>
+          <p style="margin:0;font-size:15px;">Section padding: clamp(64px, 8cqw, 128px) vertical, clamp(20px, 5.5cqw, 80px) horizontal. Content max-width 1280px.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Buttons · uppercase Bold, +0.14em, pill</h3>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+          <div style="padding:28px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 2px #F0F0F0;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+            <span style="font-size:14px;font-style:italic;">Primary · default / hover / focus / disabled</span>
+            <a href="#" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#B8141B;color:#fff;">Donate</a>
+            <span style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#B8141B;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;">Donate</span>
+            <span style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff;">Donate</span>
+            <span style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;opacity:.45;">Donate</span>
+          </div>
+          <div style="padding:28px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 2px #F0F0F0;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+            <span style="font-size:14px;font-style:italic;">Outline · default / hover</span>
+            <a href="#" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;border:2px solid #000;color:#000;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Get Tickets</a>
+            <span style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;border:2px solid #000;background:#000;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;">Get Tickets</span>
+            <span style="font-size:14px;font-style:italic;margin-top:8px;">Text link</span>
+            <a href="#" style="font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;">Full season</a>
+          </div>
+          <div style="padding:28px;border-radius:24px;background:#E41E26;display:flex;flex-direction:column;gap:12px;align-items:flex-start;color:#fff;">
+            <span style="font-size:14px;font-style:italic;">On red · white / outline white</span>
+            <a href="#" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;color:#fff;">Join the Choir</a>
+            <a href="#" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;border:2px solid #fff;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">See the Season</a>
+          </div>
+          <div style="padding:28px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 2px #F0F0F0;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+            <span style="font-size:14px;font-style:italic;">Chips · filter / tag</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;"><span style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;background:#000;color:#fff;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;">All</span><span style="min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border-radius:999px;border:2px solid #000;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;">Fundraiser</span></div>
+            <span style="background:#DFEDEA;border-radius:999px;padding:4px 12px;font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;">ORYC Concerts</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Motion · all off under prefers-reduced-motion</h3>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <sc-for list="{{ motionSpec }}" as="m" hint-placeholder-count="8">
+            <div style="background:#DFEDEA;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:6px;">
+              <span style="font-weight:700;font-size:18px;text-transform:uppercase;">{{ m.name }}</span>
+              <span style="font-size:15px;line-height:1.4;">{{ m.spec }}</span>
+              <code style="font-size:13px;">{{ m.attr }}</code>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 340px 1fr;gap:48px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Eyebrow + heading block</h3>
+          <div style="display:flex;flex-direction:column;gap:18px;padding:32px;border-radius:24px;box-shadow:inset 0 0 0 2px #F0F0F0;">
+            <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Eyebrow · italic</span>
+            <h4 style="margin:0;font-weight:700;font-size:64px;line-height:.92;text-transform:uppercase;">Large, confident headline</h4>
+            <p style="margin:0;font-size:18px;">One short paragraph, 18px Regular, max 60 characters per line.</p>
+            <a href="#" style="align-self:flex-start;display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#E41E26;color:#fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;">Call to action</a>
+          </div>
+          <h3 style="margin:24px 0 0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Bio card</h3>
+          <div style="width:280px;background:#fff;border:3px solid #DFEDEA;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px;">
+            <div style="width:180px;"><dc-import name="PhotoSlot" id="ABOUT-TEAM-01" hint-size="180px,180px"></dc-import></div>
+            <span style="font-weight:700;font-size:23px;text-transform:uppercase;">Jamie Loback</span>
+            <span style="font-style:italic;font-size:17px;">Artistic Director (since 2013)</span>
+            <span style="font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#B8141B;">Read bio</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Event card (poster block)</h3>
+          <dc-import name="EventCard" idx="{{ 1 }}" hint-size="340px,760px"></dc-import>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Quote block</h3>
+          <div style="padding:32px;border-radius:24px;background:#DFEDEA;"><dc-import name="QuoteBlock" hint-size="100%,320px"></dc-import></div>
+          <h3 style="margin:24px 0 0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Timeline item</h3>
+          <div style="background:#004238;color:#fff;border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:center;"><span style="width:18px;height:18px;border-radius:50%;background:#56C4C4;"></span><span style="flex:1;height:4px;background:#56C4C4;"></span></div>
+            <div style="width:140px;"><dc-import name="PhotoSlot" id="ABOUT-HIST-01" compact="{{ true }}" hint-size="140px,140px"></dc-import></div>
+            <span style="font-weight:700;font-size:30px;line-height:1;">1982–2007</span>
+            <span><strong style="font-size:20px;text-transform:uppercase;">Barbara Clark, C.M.</strong><br><span style="font-style:italic;">Founder</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Accordion</h3>
+          <dc-import name="Accordion" source="faq" limit="{{ 3 }}" hint-size="100%,320px"></dc-import>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Form fields</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+            <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-weight:700;font-size:16px;">Default</label><input placeholder="Full name" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;"></div>
+            <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-weight:700;font-size:16px;">Focus</label><input value="Alex" style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff;"></div>
+            <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-weight:700;font-size:16px;">Error</label><input value="alex@" style="min-height:52px;padding:0 20px;border-radius:999px;border:3px solid #B8141B;font:inherit;font-size:17px;"><span style="font-size:15px;color:#B8141B;font-weight:700;">Enter a full email address.</span></div>
+            <div style="display:flex;flex-direction:column;gap:6px;"><label style="font-weight:700;font-size:16px;">Select</label><select style="min-height:52px;padding:0 20px;border-radius:999px;border:2px solid #000;font:inherit;font-size:17px;background:#fff;"><option>Tuesday evening</option></select></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <label style="display:flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;background:#DFEDEA;font-size:17px;"><input type="radio" name="ds-r" checked="" style="width:20px;height:20px;accent-color:#E41E26;">Soprano</label>
+            <label style="display:flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;background:#DFEDEA;font-size:17px;"><input type="radio" name="ds-r" style="width:20px;height:20px;accent-color:#E41E26;">Alto</label>
+            <label style="display:flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;background:#DFEDEA;font-size:17px;"><input type="checkbox" checked="" style="width:20px;height:20px;accent-color:#E41E26;">Usher</label>
+          </div>
+          <h3 style="margin:24px 0 0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Funder strip</h3>
+          <div style="background:#004238;padding:20px;border-radius:24px;"><div style="background:#fff;border-radius:18px;padding:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+            <dc-import name="PhotoSlot" id="FOOTER-FUNDERS-01" compact="{{ true }}" radius="12px" hint-size="100%,50px"></dc-import><dc-import name="PhotoSlot" id="FOOTER-FUNDERS-02" compact="{{ true }}" radius="12px" hint-size="100%,50px"></dc-import><dc-import name="PhotoSlot" id="FOOTER-FUNDERS-03" compact="{{ true }}" radius="12px" hint-size="100%,50px"></dc-import><dc-import name="PhotoSlot" id="FOOTER-FUNDERS-04" compact="{{ true }}" radius="12px" hint-size="100%,50px"></dc-import>
+          </div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Photo slot · &lt;PhotoSlot id shotType description aspectRatio minSize treatment alt&gt;</h3>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 0.8fr 0.6fr;gap:20px;align-items:end;">
+          <div style="display:flex;flex-direction:column;gap:8px;"><dc-import name="PhotoSlot" id="HOME-SUPPORT-01" hint-size="100%,300px"></dc-import><span style="font-size:14px;font-style:italic;">Mint · no treatment</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;"><dc-import name="PhotoSlot" id="HOME-LEGACY-01" hint-size="100%,260px"></dc-import><span style="font-size:14px;font-style:italic;">Grey · black &amp; white</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;"><dc-import name="PhotoSlot" id="EVENTS-HERO-01" shape="rect" hint-size="100%,200px"></dc-import><span style="font-size:14px;font-style:italic;">Red · duotone</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;"><dc-import name="PhotoSlot" id="HOME-JOIN-01" hint-size="100%,300px"></dc-import><span style="font-size:14px;font-style:italic;">Arch crop</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px;"><dc-import name="PhotoSlot" id="HOME-QUOTE-01" circleText="{{ true }}" hint-size="100%,200px"></dc-import><span style="font-size:14px;font-style:italic;">Circle crop</span></div>
+        </div>
+        <p style="margin:0;font-size:16px;max-width:900px;">All slot data lives in <code>photos.js</code> (ship as <code>/content/photos.ts</code>), keyed by ID. Add a file path to <code>src</code> and the image replaces the label; duotone, black-and-white and crop shapes are applied in CSS.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <h3 style="margin:0;font-style:italic;font-weight:400;font-size:20px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">Pennant tab &amp; logo usage</h3>
+        <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;">
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-teal.png" alt="ORYC emblem pennant, Teal" style="width:80px;"><span style="font-size:13px;text-align:center;">Teal</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-black.png" alt="ORYC emblem pennant, Black" style="width:80px;"><span style="font-size:13px;text-align:center;">Black</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-green.png" alt="ORYC emblem pennant, Deep green" style="width:80px;"><span style="font-size:13px;text-align:center;">Deep green</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-red-white.png" alt="ORYC emblem pennant, Red / white" style="width:80px;"><span style="font-size:13px;text-align:center;">Red / white</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-red-black.png" alt="ORYC emblem pennant, Red / black" style="width:80px;"><span style="font-size:13px;text-align:center;">Red / black</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-black-red.png" alt="ORYC emblem pennant, Black / red" style="width:80px;"><span style="font-size:13px;text-align:center;">Black / red</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-green-red.png" alt="ORYC emblem pennant, Green / red" style="width:80px;"><span style="font-size:13px;text-align:center;">Green / red</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-teal-white.png" alt="ORYC emblem pennant, Teal / white" style="width:80px;"><span style="font-size:13px;text-align:center;">Teal / white</span></div><div style="display:flex;flex-direction:column;gap:6px;align-items:center;width:96px;"><img src="assets/pennant-lime.png" alt="ORYC emblem pennant, Lime" style="width:80px;"><span style="font-size:13px;text-align:center;">Lime</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+          <div style="border-radius:24px;padding:24px;background:#DFEDEA;display:flex;flex-direction:column;gap:14px;"><span style="align-self:flex-start;background:#004238;color:#fff;border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px;letter-spacing:.1em;">DO</span><div style="height:120px;background:#fff;border-radius:16px;position:relative;"><img src="assets/pennant-teal.png" alt="" style="position:absolute;top:0;left:24px;width:56px;"></div><span style="font-size:16px;">Emblem pennant in small spaces: header, favicon, corner tabs. Hangs from the top edge.</span></div>
+          <div style="border-radius:24px;padding:24px;background:#DFEDEA;display:flex;flex-direction:column;gap:14px;"><span style="align-self:flex-start;background:#004238;color:#fff;border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px;letter-spacing:.1em;">DO</span><div style="height:120px;background:#004238;color:#fff;border-radius:16px;display:flex;flex-direction:column;justify-content:center;padding:0 24px;"><span style="font-weight:700;font-size:56px;line-height:.85;display:flex;"><span>O</span><span style="margin-left:-.15em;opacity:.8;">R</span><span>Y</span><span>C</span></span><span style="font-weight:700;font-size:11px;letter-spacing:.3em;">OTTAWA REGIONAL YOUTH CHOIR</span></div><span style="font-size:16px;">Full logo only where there is room: footer, hero. Type stand-in until the SVG is supplied.</span></div>
+          <div style="border-radius:24px;padding:24px;background:#DFEDEA;display:flex;flex-direction:column;gap:14px;"><span style="align-self:flex-start;background:#004238;color:#fff;border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px;letter-spacing:.1em;">DO</span><div style="height:120px;background:#fff;border-radius:16px;position:relative;overflow:hidden;"><div style="position:absolute;inset:0 0 0 auto;width:60%;background:#D6D6D6;"></div><img src="assets/pennant-red-white.png" alt="" style="position:absolute;top:0;right:20px;width:48px;"></div><span style="font-size:16px;">Corner tab sits top-right on event cards and posters, as in the brand templates.</span></div>
+          <div style="border-radius:24px;padding:24px;background:#fff;box-shadow:inset 0 0 0 2px #F0F0F0;display:flex;flex-direction:column;gap:14px;"><span style="align-self:flex-start;background:#B8141B;color:#fff;border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px;letter-spacing:.1em;">DON'T</span><div style="height:120px;border-radius:16px;background:#F4F4F4;display:flex;align-items:center;justify-content:center;"><img src="assets/pennant-teal.png" alt="" style="width:56px;transform:rotate(-18deg);"></div><span style="font-size:16px;">Rotate the emblem or logo.</span></div>
+          <div style="border-radius:24px;padding:24px;background:#fff;box-shadow:inset 0 0 0 2px #F0F0F0;display:flex;flex-direction:column;gap:14px;"><span style="align-self:flex-start;background:#B8141B;color:#fff;border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px;letter-spacing:.1em;">DON'T</span><div style="height:120px;border-radius:16px;background:#F4F4F4;display:flex;align-items:center;justify-content:center;"><img src="assets/pennant-teal.png" alt="" style="width:110px;height:90px;"></div><span style="font-size:16px;">Stretch or squash it.</span></div>
+          <div style="border-radius:24px;padding:24px;background:#fff;box-shadow:inset 0 0 0 2px #F0F0F0;display:flex;flex-direction:column;gap:14px;"><span style="align-self:flex-start;background:#B8141B;color:#fff;border-radius:999px;padding:2px 12px;font-weight:700;font-size:13px;letter-spacing:.1em;">DON'T</span><div style="height:120px;border-radius:16px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;"><div style="background:#DFEDEA;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;">ORYC</div><div style="background:#004238;color:#000;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;">ORYC</div></div><span style="font-size:16px;">Use white on mint or black on deep green.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Pages" style="display:flex;flex-direction:column;gap:120px;">
+    <h2 style="margin:0;font-weight:700;font-size:56px;text-transform:uppercase;">03 · Pages · 1440 and 390</h2>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+        <span style="font-weight:700;font-size:40px;text-transform:uppercase;">Home</span>
+        <div style="display:flex;gap:80px;align-items:flex-start;">
+          <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Home" hero="{{ hero }}" hint-size="1440px,4000px"></dc-import></div>
+          <div style="width:390px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Home" mobile="{{ true }}" hero="{{ hero }}" hint-size="390px,6000px"></dc-import></div>
+        </div>
+      </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+        <span style="font-weight:700;font-size:40px;text-transform:uppercase;">About</span>
+        <div style="display:flex;gap:80px;align-items:flex-start;">
+          <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="About" hint-size="1440px,4000px"></dc-import></div>
+          <div style="width:390px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="About" mobile="{{ true }}" hint-size="390px,6000px"></dc-import></div>
+        </div>
+      </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+        <span style="font-weight:700;font-size:40px;text-transform:uppercase;">Events</span>
+        <div style="display:flex;gap:80px;align-items:flex-start;">
+          <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Events" hint-size="1440px,4000px"></dc-import></div>
+          <div style="width:390px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Events" mobile="{{ true }}" hint-size="390px,6000px"></dc-import></div>
+        </div>
+      </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+        <span style="font-weight:700;font-size:40px;text-transform:uppercase;">Event detail template</span>
+        <div style="display:flex;gap:80px;align-items:flex-start;">
+          <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="EventDetail" hint-size="1440px,4000px"></dc-import></div>
+          <div style="width:390px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="EventDetail" mobile="{{ true }}" hint-size="390px,6000px"></dc-import></div>
+        </div>
+      </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+        <span style="font-weight:700;font-size:40px;text-transform:uppercase;">Sing with Us</span>
+        <div style="display:flex;gap:80px;align-items:flex-start;">
+          <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Sing" hint-size="1440px,4000px"></dc-import></div>
+          <div style="width:390px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Sing" mobile="{{ true }}" hint-size="390px,6000px"></dc-import></div>
+        </div>
+      </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+        <span style="font-weight:700;font-size:40px;text-transform:uppercase;">Support</span>
+        <div style="display:flex;gap:80px;align-items:flex-start;">
+          <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Support" hint-size="1440px,4000px"></dc-import></div>
+          <div style="width:390px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Support" mobile="{{ true }}" hint-size="390px,6000px"></dc-import></div>
+        </div>
+      </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+        <span style="font-weight:700;font-size:40px;text-transform:uppercase;">Contact</span>
+        <div style="display:flex;gap:80px;align-items:flex-start;">
+          <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Contact" hint-size="1440px,4000px"></dc-import></div>
+          <div style="width:390px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);"><dc-import name="Contact" mobile="{{ true }}" hint-size="390px,6000px"></dc-import></div>
+        </div>
+      </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <span style="font-weight:700;font-size:40px;text-transform:uppercase;">Mobile menu (open)</span>
+      <div style="width:390px;height:844px;position:relative;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);overflow:hidden;container-type:inline-size;"><dc-import name="SiteHeader" mobile="{{ true }}" menuOpen="{{ true }}" hint-size="100%,844px"></dc-import></div>
+    </div>
+  </section>
+
+  <section data-screen-label="Photo shot list" style="display:flex;flex-direction:column;gap:40px;">
+    <h2 style="margin:0;font-weight:700;font-size:56px;text-transform:uppercase;">04 · Photo shot list</h2>
+    <div style="width:1440px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.12);padding:64px;box-sizing:border-box;display:flex;flex-direction:column;gap:24px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;">
+        <div><span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#B8141B;">ORYC website · {{ count }} slots</span><h3 style="margin:4px 0 0;font-weight:700;font-size:48px;line-height:1;text-transform:uppercase;">Photo Shot List</h3></div>
+        <p style="margin:0;font-size:15px;max-width:520px;">Name each file by its slot ID (e.g. <code>HOME-HERO-01.jpg</code>). Supply plain, untreated originals at or above the minimum size; treatments and crops are applied in code.</p>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;line-height:1.35;">
+        <thead><tr style="background:#000;color:#fff;text-align:left;"><th style="padding:8px 10px;">ID</th><th style="padding:8px 10px;">Page / location</th><th style="padding:8px 10px;">Shot type</th><th style="padding:8px 10px;">Description</th><th style="padding:8px 10px;">Ratio</th><th style="padding:8px 10px;">Min size</th><th style="padding:8px 10px;">Treatment · crop</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ shots }}" as="s" hint-placeholder-count="20">
+            <tr style="background:{{ s.zebra }};"><td style="padding:5px 10px;font-weight:700;white-space:nowrap;">{{ s.id }}</td><td style="padding:5px 10px;">{{ s.page }}</td><td style="padding:5px 10px;white-space:nowrap;">{{ s.shot }}</td><td style="padding:5px 10px;">{{ s.desc }}</td><td style="padding:5px 10px;">{{ s.ratio }}</td><td style="padding:5px 10px;white-space:nowrap;">{{ s.min }}</td><td style="padding:5px 10px;">{{ s.tc }}</td></tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;],&quot;default&quot;:&quot;A&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Home&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;subtle&quot;,&quot;off&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  componentDidUpdate() { document.documentElement.dataset.motion = this.props.motion || 'full'; }
+  componentDidMount() { document.documentElement.dataset.motion = this.props.motion || 'full'; if (!window.ORYC_PHOTO_LIST) this._t = setInterval(() => { if (window.ORYC_PHOTO_LIST) { clearInterval(this._t); this.forceUpdate(); } }, 60); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const list = window.ORYC_PHOTO_LIST || [];
+    const tl = { duotone: 'Red duotone', bw: 'B&W', none: '—' };
+    const P = (name, label) => ({ name, label: label || name, note: '' });
+    return {
+      hero: this.props.heroVariant || 'A',
+      motionSpec: [
+        ['Scroll reveal', 'Rise 36px + fade, 850ms, ease-out. Grid items stagger 100ms.', 'data-reveal / data-stagger'],
+        ['Cursor parallax', 'Hero layers drift with the pointer, eased; wordmark letters move at different depths.', 'data-parallax-root + data-depth'],
+        ['Magnetic CTA', 'Primary buttons lean toward the cursor, spring back on leave.', 'data-magnetic'],
+        ['Card lift', 'Cards rise 8px with shadow; event pennant drops 14px.', 'style-hover + data-hover-drop'],
+        ['Ticker', 'Facts band loops every 38s; slows on hover.', 'data-marquee'],
+        ['Arc spin', 'Partial red rings rotate slowly (60–90s per turn). Small dots bob.', 'data-spin / data-float'],
+        ['Highlight sweep', 'Quote highlight wipes in left to right after the quote rises.', 'data-sweep'],
+        ['Count & countdown', '“40” counts up on view; next-concert countdown ticks live.', 'data-countup'],
+      ].map(([name, spec, attr]) => ({ name, spec, attr })),
+      colors: [
+        ['ORYC Red', '--oryc-red', '#E41E26', 'Primary, CTAs, full-bleed moments'], ['White', '--oryc-white', '#FFFFFF', 'Ground'], ['Black', '--oryc-black', '#000000', 'Text, dark surface'],
+        ['Deep Green', '--oryc-green', '#004238', 'Secondary dark surface'], ['Teal', '--oryc-teal', '#56C4C4', 'Secondary accent, highlights'], ['Mint Mist', '--oryc-mint', '#DFEDEA', 'Light panels, poster blocks'], ['Lime', '--oryc-lime', '#AAC738', 'Sparing accent']
+      ].map(([name, token, hex, role]) => ({ name, token, hex, role })),
+      pairs: [
+        ['#E41E26', '#FFFFFF', 'White on red · 4.6:1', 'AA'], ['#000000', '#E41E26', 'Red on black · 4.5:1 · large text', 'AA LARGE'], ['#56C4C4', '#000000', 'Black on teal · 10:1', 'AA'],
+        ['#DFEDEA', '#000000', 'Black on mint · 17:1', 'AA'], ['#004238', '#FFFFFF', 'White on deep green · 11:1', 'AA'], ['#AAC738', '#000000', 'Black on lime · 11:1', 'AA'],
+        ['#DFEDEA', '#FFFFFF', 'White on mint · 1.2:1', "DON'T"], ['#004238', '#000000', 'Black on deep green · 1.8:1', "DON'T"], ['#DFEDEA', '#E41E26', 'Red on mint · 3.9:1 · headlines only', 'LARGE ONLY']
+      ].map(([bg, fg, label, verdict]) => ({ bg, fg, label, verdict, tagBg: verdict === "DON'T" ? '#B8141B' : verdict === 'AA' ? '#004238' : '#000' })),
+      type: [
+        ['Wordmark', 'Bold · 128–450px · −0.03em', 700, 'normal', '120px', 'none', '-.03em', 'ORYC'],
+        ['H1', 'Bold · upper · 56–136px · lh .88', 700, 'normal', '76px', 'uppercase', '0', 'Who we are'],
+        ['H2', 'Bold · upper · 40–76px · lh .92', 700, 'normal', '52px', 'uppercase', '0', 'Season at a glance'],
+        ['H3', 'Bold · upper · 26–32px', 700, 'normal', '28px', 'uppercase', '0', 'Weekly rehearsals'],
+        ['Poster title', 'Bold italic · upper · 28–76px', 700, 'italic', '32px', 'uppercase', '0', "Duruflé's Requiem"],
+        ['Eyebrow', 'Italic · upper · 17px · +0.1em', 400, 'italic', '17px', 'uppercase', '.1em', 'Next concert'],
+        ['Body', 'Regular · 18px / 1.55 (min 16)', 400, 'normal', '18px', 'none', '0', 'Rehearsals run Tuesdays 7–9 pm at St. Joseph\'s Parish.']
+      ].map(([name, spec, w, s, px, tt, ls, sample]) => ({ name, spec, w, s, px, tt, ls, sample })),
+      space: [[4, 'hairline gaps'], [8, 'chip gaps'], [12, 'button groups'], [16, 'field gaps'], [20, 'card grid'], [24, 'card padding'], [32, 'block gaps'], [48, 'section rows'], [64, 'section padding (mobile)'], [128, 'section padding (desktop)']].map(([v, use]) => ({ v: v + 'px', w: Math.min(v * 3, 384) + 'px', use })),
+      pennants: [['teal', 'Teal'], ['black', 'Black'], ['green', 'Deep green'], ['red-white', 'Red / white'], ['red-black', 'Red / black'], ['black-red', 'Black / red'], ['green-red', 'Green / red'], ['teal-white', 'Teal / white'], ['lime', 'Lime']].map(([k, label]) => ({ src: 'assets/pennant-' + k + '.png', label })),
+      pages: [P('Home'), P('About'), P('Events'), P('EventDetail', 'Event detail template'), P('Sing', 'Sing with Us'), P('Support'), P('Contact')],
+      count: list.length,
+      shots: list.map((s, i) => ({ ...s, zebra: i % 2 ? '#F4F8F7' : '#fff', tc: [tl[s.treat], s.crop === 'rect' ? '' : s.crop].filter(x => x && x !== '—').join(' · ') || '—' }))
+    };
+  }
+}
+</script>
+</body>
+</html>
