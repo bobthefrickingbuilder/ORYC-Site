@@ -115,19 +115,21 @@ The brand is described as **"modern, young and playful."** Assets should be **ph
 - **Mission and who we are.**
 - **Artistic team bios:**
   - Jamie Loback, Artistic Director (since 2013).
-  - Aude Urbancic, Pianist & Vocal Coach.
+  - Matthew Menard, Assistant Conductor.
+  - Aude Urbancic, Collaborative Pianist.
   - Cara Gilbertson, Vocal Instructor.
-  - Madox Terrell, Tenor/Bass Vocal Coach.
+  - Victor Toma, Assistant Collaborative Pianist.
   - Bio cards open into a modal or expanded panel.
 - **Management:**
   - James Clemens, Executive Director.
-  - Pirahashini Thayanithy, Director of Operations.
   - Matthew Ouellette, Director of Finance.
   - Three vacant roles, shown as "We're recruiting" cards linking to Volunteer: Education; Marketing & Communications; Chorister & Volunteer Engagement.
+- **Choir manager:** Elinor Clement, Choir Manager (own section).
 - **Board:**
   - Chair: James Clemens.
   - Directors: Peter Beaman, Ashok Kumar Biswas, Brie van der Aa, Nassim Barakat, Ian Fine, Jessica McClay.
-  - Chorister Representatives: Jacob Morrow, Alex Kitt, Jace Tessier.
+  - Chorister Representatives: Alex Kitt, Jace Tessier.
+- **Section leads:** Soprano Anouk Marks; Alto Brie van der Aa; Tenor Jace Tessier; Bass Matthew Menard.
 - **Core volunteers:** compact name/role list.
 - **Meet the Choir:** group photo with a section breakdown (S/A/T/B).
 - **History timeline:** a horizontal or vertical timeline with portrait circles:
@@ -259,8 +261,8 @@ I will supply and place every photo myself. Do not use stock photography, AI-gen
 | HOME-MEDIA-01 | Media strip | Performance – Close | CTV Live Ottawa still (April 29, 2025) | 16:9 |
 | HOME-SUPPORT-01 | Support cards | Rehearsal | Section rehearsal, singers with scores | 3:2 |
 | ABOUT-HERO-01 | About hero | Group Portrait | Full choir posed group photo | 21:9 full-bleed |
-| ABOUT-TEAM-01 to 04 | Artistic team | Headshot | Jamie Loback, Aude Urbancic, Cara Gilbertson, Madox Terrell (one each) | 1:1 · circle |
-| ABOUT-MGMT-01 to 03 | Management | Headshot | James Clemens, Pirahashini Thayanithy, Matthew Ouellette | 1:1 · circle |
+| ABOUT-TEAM-01 to 05 | Artistic team | Headshot | Jamie Loback, Matthew Menard, Aude Urbancic, Cara Gilbertson, Victor Toma (one each) | 1:1 · circle |
+| ABOUT-MGMT-01 to 02 | Management | Headshot | James Clemens, Matthew Ouellette | 1:1 · circle |
 | ABOUT-BOARD-01 to 10 | Board | Headshot | One per director (optional; fall back to initials) | 1:1 · circle |
 | ABOUT-CHOIR-01 | Meet the Choir | Group Portrait | Full choir, sections identifiable | 16:9 |
 | ABOUT-CHOIR-02 to 05 | Section breakdown | Group Portrait | Soprano, Alto, Tenor, Bass section photos | 4:3 |
