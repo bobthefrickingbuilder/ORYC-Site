@@ -58,15 +58,6 @@
   const SRC = {
     'HOME-LEGACY-01': ['photos/home-legacy-01.jpg', 'A stack of ORYC recordings, including the 20th and 25th anniversary CDs'],
     'HOME-SUPPORT-01': ['photos/home-support-01.jpg', 'Choristers laughing together with their scores at rehearsal'],
-    'ABOUT-TEAM-01': ['photos/team/jamie-loback.jpg', 'Jamie Loback, Artistic Director, conducting'],
-    'ABOUT-TEAM-02': ['photos/team/matthew-menard.jpg', 'Matthew Menard, Assistant Conductor'],
-    'ABOUT-TEAM-03': ['photos/team/aude-urbancic.jpg', 'Aude Urbancic, Collaborative Pianist'],
-    'ABOUT-TEAM-04': ['photos/team/cara-gilbertson.jpg', 'Cara Gilbertson, Vocal Instructor'],
-    'ABOUT-TEAM-05': ['photos/team/victor-toma.jpg', 'Victor Toma, Assistant Collaborative Pianist'],
-    'ABOUT-MGMT-01': ['photos/team/james-clemens.jpg', 'James Clemens, Executive Director'],
-    'ABOUT-MGMT-03': ['photos/team/elinor-clement.jpg', 'Elinor Clement, Choir Manager'],
-    'ABOUT-LEAD-02': ['photos/team/brie-van-der-aa.jpg', 'Brie van der Aa, alto section lead'],
-    'ABOUT-LEAD-04': ['photos/team/matthew-menard.jpg', 'Matthew Menard, bass section lead'],
     'ABOUT-HIST-04': ['photos/team/jamie-loback.jpg', 'Jamie Loback conducting'],
     'HOME-HERO-01': ['photos/home-hero-01.jpg', 'The Ottawa Regional Youth Choir performing in concert, with the conductor and instrumentalists in front'],
     'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
@@ -79,6 +70,26 @@
     'HOME-JOIN-01': ['photos/home-join-01.jpg', 'A chorister holding an open score of Misa a Buenos Aires at the Kyrie'],
   };
   R.forEach(r => { const x = SRC[r.id]; if (x) { r.src = x[0]; if (x[1]) r.alt = x[1]; } });
+
+  // Headshots by person. Every About-page slot for that person (artistic team, management,
+  // board, section leads) picks up the same photo, so someone with several roles appears consistently.
+  const HEADSHOTS = {
+    'Jamie Loback': 'photos/team/jamie-loback.jpg',
+    'Matthew Menard': 'photos/team/matthew-menard.jpg',
+    'Aude Urbancic': 'photos/team/aude-urbancic.jpg',
+    'Cara Gilbertson': 'photos/team/cara-gilbertson.jpg',
+    'Victor Toma': 'photos/team/victor-toma.jpg',
+    'James Clemens': 'photos/team/james-clemens.jpg',
+    'Elinor Clement': 'photos/team/elinor-clement.jpg',
+    'Brie van der Aa': 'photos/team/brie-van-der-aa.jpg',
+    'Alex Kitt': 'photos/team/alex-kitt.jpg'
+  };
+  R.forEach(r => {
+    if (r.src || !/^ABOUT-(TEAM|MGMT|BOARD|LEAD)-/.test(r.id)) return;
+    const n = Object.keys(HEADSHOTS).find(k => r.desc.startsWith(k));
+    if (n) { r.src = HEADSHOTS[n]; r.alt = n; }
+  });
+  window.ORYC_HEADSHOTS = HEADSHOTS;
 
   window.ORYC_PHOTOS = Object.fromEntries(R.map(r => [r.id, r]));
   window.ORYC_PHOTO_LIST = R;
