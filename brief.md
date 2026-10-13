@@ -123,8 +123,8 @@ The brand is described as **"modern, young and playful."** Assets should be **ph
 - **Management:**
   - James Clemens, Executive Director.
   - Matthew Ouellette, Director of Finance.
+  - Elinor Clement, Choir Manager.
   - Three vacant roles, shown as "We're recruiting" cards linking to Volunteer: Education; Marketing & Communications; Chorister & Volunteer Engagement.
-- **Choir manager:** Elinor Clement, Choir Manager (own section).
 - **Board:**
   - Chair: James Clemens.
   - Directors: Peter Beaman, Ashok Kumar Biswas, Brie van der Aa, Nassim Barakat, Ian Fine, Jessica McClay.
@@ -262,7 +262,7 @@ I will supply and place every photo myself. Do not use stock photography, AI-gen
 | HOME-SUPPORT-01 | Support cards | Rehearsal | Section rehearsal, singers with scores | 3:2 |
 | ABOUT-HERO-01 | About hero | Group Portrait | Full choir posed group photo | 21:9 full-bleed |
 | ABOUT-TEAM-01 to 05 | Artistic team | Headshot | Jamie Loback, Matthew Menard, Aude Urbancic, Cara Gilbertson, Victor Toma (one each) | 1:1 · circle |
-| ABOUT-MGMT-01 to 02 | Management | Headshot | James Clemens, Matthew Ouellette | 1:1 · circle |
+| ABOUT-MGMT-01 to 03 | Management | Headshot | James Clemens, Matthew Ouellette, Elinor Clement | 1:1 · circle |
 | ABOUT-BOARD-01 to 10 | Board | Headshot | One per director (optional; fall back to initials) | 1:1 · circle |
 | ABOUT-CHOIR-01 | Meet the Choir | Group Portrait | Full choir, sections identifiable | 16:9 |
 | ABOUT-CHOIR-02 to 05 | Section breakdown | Group Portrait | Soprano, Alto, Tenor, Bass section photos | 4:3 |

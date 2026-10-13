@@ -104,21 +104,10 @@
           </sc-for>
           <sc-for list="{{ recruiting }}" as="r" hint-placeholder-count="3">
             <a href="/support#volunteer" style="display:flex;align-items:center;gap:18px;background:#000;color:#fff;border-radius:24px;padding:20px;text-decoration:none;" style-hover="background:#004238;color:#fff;">
-              <span aria-hidden="true" style="flex:0 0 96px;height:96px;border-radius:50%;border:3px solid #56C4C4;display:flex;align-items:center;justify-content:center;font-size:40px;color:#56C4C4;">+</span>
-              <span style="display:flex;flex-direction:column;gap:4px;"><span style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">We're recruiting</span><span style="font-weight:700;font-size:20px;line-height:1.15;text-transform:uppercase;">{{ r }}</span></span>
+              <span aria-hidden="true" style="flex:0 0 72px;height:72px;border-radius:50%;border:3px solid #56C4C4;display:flex;align-items:center;justify-content:center;font-size:40px;color:#56C4C4;">+</span>
+              <span style="display:flex;flex-direction:column;gap:4px;min-width:0;"><span style="font-style:italic;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">We're recruiting</span><span style="font-weight:700;font-size:18px;line-height:1.15;text-transform:uppercase;overflow-wrap:anywhere;">{{ r }}</span></span>
             </a>
           </sc-for>
-        </div>
-      </div>
-    </section>
-
-    <section id="manager" aria-labelledby="manager-h" style="padding:0 clamp(20px,5.5cqw,80px) clamp(56px,7cqw,112px);">
-      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:28px clamp(32px,5cqw,72px);background:#fff;border:2px solid #DFEDEA;border-radius:28px;padding:clamp(28px,4cqw,56px);">
-        <div style="flex:0 0 clamp(140px,16cqw,200px);"><dc-import name="PhotoSlot" id="ABOUT-MANAGER-01" hint-size="100%,200px"></dc-import></div>
-        <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:12px;">
-          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Choir manager</span>
-          <h2 id="manager-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Elinor Clement</h2>
-          <span style="font-style:italic;font-size:19px;">Choir Manager</span>
         </div>
       </div>
     </section>
@@ -247,11 +236,11 @@ class Component extends DCLogic {
     const grp = (label, names) => ({ label, people: names.map(name => ({ name, initials: initials(name), slot: 'ABOUT-BOARD-' + String(++k).padStart(2, '0') })) });
     return {
       mobile: !!this.props.mobile || !!this.__narrow,
-      anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Choir manager', '/about#manager'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Section leads', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
+      anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Section leads', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
       team, hasBio: !!b,
       bio: b ? { ...b, text: '[Biography placeholder: 80–120 words to be supplied for ' + b.name + '.]' } : { name: '', role: '', slot: 'ABOUT-TEAM-01', text: '' },
       closeBio: () => this.setState({ bio: -1 }),
-      mgmt: [['James Clemens', 'Executive Director'], ['Matthew Ouellette', 'Director of Finance']].map(([name, role], i) => ({ name, role, slot: 'ABOUT-MGMT-0' + (i + 1) })),
+      mgmt: [['James Clemens', 'Executive Director'], ['Matthew Ouellette', 'Director of Finance'], ['Elinor Clement', 'Choir Manager']].map(([name, role], i) => ({ name, role, slot: 'ABOUT-MGMT-0' + (i + 1) })),
       recruiting: ['Education', 'Marketing & Communications', 'Chorister & Volunteer Engagement'],
       board: [grp('Chair', ['James Clemens']), grp('Directors', ['Peter Beaman', 'Ashok Kumar Biswas', 'Brie van der Aa', 'Nassim Barakat', 'Ian Fine', 'Jessica McClay']), grp('Chorister Representatives', ['Alex Kitt', 'Jace Tessier'])],
       volunteers: [1, 2, 3, 4, 5, 6],

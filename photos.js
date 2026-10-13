@@ -18,14 +18,13 @@
   S('ABOUT-HERO-01', 'About · Hero', 'Group Portrait', 'Full choir posed group photo', '21:9', '2560×1100', 'none', 'bleed', 'The full Ottawa Regional Youth Choir');
   ['Jamie Loback', 'Matthew Menard', 'Aude Urbancic', 'Cara Gilbertson', 'Victor Toma'].forEach((n, i) =>
     S('ABOUT-TEAM-0' + (i + 1), 'About · Artistic team', 'Headshot', n + ', head and shoulders, plain background', '1:1', '800×800', 'none', 'circle', 'Portrait of ' + n));
-  ['James Clemens', 'Matthew Ouellette'].forEach((n, i) =>
+  ['James Clemens', 'Matthew Ouellette', 'Elinor Clement'].forEach((n, i) =>
     S('ABOUT-MGMT-0' + (i + 1), 'About · Management', 'Headshot', n + ', head and shoulders, plain background', '1:1', '800×800', 'none', 'circle', 'Portrait of ' + n));
   ['James Clemens', 'Peter Beaman', 'Ashok Kumar Biswas', 'Brie van der Aa', 'Nassim Barakat', 'Ian Fine', 'Jessica McClay', 'Alex Kitt', 'Jace Tessier'].forEach((n, i) =>
     S('ABOUT-BOARD-' + String(i + 1).padStart(2, '0'), 'About · Board', 'Headshot', n + ' (optional — falls back to initials)', '1:1', '600×600', 'none', 'circle', 'Portrait of ' + n));
   S('ABOUT-CHOIR-01', 'About · Meet the Choir', 'Group Portrait', 'Full choir, sections identifiable', '16:9', '2400×1350', 'none', 'rect', 'The choir standing in its four sections');
   [['Soprano', 'Anouk Marks'], ['Alto', 'Brie van der Aa'], ['Tenor', 'Jace Tessier'], ['Bass', 'Matthew Menard']].forEach(([sec, n], i) =>
     S('ABOUT-LEAD-0' + (i + 1), 'About · Section leads', 'Headshot', n + ', ' + sec.toLowerCase() + ' section lead, head and shoulders', '1:1', '800×800', 'none', 'circle', 'Portrait of ' + n + ', ' + sec.toLowerCase() + ' section lead'));
-  S('ABOUT-MANAGER-01', 'About · Choir manager', 'Headshot', 'Elinor Clement, head and shoulders, plain background', '1:1', '800×800', 'none', 'circle', 'Portrait of Elinor Clement, Choir Manager');
   [['Barbara Clark', 'portrait or conducting'], ['Kevin Reeves', 'conducting'], ['Marg Stubington', 'conducting'], ['Jamie Loback', 'conducting']].forEach(([n, d], i) =>
     S('ABOUT-HIST-0' + (i + 1), 'About · Timeline', 'Archival / Historical', n + ', ' + d, '1:1', '800×800', 'bw', 'circle', n + ' conducting the choir'));
   S('ABOUT-MEMORIAM-01', 'About · In memoriam', 'Archival / Historical', 'Barbara Clark portrait', '4:5', '1200×1500', 'bw', 'rect', 'Portrait of Barbara Clark, C.M.');
