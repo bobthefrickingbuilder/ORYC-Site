@@ -56,6 +56,7 @@
 
   // Real photos. Add one line per slot: 'SLOT-ID': ['path', 'alt text'].
   const SRC = {
+    'HOME-LEGACY-01': ['photos/home-legacy-01.jpg', 'A stack of ORYC recordings, including the 20th and 25th anniversary CDs'],
     'HOME-JOIN-01': ['photos/home-join-01.jpg', 'A chorister holding an open score of Misa a Buenos Aires at the Kyrie'],
   };
   R.forEach(r => { const x = SRC[r.id]; if (x) { r.src = x[0]; if (x[1]) r.alt = x[1]; } });
