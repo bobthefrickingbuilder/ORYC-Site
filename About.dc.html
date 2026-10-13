@@ -81,7 +81,7 @@
             <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:12px;">
               <h3 style="margin:0;font-weight:700;font-size:34px;line-height:1;text-transform:uppercase;">{{ bio.name }}</h3>
               <span style="font-style:italic;font-size:19px;">{{ bio.role }}</span>
-              <p style="margin:0;font-size:18px;max-width:680px;">{{ bio.text }}</p>
+              <p style="margin:0;font-size:18px;max-width:680px;white-space:pre-line;">{{ bio.text }}</p>
             </div>
             <button onClick="{{ closeBio }}" aria-label="Close biography" style="font:inherit;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid #000;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Close</button>
           </div>
@@ -231,6 +231,10 @@ class Component extends DCLogic {
       const isOpen = this.state.bio === i;
       return { name, role, slot: 'ABOUT-TEAM-0' + (i + 1), isOpen, ring: isOpen ? '#E41E26' : '#fff', cta: isOpen ? 'Bio open' : 'Read bio', open: () => this.setState({ bio: isOpen ? -1 : i }) };
     });
+    const BIOS = {
+      'Jamie Loback': "Holding a Master of Arts degree in music from the University of Ottawa, Jamie Loback is the Artistic Director of the Capital Chamber Choir and Ottawa Regional Youth Choir. Since 2005, he has served as Director of Music at St. Joseph’s Parish in Ottawa conducting the church’s three choirs.\n\nIn 2012, Jamie became the Artistic Director of the newly-formed Capital Chamber Choir. During his tenure, the choir has expanded to over 35 members with a focus on contemporary Canadian and international composers with a special focus on repertoire from the regions of Eastern and Northern Europe. The choir performs its own concert series each season in addition to various collaborations with the National Arts Centre and other local arts organizations.\n\nJamie is a passionate advocate for contemporary choral music, especially regarding works by Canadian composers as well as young composers who require performance opportunities for their music. He is dedicated to fostering inspiration, enthusiasm, and creativity in the next generation of choral musicians.",
+      'Matthew Menard': "Matthew Menard is an Ottawa-born composer and bass singer, and the Assistant Conductor of the ORYC. He began composing at the age of 11 in pop and electronic music before turning to classical composition, which he began studying formally in 2023. His work centres on choral and sacred music, and he serves as Composer-in-Residence at St. Joseph's Parish, where he has written many liturgical works. His music has been performed by the Capital Chamber Choir, the Ontario Youth Choir, the York University Chamber Choir, and the Ottawa Bach Choir. His growth as a composer has been shaped by conductors Jamie Loback and Laurence Ewashko, and his vocal training by baritone Brett Polegato."
+    };
     const b = team[this.state.bio];
     const initials = n => n.split(' ').filter(w => /^[A-Z]/.test(w)).map(w => w[0]).slice(0, 2).join('');
     let k = 0;
@@ -240,7 +244,7 @@ class Component extends DCLogic {
       mobile: !!this.props.mobile || !!this.__narrow,
       anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Section leads', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
       team, hasBio: !!b,
-      bio: b ? { ...b, text: '[Biography placeholder: 80–120 words to be supplied for ' + b.name + '.]' } : { name: '', role: '', slot: 'ABOUT-TEAM-01', text: '' },
+      bio: b ? { ...b, text: BIOS[b.name] || '[Biography placeholder: 80–120 words to be supplied for ' + b.name + '.]' } : { name: '', role: '', slot: 'ABOUT-TEAM-01', text: '' },
       closeBio: () => this.setState({ bio: -1 }),
       mgmt: [['James Clemens', 'Executive Director'], ['Matthew Ouellette', 'Director of Finance'], ['Elinor Clement', 'Choir Manager']].map(([name, role], i) => ({ name, role, slot: 'ABOUT-MGMT-0' + (i + 1) })),
       recruiting: ['Education', 'Marketing & Communications', 'Chorister & Volunteer Engagement'],
