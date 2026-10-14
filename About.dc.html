@@ -251,13 +251,14 @@
           <h2 id="mem-h" style="margin:0;font-weight:400;font-size:clamp(40px,4.6cqw,64px);line-height:1;">Barbara Clark, C.M.</h2>
           <span style="font-size:18px;">November 9, 1937 – August 5, 2025</span>
           <p style="margin:0;font-size:19px;max-width:620px;">Barbara Clark, C.M., founder of the Ottawa Regional Youth Choir, passed away peacefully in Ottawa on August 5, 2025. Born in Napanee, Ontario, she was a lifelong educator and a tireless advocate for music. She began teaching in Peterborough before moving to Ottawa, where she earned a B.A. in English from Carleton University in 1971.</p>
-          <p style="margin:0;font-size:19px;max-width:620px;">After retiring from the classroom in 1990, Barbara continued to lead young singers. She directed the Central Choir of the Ottawa Board of Education, which became the Ottawa Children's Choir, and in 1982 she founded the ORYC, which she led until 2007. She was artistic director of UNISONG at the National Arts Centre, the Niagara International Music Festival, and the Canterbury International Music Festival in England, and she remained an active member of the Ottawa Choral Society and the Cantata Singers of Ottawa. She conducted at many civic and national occasions, including Ottawa's annual Remembrance Day ceremonies and the 1999 installation of Governor General Adrienne Clarkson.</p>
-          <p style="margin:0;font-size:19px;max-width:620px;">Her many honours include the Silver Jubilee Medal (1977), the Order of Canada (2001), the Queen's Golden Jubilee Medal (2002), and an honorary Doctor of Laws from Carleton University (2006), in recognition of her contributions to the arts and to choral music in Canada.</p>
-          <p style="margin:0;font-size:19px;max-width:620px;">Every chorister who sings with the ORYC today is part of the legacy she began. Donations in her memory may be made to the Ottawa Regional Youth Choir or the Ottawa Children's Choir.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;">
-            <a data-magnetic="" href="https://www.zeffy.com/en-CA/donation-form/5985236c-c71b-41e7-8df4-e3bba49c89c0" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s;" style-hover="background:#E41E26;color:#fff;">Donate in her memory</a>
-            <a href="https://mcgarryfh.frontrunnerpro.com/book-of-memories/5624683/Clark-Barbara/obit.php" target="_blank" rel="noopener" style="color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;">Full obituary</a>
-          </div>
+          <sc-if value="{{ memOpen }}" hint-placeholder-val="{{ false }}">
+            <div id="mem-more" style="box-sizing:border-box;display:flex;flex-direction:column;gap:18px;">
+              <p style="margin:0;font-size:19px;max-width:620px;">After retiring from the classroom in 1990, Barbara continued to lead young singers. She directed the Central Choir of the Ottawa Board of Education, which became the Ottawa Children's Choir, and in 1982 she founded the ORYC, which she led until 2007. She was artistic director of UNISONG at the National Arts Centre, the Niagara International Music Festival, and the Canterbury International Music Festival in England, and she remained an active member of the Ottawa Choral Society and the Cantata Singers of Ottawa. She conducted at many civic and national occasions, including Ottawa's annual Remembrance Day ceremonies and the 1999 installation of Governor General Adrienne Clarkson.</p>
+              <p style="margin:0;font-size:19px;max-width:620px;">Her many honours include the Silver Jubilee Medal (1977), the Order of Canada (2001), the Queen's Golden Jubilee Medal (2002), and an honorary Doctor of Laws from Carleton University (2006), in recognition of her contributions to the arts and to choral music in Canada.</p>
+              <p style="margin:0;font-size:19px;max-width:620px;">Every chorister who sings with the ORYC today is part of the legacy she began.</p>
+            </div>
+          </sc-if>
+          <button onClick="{{ toggleMem }}" aria-expanded="{{ memOpen }}" aria-controls="mem-more" style="font:inherit;align-self:flex-start;cursor:pointer;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;transition:background-color .25s,color .25s;" style-hover="background:#fff;color:#000;">{{ memLabel }}</button>
         </div>
       </div>
     </section>
@@ -273,7 +274,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;openBio&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:-1,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;tsType&quot;:&quot;number&quot;}}">
 class Component extends DCLogic {
-  state = { bio: this.props.openBio ?? -1, leadBio: -1, histBio: -1 };
+  state = { bio: this.props.openBio ?? -1, leadBio: -1, histBio: -1, mem: -1 };
   motionOff() {
     return matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'off';
   }
@@ -312,6 +313,7 @@ class Component extends DCLogic {
     this.animatePanel('bio-panel', 'bio');
     this.animatePanel('lead-bio-panel', 'leadBio');
     this.animatePanel('hist-bio-panel', 'histBio');
+    this.animatePanel('mem-more', 'mem');
     if (this.__scrollTo) { const el = document.getElementById(this.__scrollTo); this.__scrollTo = null; if (el) this.scrollToEl(el); }
   }
   // Scroll so an element sits just below the sticky header.
@@ -443,7 +445,9 @@ class Component extends DCLogic {
           open: e => (isOpen ? this.closeAnimated('hist-bio-panel', 'histBio') : this.openPanel('histBio', i, e)) };
       }),
       hasHistBio: !!hb, histBio: hb || { name: '', role: '', years: '', slot: 'ABOUT-HIST-01', text: '' },
-      closeHistBio: () => this.closeAnimated('hist-bio-panel', 'histBio')
+      closeHistBio: () => this.closeAnimated('hist-bio-panel', 'histBio'),
+      memOpen: this.state.mem >= 0, memLabel: this.state.mem >= 0 ? 'Show less' : 'Read full obituary',
+      toggleMem: () => (this.state.mem >= 0 ? this.closeAnimated('mem-more', 'mem') : this.setState({ mem: 0 }))
     };
   }
 }
