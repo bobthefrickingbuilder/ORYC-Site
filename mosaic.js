@@ -310,7 +310,7 @@
       ], { duration: 1150, delay: 120 + i * 130, easing: ease, fill: 'both' }); });
       root.classList.remove('om-intro');
       // 2. Hold the finished title for a beat (and give the first photos time to arrive).
-      await Promise.all([sleep(2500), Promise.race([Promise.all(first), sleep(4500)])]);
+      await Promise.all([sleep(2000), Promise.race([Promise.all(first), sleep(3600)])]);
       if (destroyed) return;
       // 3. Break: tiles turn over in a ripple outward from the middle of the wordmark; the ORYC tile lands last.
       const all = [...tiles.values()];
