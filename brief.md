@@ -152,7 +152,7 @@ The brand is described as **"modern, young and playful."** Assets should be **ph
 
 ### Sing with Us (the most important conversion page)
 1. **Hero:** "Join the choir. No audition required."
-2. **How joining works,** in three steps: Book a vocal check, then Meet Jamie & Cara, then Start rehearsing. Vocal checks run on Tuesday evenings and one Saturday afternoon. Intake peaks in September and January.
+2. **How joining works,** in three steps: Book a vocal check, then Meet Jamie & Cara, then Start rehearsing. Voice placements run on Tuesday evenings only. Intake peaks in September and January.
 3. **What to expect,** as cards:
    - Weekly rehearsals.
    - Monthly Saturday Bootcamps: breakfast, team-building, sectionals, workshop.
