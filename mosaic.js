@@ -102,6 +102,8 @@
   }
 
   function Mosaic(host) {
+    // data-logo="none": photos only (no ORYC tile). data-intro="none": skip the ORYC break-apart intro.
+    const noLogo = host.dataset.logo === 'none', noIntro = host.dataset.intro === 'none';
     const root = document.createElement('div');
     root.className = 'om';
     host.appendChild(root);
@@ -115,7 +117,7 @@
       const cols = Math.min(16, Math.max(4, Math.round(W / Math.max(cell, 1))));
       const rows = Math.min(5, Math.max(3, Math.round(H / Math.max(cell, 1))));
       const lc = cols >= 7 ? 1 : 0;
-      return { W, H, rows, cols, cw: W / cols, ch: H / rows, logo: { c: lc, r: 0, w: 2, h: 2 } };
+      return { W, H, rows, cols, cw: W / cols, ch: H / rows, logo: noLogo ? { c: 0, r: 0, w: 0, h: 0 } : { c: lc, r: 0, w: 2, h: 2 } };
     }
     const rect = (c, r, shape) => { const [w, h] = SH[shape] || shape; return { x: c * G.cw, y: r * G.ch, w: w * G.cw, h: h * G.ch }; };
     const fits = (c, r, shape) => { const [w, h] = SH[shape]; if (c + w > G.cols || r + h > G.rows) return false; for (let y = r; y < r + h; y++) for (let x = c; x < c + w; x++) if (grid[y][x] !== null) return false; return true; };
@@ -186,6 +188,7 @@
       return spec;
     }
     function addLogo(withSlice) {
+      if (!G.logo.w) { logoEl = null; return; }
       const R = rect(G.logo.c, G.logo.r, [G.logo.w, G.logo.h]);
       logoEl = document.createElement('div'); logoEl.className = 'om-tile'; logoEl.setAttribute('aria-hidden', 'true');
       logoEl.style.cssText = `left:${R.x}px;top:${R.y}px;width:${R.w}px;height:${R.h}px;z-index:2;`;
@@ -361,7 +364,7 @@
     }
 
     let played = false; try { played = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
-    if (played || motionOff()) startStatic(!motionOff());
+    if (noIntro || played || motionOff()) startStatic(!motionOff());
     else { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} intro(); }
 
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(host);
@@ -379,7 +382,7 @@
   // Attach to the header that is actually rendered (the page's raw template holds an unrendered copy
   // with the same id), and keep watching in case the page re-renders it.
   const boot = () => {
-    document.querySelectorAll('#photo-mosaic').forEach(h => {
+    document.querySelectorAll('#photo-mosaic, [data-mosaic]').forEach(h => {
       if (h.__om || !h.isConnected || !h.getClientRects().length || h.clientWidth < 50 || h.clientHeight < 50) return;
       h.__om = true; Mosaic(h);
     });
