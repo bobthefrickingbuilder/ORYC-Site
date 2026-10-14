@@ -76,11 +76,11 @@
 .om-layer span,.om-logo span{display:inline-block;transform:translate(calc(var(--mx,0) * var(--d) * 1px),calc(var(--my,0) * var(--d) * 1px));}
 .om-logo{position:absolute;inset:2px;background:${RED};color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'Glacial Indifference',sans-serif;font-weight:700;line-height:.8;letter-spacing:-.02em;}
 .om-logo div{display:flex;}
-.om-intro .om-layer span{opacity:0;}
+.om-intro .om-layer span{opacity:0 !important;}
 .om-flipper .om-card{transition:transform .7s cubic-bezier(.2,.7,.2,1);}
 .om-flipper.om-flip .om-card{transform:rotateY(180deg);}
 .om-flipper{cursor:pointer;}
-.om-hint{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);font-family:'Glacial Indifference',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.85;white-space:nowrap;display:flex;align-items:center;gap:.5em;}
+.om-hint{position:absolute;left:50%;bottom:9%;translate:-50% 0;font-family:'Glacial Indifference',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.85;white-space:nowrap;display:flex;align-items:center;gap:.5em;}
 .om-back{position:absolute;inset:2px;background:#000;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-family:'Glacial Indifference',sans-serif;}
 .om-back p{margin:0;font-style:italic;font-weight:700;line-height:1.1;}
 .om-back nav{display:flex;flex-direction:column;align-items:stretch;}
@@ -331,12 +331,21 @@
       flips.push(logoEl.firstChild.animate(turn, { duration: 950, delay: last + 160, easing: 'cubic-bezier(.65,0,.35,1)', fill: 'forwards' }).finished);
       await Promise.all(flips);
       if (destroyed) return;
-      // Swap the double-sided intro tiles for plain photo tiles (no visible change).
-      const specs = all.map(t => ({ c: t.c, r: t.r, shape: t.shape, photo: t.photo }));
-      root.innerHTML = ''; tiles = new Map();
-      grid = Array.from({ length: G.rows }, () => Array(G.cols).fill(null));
-      const L = G.logo; for (let y = L.r; y < L.r + L.h; y++) for (let x = L.c; x < L.c + L.w; x++) grid[y][x] = 'logo';
-      specs.forEach(s => addTile(s, false)); addLogo(false);
+      // Convert the double-sided intro tiles into plain tiles in place (same elements, no rebuild,
+      // so nothing blinks), then turn the ORYC tile into the flippable Join / Season card.
+      all.forEach(t => {
+        const faces = t.card.querySelectorAll(':scope > .om-face');
+        t.card.getAnimations().forEach(a => a.cancel());
+        faces[0].remove(); faces[1].style.transform = '';
+      });
+      const lcard = logoEl.firstChild, lfaces = lcard.querySelectorAll(':scope > .om-face');
+      lcard.getAnimations().forEach(a => a.cancel());
+      lfaces[0].remove(); lfaces[1].style.transform = ''; lfaces[1].innerHTML = frontHTML();
+      const back = document.createElement('div'); back.className = 'om-face'; back.style.transform = 'rotateY(180deg)'; back.innerHTML = backHTML();
+      lcard.appendChild(back);
+      makeFlippable(logoEl);
+      const hint = logoEl.querySelector('.om-hint');
+      if (hint) hint.animate([{ opacity: 0, translate: '-50% 10px' }, { opacity: 0.85, translate: '-50% 0' }], { duration: 900, delay: 350, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' });
       goLive();
     }
     function goLive() {
