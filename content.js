@@ -7,6 +7,10 @@ window.ORYC_CONTENT = {
     { n: 5, slug: 'darkness-to-light', title: 'From Darkness to Light', day: 'Sun', date: 'Apr 25, 2027', iso: '2027-04-25T15:00:00-04:00', time: '3:00 pm', place: "St. Joseph's Parish", price: '$30', cat: 'ORYC Concerts', info: 'Rachmaninoff Vespers & Gjeilo Sunrise Mass · $30' },
     { n: 6, slug: 'ccc-60', title: 'Canadian Centennial Choir 60th Anniversary Concert', day: 'Sat', date: 'May 15, 2027', iso: '2027-05-15T19:30:00-04:00', time: '7:30 pm', place: 'Centretown United Church, 507 Bank St.', price: 'Via CCC', cat: 'Collaborations', info: "Tickets through the CCC's Zeffy page" }
   ],
+  quotes: [
+    { name: 'Inari Tubman', role: 'Soprano', before: 'Very fun and ', highlight: 'an incredible way to meet people', after: ' who share my interests.' },
+    { name: 'Jace Tessier', role: 'Tenor', before: 'The choir is a space that we can come and work as a team to contribute towards a shared goal. The environment is extremely welcoming and no matter the skill level that you come with everyone is dedicated to helping you grow. Through the choir ', highlight: 'I found my best friend', after: " and I am so grateful for the friendships that I've gotten to make over the years in this choir." }
+  ],
   faq: [
     { q: 'Do I need to audition?', a: 'No. The ORYC does not hold entrance auditions. Every new chorister begins with a short voice placement, which helps our team become familiar with your voice. There is nothing to prepare.' },
     { q: 'What age do I need to be?', a: 'The ORYC welcomes singers aged 15 to 25.' },

@@ -7,35 +7,69 @@
 </head>
 <body>
 <x-dc>
-<figure style="margin:0;container-type:inline-size;display:flex;flex-direction:column;gap:28px;font-family:'Glacial Indifference',sans-serif;">
-  <sc-if value="{{ isRed }}" hint-placeholder-val="{{ false }}">
-    <blockquote data-reveal="" style="margin:0;color:#fff;font-style:italic;font-weight:700;font-size:clamp(24px,6cqw,64px);line-height:1.18;text-wrap:pretty;">“{{ before }}<mark data-sweep="" style="background:linear-gradient(#fff,#fff) no-repeat 0 0 / 100% 100%;color:#000;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone;">{{ highlight }}</mark>{{ after }}”</blockquote>
-  </sc-if>
-  <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}">
-    <blockquote data-reveal="" style="margin:0;color:#000;font-style:italic;font-weight:700;font-size:clamp(24px,6cqw,64px);line-height:1.18;text-wrap:pretty;">“{{ before }}<mark data-sweep="" style="background:linear-gradient(#56C4C4,#56C4C4) no-repeat 0 0 / 100% 100%;color:#000;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone;">{{ highlight }}</mark>{{ after }}”</blockquote>
-  </sc-if>
-  <figcaption style="display:flex;align-items:center;gap:16px;color:{{ fg }};">
-    <div style="width:76px;flex:0 0 76px;"><dc-import name="PhotoSlot" id="{{ slotId }}" compact="{{ true }}" hint-size="76px,76px"></dc-import></div>
-    <div style="display:flex;flex-direction:column;gap:2px;">
-      <span style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em;">{{ name }}</span>
-      <span style="font-style:italic;font-size:16px;">{{ role }}</span>
+<figure ref="{{ figRef }}" onPointerEnter="{{ pause }}" onPointerLeave="{{ resume }}" onFocus="{{ pause }}" onBlur="{{ resume }}" aria-roledescription="{{ roledesc }}" style="margin:0;container-type:inline-size;display:flex;flex-direction:column;gap:24px;font-family:'Glacial Indifference',sans-serif;">
+  <div style="display:grid;">
+    <sc-for list="{{ items }}" as="q" hint-placeholder-count="1">
+      <div aria-hidden="{{ q.hidden }}" style="grid-area:1 / 1;display:flex;flex-direction:column;justify-content:center;gap:28px;opacity:{{ q.op }};visibility:{{ q.vis }};transform:translateY({{ q.dy }});transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),visibility 0s linear {{ q.visDelay }};">
+        <blockquote style="margin:0;color:{{ fg }};font-style:italic;font-weight:700;font-size:{{ q.size }};line-height:1.18;text-wrap:pretty;">“{{ q.before }}<mark style="background:{{ markBg }};color:#000;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone;">{{ q.highlight }}</mark>{{ q.after }}”</blockquote>
+        <figcaption style="display:flex;align-items:center;gap:16px;color:{{ fg }};">
+          <span aria-hidden="true" style="width:44px;height:4px;border-radius:2px;background:{{ fg }};opacity:.6;"></span>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <span style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.06em;">{{ q.name }}</span>
+            <span style="font-style:italic;font-size:16px;">{{ q.role }}</span>
+          </div>
+        </figcaption>
+      </div>
+    </sc-for>
+  </div>
+  <sc-if value="{{ showDots }}" hint-placeholder-val="{{ false }}">
+    <div role="group" aria-label="Choose a quote" style="display:flex;gap:10px;">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="2">
+        <button onClick="{{ d.go }}" aria-label="{{ d.label }}" aria-pressed="{{ d.on }}" style="width:{{ d.w }};height:10px;border-radius:999px;border:0;padding:0;cursor:pointer;background:{{ fg }};opacity:{{ d.op }};transition:width .35s cubic-bezier(.2,.7,.2,1),opacity .35s;"></button>
+      </sc-for>
     </div>
-  </figcaption>
+  </sc-if>
 </figure>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:420},&quot;tone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;red&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slotId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;HOME-QUOTE-01&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;before&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;highlight&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;after&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;role&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
+  state = { i: 0 };
+  // Quotes come from ORYC_CONTENT.quotes. rotate: cycle through them; idx: show one.
+  list() { return ((window.ORYC_CONTENT || {}).quotes || []); }
+  componentDidMount() {
+    if (!window.ORYC_CONTENT) this._w = setInterval(() => { if (window.ORYC_CONTENT) { clearInterval(this._w); this.forceUpdate(); this.schedule(); } }, 60);
+    this.schedule();
+  }
+  componentWillUnmount() { clearInterval(this._w); clearTimeout(this._t); }
+  reduced() { return matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  schedule() {
+    clearTimeout(this._t);
+    const L = this.list(); if (!this.props.rotate || L.length < 2 || this.reduced()) return;
+    const cur = L[this.state.i % L.length];
+    const words = (cur.before + cur.highlight + cur.after).split(/\s+/).length;
+    this._t = setTimeout(() => {
+      const visible = this.fig && this.fig.getBoundingClientRect().bottom > 0 && this.fig.getBoundingClientRect().top < innerHeight;
+      if (this._paused || document.hidden || !visible) return this.schedule();
+      this.setState({ i: (this.state.i + 1) % L.length }, () => this.schedule());
+    }, 5000 + words * 120);
+  }
   renderVals() {
-    const p = this.props;
-    const red = p.tone === 'red';
+    const p = this.props, red = p.tone === 'red', L = this.list();
+    const fixed = p.idx !== undefined && p.idx !== null && p.idx !== '';
+    const shown = fixed ? [L[Number(p.idx)]].filter(Boolean) : L;
+    const active = fixed ? 0 : this.state.i % Math.max(1, shown.length);
+    const items = shown.map((q, k) => {
+      const on = k === active, words = (q.before + q.highlight + q.after).split(/\s+/).length;
+      return { ...q, op: on ? 1 : 0, vis: on ? 'visible' : 'hidden', visDelay: on ? '0s' : '.7s', dy: on ? '0' : '10px', hidden: on ? 'false' : 'true',
+        size: words > 30 ? (p.compact ? 'clamp(18px,4.6cqw,24px)' : 'clamp(20px,3.4cqw,38px)') : (p.compact ? 'clamp(22px,7cqw,34px)' : 'clamp(24px,6cqw,64px)') };
+    });
     return {
-      isRed: red, isLight: !red, fg: red ? '#fff' : '#000',
-      slotId: p.slotId || 'HOME-QUOTE-01',
-      before: p.before ?? '[Placeholder chorister quote: one or two sentences about ',
-      highlight: p.highlight ?? 'what singing with ORYC means',
-      after: p.after ?? ' to them.]',
-      name: p.name ?? '[Chorister name]',
-      role: p.role ?? '[Voice part] · Chorister since [year]'
+      figRef: el => { this.fig = el; },
+      pause: () => { this._paused = true; }, resume: () => { this._paused = false; },
+      roledesc: !fixed && shown.length > 1 ? 'rotating quotes' : undefined,
+      fg: red ? '#fff' : '#000', markBg: red ? '#fff' : '#56C4C4',
+      items, showDots: !fixed && shown.length > 1,
+      dots: shown.map((q, k) => ({ label: 'Show quote from ' + q.name, on: k === active, w: k === active ? '28px' : '10px', op: k === active ? 1 : 0.45, go: () => this.setState({ i: k }, () => this.schedule()) }))
     };
   }
 }
