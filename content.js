@@ -8,8 +8,8 @@ window.ORYC_CONTENT = {
     { n: 6, slug: 'ccc-60', title: 'Canadian Centennial Choir 60th Anniversary Concert', day: 'Sat', date: 'May 15, 2027', iso: '2027-05-15T19:30:00-04:00', time: '7:30 pm', place: 'Centretown United Church, 507 Bank St.', price: 'Via CCC', cat: 'Collaborations', info: "Tickets through the CCC's Zeffy page" }
   ],
   quotes: [
-    { name: 'Inari Tubman', role: 'Soprano', before: 'Very fun and ', highlight: 'an incredible way to meet people', after: ' who share my interests.' },
-    { name: 'Jace Tessier', role: 'Tenor', before: 'The choir is a space that we can come and work as a team to contribute towards a shared goal. The environment is extremely welcoming and no matter the skill level that you come with everyone is dedicated to helping you grow. Through the choir ', highlight: 'I found my best friend', after: " and I am so grateful for the friendships that I've gotten to make over the years in this choir." }
+    { name: 'Inari', role: 'Soprano', before: 'Very fun and ', highlight: 'an incredible way to meet people', after: ' who share my interests.' },
+    { name: 'Jace', role: 'Tenor', before: 'The choir is a space that we can come and work as a team to contribute towards a shared goal. The environment is extremely welcoming and no matter the skill level that you come with everyone is dedicated to helping you grow. Through the choir ', highlight: 'I found my best friend', after: " and I am so grateful for the friendships that I've gotten to make over the years in this choir." }
   ],
   faq: [
     { q: 'Do I need to audition?', a: 'No. The ORYC does not hold entrance auditions. Every new chorister begins with a short voice placement, which helps our team become familiar with your voice. There is nothing to prepare.' },
