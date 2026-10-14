@@ -76,7 +76,7 @@
           </sc-for>
         </div>
         <sc-if value="{{ hasBio }}" hint-placeholder-val="{{ false }}">
-          <div data-enter="" id="bio-panel" role="region" aria-label="{{ bio.name }} biography" style="background:#fff;border-radius:24px;padding:clamp(24px,3.4cqw,48px);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+          <div id="bio-panel" role="region" aria-label="{{ bio.name }} biography" style="box-sizing:border-box;background:#fff;border-radius:24px;padding:clamp(24px,3.4cqw,48px);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
             <div style="flex:0 0 160px;"><dc-import name="PhotoSlot" id="{{ bio.slot }}" compact="{{ true }}" hint-size="160px,160px"></dc-import></div>
             <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:12px;">
               <h3 style="margin:0;font-weight:700;font-size:34px;line-height:1;text-transform:uppercase;">{{ bio.name }}</h3>
@@ -224,12 +224,50 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;openBio&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:-1,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;tsType&quot;:&quot;number&quot;}}">
 class Component extends DCLogic {
   state = { bio: this.props.openBio ?? -1 };
+  motionOff() {
+    return matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'off';
+  }
+  componentDidUpdate() {
+    const cur = this.state.bio, prev = this.__lastBio ?? -1;
+    this.__lastBio = cur;
+    if (cur === prev || cur < 0 || this.motionOff()) return;
+    const el = document.getElementById('bio-panel');
+    if (!el) return;
+    const ease = 'cubic-bezier(.2,.7,.2,1)';
+    if (prev < 0) {
+      // Opening: grow from nothing and fade in, so the page below slides down with it.
+      const cs = getComputedStyle(el), h = el.offsetHeight;
+      el.style.overflow = 'hidden';
+      const a = el.animate([
+        { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 },
+        { height: h + 'px', paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 }
+      ], { duration: 560, easing: ease });
+      a.onfinish = a.oncancel = () => { el.style.overflow = ''; };
+      [...el.children].forEach((c, i) => c.animate([{ opacity: 0, translate: '0 14px' }, { opacity: 1, translate: '0 0' }], { duration: 480, delay: 140 + i * 70, easing: ease, fill: 'backwards' }));
+    } else {
+      // Switching person: crossfade the contents in place.
+      [...el.children].forEach((c, i) => c.animate([{ opacity: 0, translate: '0 10px' }, { opacity: 1, translate: '0 0' }], { duration: 380, delay: i * 60, easing: ease, fill: 'backwards' }));
+    }
+  }
+  closeBioAnimated() {
+    const el = document.getElementById('bio-panel');
+    if (!el || this.motionOff()) return this.setState({ bio: -1 });
+    if (this.__closing) return;
+    this.__closing = true;
+    const cs = getComputedStyle(el), h = el.offsetHeight;
+    el.style.overflow = 'hidden';
+    const a = el.animate([
+      { height: h + 'px', paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 },
+      { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 }
+    ], { duration: 420, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
+    a.onfinish = () => { this.__closing = false; this.setState({ bio: -1 }); };
+  }
   renderVals() {
     if (!this.__vp) { this.__vp = 1; this.__narrow = window.innerWidth < 1120; window.addEventListener('resize', () => { const n = window.innerWidth < 1120; if (n !== this.__narrow) { this.__narrow = n; this.setState({ __narrow: n }); } }); }
     const teamRaw = [['Jamie Loback', 'Artistic Director (since 2013)'], ['Matthew Menard', 'Assistant Conductor'], ['Aude Urbancic', 'Collaborative Pianist'], ['Cara Gilbertson', 'Vocal Instructor'], ['Victor Toma', 'Assistant Collaborative Pianist']];
     const team = teamRaw.map(([name, role], i) => {
       const isOpen = this.state.bio === i;
-      return { name, role, slot: 'ABOUT-TEAM-0' + (i + 1), isOpen, ring: isOpen ? '#E41E26' : '#fff', cta: isOpen ? 'Bio open' : 'Read bio', open: () => this.setState({ bio: isOpen ? -1 : i }) };
+      return { name, role, slot: 'ABOUT-TEAM-0' + (i + 1), isOpen, ring: isOpen ? '#E41E26' : '#fff', cta: isOpen ? 'Bio open' : 'Read bio', open: () => (isOpen ? this.closeBioAnimated() : this.setState({ bio: i })) };
     });
     const BIOS = {
       'Aude Urbancic': "Aude Urbancic is a collaborative pianist and vocal coach with a particular passion for opera and choral music. She holds a Doctorate of Music in Collaborative Piano, with a specialization in vocal accompaniment, from the Université de Montréal, and a Master's degree in Piano Performance from the University of Ottawa. In addition to her work with the ORYC, she is Music Director at the Church of the Ascension, pianist for the Ottawa Children's Choir Chamber Choir, and a faculty member at the Bytown School of Singing. She has served as rehearsal pianist for major choral works at the National Arts Centre, as pianist for the Ontario Youth Choir, and as music director for the University of Ottawa's 2024 opera production, The Orpheus Project. In 2022, she released her debut album, Batkivshchyna, with Laurence Ewashko.",
@@ -248,7 +286,7 @@ class Component extends DCLogic {
       anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Section leads', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
       team, hasBio: !!b,
       bio: b ? { ...b, text: BIOS[b.name] || '[Biography placeholder: 80–120 words to be supplied for ' + b.name + '.]' } : { name: '', role: '', slot: 'ABOUT-TEAM-01', text: '' },
-      closeBio: () => this.setState({ bio: -1 }),
+      closeBio: () => this.closeBioAnimated(),
       mgmt: [['James Clemens', 'Executive Director'], ['Matthew Ouellette', 'Director of Finance'], ['Elinor Clement', 'Choir Manager']].map(([name, role], i) => ({ name, role, slot: 'ABOUT-MGMT-0' + (i + 1) })),
       recruiting: ['Education', 'Marketing & Communications', 'Chorister & Volunteer Engagement'],
       board: [grp('Chair', ['James Clemens']), grp('Directors', ['Peter Beaman', 'Ashok Kumar Biswas', 'Brie van der Aa', 'Nassim Barakat', 'Ian Fine', 'Jessica McClay']), grp('Chorister Representatives', ['Alex Kitt', 'Jace Tessier'])],
