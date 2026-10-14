@@ -79,6 +79,7 @@
     'SUPPORT-FUNDS-02': ['photos/support-funds-02.jpg', 'A young chorister conducting the choir'],
     'SUPPORT-FUNDS-03': ['photos/support-funds-03.jpg', 'Choristers singing from their folders in concert'],
     'CONTACT-VENUE-01': ['photos/contact-venue-01.jpg', "St. Joseph's Parish on Wilbrod Street in autumn"],
+    'EVENT-DETAIL-VENUE': ['photos/event-detail-venue.jpg', 'The Church of St. Barnabas, Apostle and Martyr, on James Street'],
     'HOME-HERO-01': ['photos/home-hero-01.jpg', 'The Ottawa Regional Youth Choir performing in concert, with the conductor and instrumentalists in front'],
     'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
     'EVENT-DETAIL-HERO': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
