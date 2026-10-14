@@ -220,12 +220,26 @@
           <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="4">
             <li style="display:flex;flex-direction:column;gap:16px;">
               <div style="display:flex;align-items:center;gap:0;"><span aria-hidden="true" data-reveal="scale" data-delay="250" style="width:18px;height:18px;border-radius:50%;background:#56C4C4;flex:0 0 18px;"></span><span aria-hidden="true" style="flex:1;height:4px;background:#56C4C4;"></span></div>
-              <div style="width:min(100%,180px);"><dc-import name="PhotoSlot" id="{{ t.slot }}" hint-size="100%,180px"></dc-import></div>
-              <span style="font-weight:700;font-size:30px;line-height:1;">{{ t.years }}</span>
-              <span style="display:flex;flex-direction:column;"><span style="font-weight:700;font-size:20px;text-transform:uppercase;">{{ t.name }}</span><span style="font-style:italic;font-size:17px;">{{ t.role }}</span></span>
+              <button onClick="{{ t.open }}" aria-expanded="{{ t.isOpen }}" aria-controls="hist-bio-panel" style="font:inherit;text-align:left;cursor:pointer;background:transparent;color:#fff;border:0;padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:16px;transition:transform .4s cubic-bezier(.2,.7,.2,1);" style-hover="transform:translateY(-6px);">
+                <div style="width:min(100%,180px);border-radius:50%;box-shadow:0 0 0 4px {{ t.ring }};transition:box-shadow .25s;"><dc-import name="PhotoSlot" id="{{ t.slot }}" hint-size="100%,180px"></dc-import></div>
+                <span style="font-weight:700;font-size:30px;line-height:1;">{{ t.years }}</span>
+                <span style="display:flex;flex-direction:column;"><span style="font-weight:700;font-size:20px;text-transform:uppercase;">{{ t.name }}</span><span style="font-style:italic;font-size:17px;">{{ t.role }}</span></span>
+                <span style="font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#56C4C4;">{{ t.cta }}</span>
+              </button>
             </li>
           </sc-for>
         </ol>
+        <sc-if value="{{ hasHistBio }}" hint-placeholder-val="{{ false }}">
+          <div id="hist-bio-panel" role="region" aria-label="{{ histBio.name }} biography" style="box-sizing:border-box;background:#fff;color:#000;border-radius:24px;padding:clamp(24px,3.4cqw,48px);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+            <div style="flex:0 0 160px;"><dc-import name="PhotoSlot" id="{{ histBio.slot }}" compact="{{ true }}" hint-size="160px,160px"></dc-import></div>
+            <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:12px;">
+              <h3 style="margin:0;font-weight:700;font-size:34px;line-height:1;text-transform:uppercase;">{{ histBio.name }}</h3>
+              <span style="font-style:italic;font-size:19px;">{{ histBio.role }} · {{ histBio.years }}</span>
+              <p style="margin:0;font-size:18px;max-width:680px;white-space:pre-line;">{{ histBio.text }}</p>
+            </div>
+            <button onClick="{{ closeHistBio }}" aria-label="Close biography" style="font:inherit;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid #000;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Close</button>
+          </div>
+        </sc-if>
       </div>
     </section>
 
@@ -253,13 +267,14 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;openBio&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:-1,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;tsType&quot;:&quot;number&quot;}}">
 class Component extends DCLogic {
-  state = { bio: this.props.openBio ?? -1, leadBio: -1 };
+  state = { bio: this.props.openBio ?? -1, leadBio: -1, histBio: -1 };
   motionOff() {
     return matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'off';
   }
   componentDidUpdate() {
     this.animatePanel('bio-panel', 'bio');
     this.animatePanel('lead-bio-panel', 'leadBio');
+    this.animatePanel('hist-bio-panel', 'histBio');
   }
   animatePanel(id, key) {
     this.__last = this.__last || {};
@@ -344,6 +359,15 @@ class Component extends DCLogic {
       };
     });
     const lb = leads[this.state.leadBio];
+    const HIST_BIOS = {
+      'Barbara Clark, C.M.': "Ms. Clark, CM, founded the Ottawa Regional Youth Choir in 1982 and retired as its conductor in 2007.\n\nIn addition to the ORYC she has been artistic director for UNISONG, the Niagara International Music Festival, and the Canterbury International Music Festival in England.\n\nAmongst many other awards, in May 2001 Ms. Clark was honoured to receive the Order of Canada, in recognition of her service to choral music in Canada and in 2011, the ORYC was very proud to successfully nominate her for the Choirs\u2019 Ontario President\u2019s Leadership Award.\n\nSought after for her talent as a vocal clinician and music educator, she is a popular leader of workshops and music camps throughout Canada.\n\nAs Artistic Director of the Niagara International Music Festival and UNISONG, a feature attraction of annual Canada Day celebrations, she continued to encourage the development of choral music across the country.",
+      'Kevin Reeves': "Mr. Reeves succeeded Barbara Clark, C.M., founding Director of the ORYC. He brought his extensive and varied conducting experience to the choir, having founded Seventeen Voyces \u2013 one of Ottawa\u2019s premiere chamber choirs. He has led that choir on national radio and television, and was one of three conductors for CBC television\u2019s Easter Sunrise in 2003. He has also prepared choirs for renowned conductors, including Trevor Pinnock, Franz Paul Decker, Lydia Adams, Jiri Belohlavek, Iwan Edwards, Robert Cooper, Jean-Fran\u00e7ois Rivest and Pinchas Zukerman.\n\nIn addition, Mr. Reeves is a highly respected vocal coach. He has sung and toured as a tenor soloist and chorister with the Notre Dame Cathedral Choir; the Anglican Chorale; La Chapelle of Quebec City; the Winnipeg Singers; the Tallis Choir and St. Simon\u2019s Choir of Toronto; the Cantata Singers of Ottawa; and St. Matthew\u2019s Choir. His personal repertoire ranges from Monteverdi\u2019s Vespers to Bach\u2019s Christmas Oratorio and St. John Passion; Haydn\u2019s Creation, and Britten\u2019s St. Nicolas.\n\nKevin is President of Zephyrus Productions Ltd., which has won numerous awards for its television drama and documentaries. He is also a published author and caricaturist of note.",
+      'Marg Stubington': "Marg Stubington, a native of Montreal, received a Bachelor of Music from McGill University (1984) where she studied piano performance with Tom Plaunt, choral arranging with Donald Patriquin, song interpretation with Jan Simons, and conducting. She held several church positions in Montreal as organist and choir director, taught piano, worked as accompanist, led a 100-voice children\u2019s school choir, and taught music theory and choir at the Suzuki Summer Institute.\n\nAs Director from June of 2007 to May 2010, Marg developed the KidSingers program, now a thriving children\u2019s choir which is part of the Leading Note Foundation\u2019s Orkidstra program. She has also worked as Music Director of the Canadian Centennial Choir, and of the Carleton University Choir. Aside from her regular conducting duties, Marg is a busy piano teacher, composer and arranger.\n\nMarg served as Music Director of the Ottawa Regional Youth Choir from August 2012 to the Spring Concert, \u201cShort and Sweet(s)\u201d, in April 2013.",
+      'Jamie Loback': BIOS['Jamie Loback']
+    };
+    const HIST = [['1982–2007', 'Barbara Clark, C.M.', 'Founder'], ['2007–2012', 'Kevin Reeves', 'Artistic Director'], ['2012–2013', 'Marg Stubington', 'Artistic Director'], ['2013–present', 'Jamie Loback', 'Artistic Director']];
+    const hbRow = HIST[this.state.histBio];
+    const hb = hbRow ? { years: hbRow[0], name: hbRow[1], role: hbRow[2], slot: 'ABOUT-HIST-0' + (this.state.histBio + 1), text: HIST_BIOS[hbRow[1]] } : null;
     const initials = n => n.split(' ').filter(w => /^[A-Z]/.test(w)).map(w => w[0]).slice(0, 2).join('');
     let k = 0;
     const shots = window.ORYC_HEADSHOTS || {};
@@ -361,7 +385,13 @@ class Component extends DCLogic {
       leads, hasLeadBio: !!lb,
       leadBio: lb ? { ...lb, text: LEAD_BIOS[lb.name] } : { name: '', section: '', slot: 'ABOUT-LEAD-01', text: '' },
       closeLeadBio: () => this.closeAnimated('lead-bio-panel', 'leadBio'),
-      timeline: [['1982–2007', 'Barbara Clark, C.M.', 'Founder'], ['2007–2012', 'Kevin Reeves', 'Artistic Director'], ['2012–2013', 'Marg Stubington', 'Artistic Director'], ['2013–present', 'Jamie Loback', 'Artistic Director']].map(([years, name, role], i) => ({ years, name, role, slot: 'ABOUT-HIST-0' + (i + 1) }))
+      timeline: [['1982–2007', 'Barbara Clark, C.M.', 'Founder'], ['2007–2012', 'Kevin Reeves', 'Artistic Director'], ['2012–2013', 'Marg Stubington', 'Artistic Director'], ['2013–present', 'Jamie Loback', 'Artistic Director']].map(([years, name, role], i) => {
+        const isOpen = this.state.histBio === i;
+        return { years, name, role, slot: 'ABOUT-HIST-0' + (i + 1), isOpen, ring: isOpen ? '#56C4C4' : 'transparent', cta: isOpen ? 'Bio open' : 'Read bio',
+          open: () => (isOpen ? this.closeAnimated('hist-bio-panel', 'histBio') : this.setState({ histBio: i })) };
+      }),
+      hasHistBio: !!hb, histBio: hb || { name: '', role: '', years: '', slot: 'ABOUT-HIST-01', text: '' },
+      closeHistBio: () => this.closeAnimated('hist-bio-panel', 'histBio')
     };
   }
 }
