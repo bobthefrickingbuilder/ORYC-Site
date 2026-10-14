@@ -111,7 +111,14 @@
     const n = Object.keys(HEADSHOTS).find(k => r.desc.startsWith(k));
     if (n) { r.src = HEADSHOTS[n]; r.alt = n; }
   });
+  // Anyone without a headshot yet gets the ORYC logo until their photo arrives.
+  const PLACEHOLDER = 'photos/team/oryc-placeholder.jpg';
+  R.forEach(r => {
+    if (r.src || !/^ABOUT-(TEAM|MGMT|BOARD|LEAD)-/.test(r.id)) return;
+    r.src = PLACEHOLDER; r.treat = 'none'; r.alt = 'ORYC logo (photo coming soon)'; r.placeholder = true;
+  });
   window.ORYC_HEADSHOTS = HEADSHOTS;
+  window.ORYC_HEADSHOT_PLACEHOLDER = PLACEHOLDER;
 
   window.ORYC_PHOTOS = Object.fromEntries(R.map(r => [r.id, r]));
   window.ORYC_PHOTO_LIST = R;

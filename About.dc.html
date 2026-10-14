@@ -22,7 +22,7 @@
 </head>
 <body>
 <x-dc>
-<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}body{margin:0}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="motion.js"></script></helmet>
+<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular.woff2') format('woff2'),url('fonts/GlacialIndifference-Regular.otf') format('opentype');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold.woff2') format('woff2'),url('fonts/GlacialIndifference-Bold.otf') format('opentype');font-weight:700;font-display:swap}body{margin:0}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="motion.js"></script></helmet>
 <div data-screen-label="About" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
   <dc-import name="SiteHeader" mobile="{{ mobile }}" active="about" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
   <main>
@@ -48,7 +48,7 @@
         <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:16px;">
           <div style="background:#000;color:#fff;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;">
             <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:#56C4C4;">Vision</span>
-            <p style="margin:0;font-weight:700;font-size:24px;line-height:1.25;">To become the most recognized, respected, inclusive and well-funded youth choir in Canada.</p>
+            <p style="margin:0;font-weight:700;font-size:24px;line-height:1.25;">A choir where every young singer is supported to grow, music is made to the highest standard, and lasting friendships are formed along the way.</p>
           </div>
           <div style="background:#DFEDEA;border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:12px;">
             <span style="font-style:italic;font-size:15px;letter-spacing:.1em;text-transform:uppercase;">Values</span>
@@ -425,7 +425,7 @@ class Component extends DCLogic {
     const initials = n => n.split(' ').filter(w => /^[A-Z]/.test(w)).map(w => w[0]).slice(0, 2).join('');
     let k = 0;
     const shots = window.ORYC_HEADSHOTS || {};
-    const grp = (label, names) => ({ label, people: names.map(name => ({ name, initials: initials(name), slot: 'ABOUT-BOARD-' + String(++k).padStart(2, '0'), bg: shots[name] ? 'url(' + shots[name] + ')' : 'none', hasPhoto: !!shots[name] })) });
+    const grp = (label, names) => ({ label, people: names.map(name => ({ name, initials: initials(name), slot: 'ABOUT-BOARD-' + String(++k).padStart(2, '0'), bg: 'url(' + (shots[name] || window.ORYC_HEADSHOT_PLACEHOLDER || '') + ')', hasPhoto: true })) });
     return {
       mobile: !!this.props.mobile || !!this.__narrow,
       anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Section leads', '/about#leads'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Meet the choir', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
