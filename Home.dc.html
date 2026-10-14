@@ -17,6 +17,7 @@
 <script src="/site.js"></script>
 <script src="/content.js"></script>
 <script src="/photos.js"></script>
+<script src="/mosaic.js" defer></script>
 <script src="/support.js"></script>
 </head>
 <body>
@@ -25,7 +26,16 @@
 <div data-screen-label="Home" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
   <dc-import name="SiteHeader" mobile="{{ mobile }}" active="home" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
   <main>
-    <dc-import name="HomeHero" variant="{{ hero }}" hint-size="100%,760px"></dc-import>
+    <section aria-labelledby="home-h">
+      <div id="photo-mosaic" role="img" aria-label="Photos of ORYC choristers, staff and concerts" style="position:relative;height:clamp(440px,46cqw,720px);overflow:hidden;background:#E41E26;"></div>
+      <div data-stagger="" style="background:#E41E26;color:#fff;padding:clamp(28px,3.4cqw,48px) clamp(20px,5.5cqw,80px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 40px;">
+        <h1 id="home-h" style="margin:0;font-style:italic;font-weight:700;font-size:clamp(28px,3.2cqw,46px);line-height:1.1;"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">Ottawa Regional Youth Choir: </span>Young Ottawa voices, <span style="white-space:nowrap;">15–25.</span></h1>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <a href="/sing" data-magnetic="" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:#fff;color:#000;border:2px solid #fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#000;border-color:#000;color:#fff;">Join the Choir</a>
+          <a href="/events" data-magnetic="" style="display:inline-flex;align-items:center;min-height:54px;padding:0 28px;border-radius:999px;background:transparent;color:#fff;border:2px solid #fff;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#000;">See the Season</a>
+        </div>
+      </div>
+    </section>
     <div data-marquee="38" aria-hidden="true" style="background:#fff;color:#000;overflow:hidden;padding:20px 0;border-bottom:2px solid #000;">
       <div style="display:flex;width:max-content;">
         <sc-for list="{{ ticker }}" as="t" hint-placeholder-count="12"><span style="display:flex;align-items:center;gap:32px;padding-right:32px;font-weight:700;font-size:clamp(22px,2.4cqw,34px);line-height:1;text-transform:uppercase;white-space:nowrap;">{{ t.label }}<span style="width:16px;height:16px;border-radius:50%;background:{{ t.dot }};"></span></span></sc-for>

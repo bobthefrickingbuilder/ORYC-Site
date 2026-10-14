@@ -1,5 +1,5 @@
-// About page header: a living contact sheet of choir photos.
-// On the first About visit of a browser session, a giant ORYC wordmark fills the header, then breaks
+// Home page header: a living contact sheet of choir photos.
+// On the first visit of a browser session, a giant ORYC wordmark fills the header, then breaks
 // apart: every tile flips over to reveal a photo, and the last tile flips back into a fixed ORYC tile.
 // After that, tiles flip on random timers: single swaps, merges into bigger photos, and splits back
 // into smaller ones. Each photo has a focal point and the tile shapes it is allowed to use, so faces
@@ -34,7 +34,7 @@
 
   const SH = { s: [1, 1], w: [2, 1], t: [1, 2], b: [2, 2] };
   const RED = '#E41E26';
-  const KEY = 'oryc-about-intro-played';
+  const KEY = 'oryc-intro-played';
   const DEPTH = [10, -16, 14, -9];
   const motionOff = () => matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'off';
   const rand = (a, b) => a + Math.random() * (b - a);
@@ -84,10 +84,13 @@
     const recent = [];
 
     function geometry() {
-      const W = host.clientWidth, H = host.clientHeight, rows = 3, ch = H / rows;
-      const cols = Math.min(16, Math.max(4, Math.round(W / Math.max(ch, 1))));
+      // Roughly square cells: 3 rows on wide screens, 4 columns on phones (more rows if the header is tall).
+      const W = host.clientWidth, H = host.clientHeight;
+      const cell = W < 700 ? W / 4 : H / 3;
+      const cols = Math.min(16, Math.max(4, Math.round(W / Math.max(cell, 1))));
+      const rows = Math.min(5, Math.max(3, Math.round(H / Math.max(cell, 1))));
       const lc = cols >= 7 ? 1 : 0;
-      return { W, H, rows, cols, cw: W / cols, ch, logo: { c: lc, r: 0, w: 2, h: 2 } };
+      return { W, H, rows, cols, cw: W / cols, ch: H / rows, logo: { c: lc, r: 0, w: 2, h: 2 } };
     }
     const rect = (c, r, shape) => { const [w, h] = SH[shape] || shape; return { x: c * G.cw, y: r * G.ch, w: w * G.cw, h: h * G.ch }; };
     const fits = (c, r, shape) => { const [w, h] = SH[shape]; if (c + w > G.cols || r + h > G.rows) return false; for (let y = r; y < r + h; y++) for (let x = c; x < c + w; x++) if (grid[y][x] !== null) return false; return true; };
@@ -293,7 +296,7 @@
   // Attach to the header that is actually rendered (the page's raw template holds an unrendered copy
   // with the same id), and keep watching in case the page re-renders it.
   const boot = () => {
-    document.querySelectorAll('#about-mosaic').forEach(h => {
+    document.querySelectorAll('#photo-mosaic').forEach(h => {
       if (h.__om || !h.isConnected || !h.getClientRects().length || h.clientWidth < 50 || h.clientHeight < 50) return;
       h.__om = true; Mosaic(h);
     });
