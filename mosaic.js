@@ -29,7 +29,20 @@
     { src: 'photos/mosaic/17-laughing-pair.jpg', w: 1120, h: 1400, fx: 0.53, fy: 0.42, shapes: 'sbtw', alt: "Two choristers laughing together with their folders" },
     { src: 'photos/mosaic/18-voice-lesson.jpg', w: 1120, h: 1400, fx: 0.46, fy: 0.44, shapes: 'sbt', alt: "A vocal instructor laughing during a lesson" },
     { src: 'photos/mosaic/19-candlelit-nave.jpg', w: 1400, h: 1049, fx: 0.50, fy: 0.64, shapes: 'wb', alt: "A candlelit concert seen from the back of the church" },
-    { src: 'photos/mosaic/20-kyrie-score.jpg', w: 1120, h: 1400, fx: 0.58, fy: 0.42, shapes: 'sbt', alt: "A chorister holding the score of Misa a Buenos Aires" }
+    { src: 'photos/mosaic/20-kyrie-score.jpg', w: 1120, h: 1400, fx: 0.58, fy: 0.42, shapes: 'sbt', alt: "A chorister holding the score of Misa a Buenos Aires" },
+    { src: 'photos/mosaic/21-piano-circle.jpg', w: 1120, h: 1400, fx: 0.52, fy: 0.55, shapes: 'bt', alt: "Choristers gathered around the piano at rehearsal" },
+    { src: 'photos/mosaic/22-office-sectional.jpg', w: 1400, h: 933, fx: 0.55, fy: 0.45, shapes: 'wsb', alt: "A sectional rehearsing in the music office at St. Joseph's" },
+    { src: 'photos/mosaic/23-pencil-laugh.jpg', w: 1120, h: 1400, fx: 0.50, fy: 0.40, shapes: 'sbt', alt: "A chorister laughing with a pencil tucked behind her ear" },
+    { src: 'photos/mosaic/24-curly-score.jpg', w: 1120, h: 1400, fx: 0.48, fy: 0.45, shapes: 'sbt', alt: "Choristers singing from their scores" },
+    { src: 'photos/mosaic/25-risers-candles.jpg', w: 1120, h: 1400, fx: 0.52, fy: 0.42, shapes: 'sbt', alt: "The choir on the risers behind a row of candles" },
+    { src: 'photos/mosaic/26-folder-pews.jpg', w: 1400, h: 933, fx: 0.48, fy: 0.48, shapes: 'wsb', alt: "A chorister smiling over her music folder in the pews" },
+    { src: 'photos/mosaic/27-pointing-pews.jpg', w: 1120, h: 1400, fx: 0.36, fy: 0.55, shapes: 'sbt', alt: "A chorister laughing and pointing during a break" },
+    { src: 'photos/mosaic/28-organist.jpg', w: 1120, h: 1400, fx: 0.62, fy: 0.48, shapes: 'sbt', alt: "The organist playing by lamplight in concert" },
+    { src: 'photos/mosaic/29-baton-bokeh.jpg', w: 1120, h: 1400, fx: 0.44, fy: 0.42, shapes: 'sbt', alt: "Jamie Loback conducting with his baton raised" },
+    { src: 'photos/mosaic/30-singer-profile.jpg', w: 1120, h: 1400, fx: 0.62, fy: 0.38, shapes: 'sbt', alt: "A tenor singing in concert" },
+    { src: 'photos/mosaic/31-singer-glow.jpg', w: 1120, h: 1400, fx: 0.50, fy: 0.42, shapes: 'sbt', alt: "A chorister singing in concert, seen through the candlelight" },
+    { src: 'photos/mosaic/32-conductor-strings.jpg', w: 1120, h: 1400, fx: 0.66, fy: 0.42, shapes: 'bt', alt: "Jamie Loback conducting the choir and string players" },
+    { src: 'photos/mosaic/33-balcony-candles.jpg', w: 1120, h: 1400, fx: 0.52, fy: 0.62, shapes: 'sbtw', alt: "The candlelit concert seen from the balcony" }
   ];
 
   const SH = { s: [1, 1], w: [2, 1], t: [1, 2], b: [2, 2] };
