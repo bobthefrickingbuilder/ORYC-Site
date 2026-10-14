@@ -121,7 +121,19 @@
         </div>
         <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;">
           <sc-for list="{{ leads }}" as="s" hint-placeholder-count="4">
-            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;background:#fff;border:2px solid #DFEDEA;border-radius:24px;padding:24px;">
+            <sc-if value="{{ s.clickable }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ s.open }}" aria-expanded="{{ s.isOpen }}" aria-controls="{{ s.controls }}" style="font:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:16px;background:#fff;color:#000;border:3px solid {{ s.ring }};border-radius:24px;padding:24px;transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .25s,box-shadow .4s;" style-hover="border-color:#000;transform:translateY(-8px);box-shadow:0 20px 44px rgba(0,0,0,.12);">
+              <div style="position:relative;width:min(100%,180px);">
+                <dc-import name="PhotoSlot" id="{{ s.slot }}" hint-size="100%,180px"></dc-import>
+                <span aria-hidden="true" style="position:absolute;right:-4px;bottom:4px;width:48px;height:48px;border-radius:50%;background:#E41E26;color:#fff;border:4px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;">{{ s.letter }}</span>
+              </div>
+              <span style="font-weight:700;font-size:23px;line-height:1.1;text-transform:uppercase;">{{ s.name }}</span>
+              <span style="font-style:italic;font-size:17px;">{{ s.section }} section lead</span>
+              <span style="margin-top:auto;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#B8141B;">{{ s.cta }}</span>
+            </button>
+            </sc-if>
+            <sc-if value="{{ s.plain }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;background:#fff;border:3px solid #DFEDEA;border-radius:24px;padding:24px;">
               <div style="position:relative;width:min(100%,180px);">
                 <dc-import name="PhotoSlot" id="{{ s.slot }}" hint-size="100%,180px"></dc-import>
                 <span aria-hidden="true" style="position:absolute;right:-4px;bottom:4px;width:48px;height:48px;border-radius:50%;background:#E41E26;color:#fff;border:4px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;">{{ s.letter }}</span>
@@ -129,8 +141,20 @@
               <span style="font-weight:700;font-size:23px;line-height:1.1;text-transform:uppercase;">{{ s.name }}</span>
               <span style="font-style:italic;font-size:17px;">{{ s.section }} section lead</span>
             </div>
+            </sc-if>
           </sc-for>
         </div>
+        <sc-if value="{{ hasLeadBio }}" hint-placeholder-val="{{ false }}">
+          <div id="lead-bio-panel" role="region" aria-label="{{ leadBio.name }} biography" style="box-sizing:border-box;background:#fff;border:2px solid #DFEDEA;border-radius:24px;padding:clamp(24px,3.4cqw,48px);display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;">
+            <div style="flex:0 0 160px;"><dc-import name="PhotoSlot" id="{{ leadBio.slot }}" compact="{{ true }}" hint-size="160px,160px"></dc-import></div>
+            <div style="flex:1 1 380px;display:flex;flex-direction:column;gap:12px;">
+              <h3 style="margin:0;font-weight:700;font-size:34px;line-height:1;text-transform:uppercase;">{{ leadBio.name }}</h3>
+              <span style="font-style:italic;font-size:19px;">{{ leadBio.section }} section lead</span>
+              <p style="margin:0;font-size:18px;max-width:680px;white-space:pre-line;">{{ leadBio.text }}</p>
+            </div>
+            <button onClick="{{ closeLeadBio }}" aria-label="Close biography" style="font:inherit;min-height:44px;padding:0 18px;border-radius:999px;border:2px solid #000;background:#fff;color:#000;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Close</button>
+          </div>
+        </sc-if>
       </div>
     </section>
 
@@ -228,44 +252,61 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;openBio&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:-1,&quot;min&quot;:-1,&quot;max&quot;:3,&quot;tsType&quot;:&quot;number&quot;}}">
 class Component extends DCLogic {
-  state = { bio: this.props.openBio ?? -1 };
+  state = { bio: this.props.openBio ?? -1, leadBio: -1 };
   motionOff() {
     return matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'off';
   }
   componentDidUpdate() {
-    const cur = this.state.bio, prev = this.__lastBio ?? -1;
-    this.__lastBio = cur;
+    this.animatePanel('bio-panel', 'bio');
+    this.animatePanel('lead-bio-panel', 'leadBio');
+  }
+  animatePanel(id, key) {
+    this.__last = this.__last || {};
+    const cur = this.state[key], prev = this.__last[key] ?? -1;
+    this.__last[key] = cur;
     if (cur === prev || cur < 0 || this.motionOff()) return;
-    const el = document.getElementById('bio-panel');
+    const el = document.getElementById(id);
     if (!el) return;
     const ease = 'cubic-bezier(.2,.7,.2,1)';
     if (prev < 0) {
       // Opening: grow from nothing and fade in, so the page below slides down with it.
       const cs = getComputedStyle(el), h = el.offsetHeight;
       el.style.overflow = 'hidden';
-      const a = el.animate([
+      const an = el.animate([
         { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 },
         { height: h + 'px', paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 }
       ], { duration: 560, easing: ease });
-      a.onfinish = a.oncancel = () => { el.style.overflow = ''; };
+      an.onfinish = an.oncancel = () => { el.style.overflow = ''; };
       [...el.children].forEach((c, i) => c.animate([{ opacity: 0, translate: '0 14px' }, { opacity: 1, translate: '0 0' }], { duration: 480, delay: 140 + i * 70, easing: ease, fill: 'backwards' }));
     } else {
       // Switching person: crossfade the contents in place.
       [...el.children].forEach((c, i) => c.animate([{ opacity: 0, translate: '0 10px' }, { opacity: 1, translate: '0 0' }], { duration: 380, delay: i * 60, easing: ease, fill: 'backwards' }));
     }
   }
-  closeBioAnimated() {
-    const el = document.getElementById('bio-panel');
-    if (!el || this.motionOff()) return this.setState({ bio: -1 });
-    if (this.__closing) return;
-    this.__closing = true;
+  closeAnimated(id, key) {
+    const el = document.getElementById(id);
+    if (!el || this.motionOff()) return this.setState({ [key]: -1 });
+    this.__closing = this.__closing || {};
+    if (this.__closing[key]) return;
+    this.__closing[key] = true;
     const cs = getComputedStyle(el), h = el.offsetHeight;
     el.style.overflow = 'hidden';
-    const a = el.animate([
+    const an = el.animate([
       { height: h + 'px', paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 },
       { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 }
     ], { duration: 420, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
-    a.onfinish = () => { this.__closing = false; this.setState({ bio: -1 }); };
+    an.onfinish = () => { this.__closing[key] = false; this.setState({ [key]: -1 }); };
+  }
+  closeBioAnimated() { this.closeAnimated('bio-panel', 'bio'); }
+  // Open a team member's bio in the Artistic Team section and bring it into view.
+  showTeamBio(i) {
+    if (this.state.bio !== i) this.setState({ bio: i });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const el = document.getElementById('bio-panel') || document.getElementById('team');
+      const hdr = [...document.querySelectorAll('[style*="sticky"]')].find(e => getComputedStyle(e).position === 'sticky');
+      const top = el.getBoundingClientRect().top + window.scrollY - (hdr ? hdr.getBoundingClientRect().height : 0) - 24;
+      window.scrollTo({ top, behavior: this.motionOff() ? 'auto' : 'smooth' });
+    }));
   }
   renderVals() {
     if (!this.__vp) { this.__vp = 1; this.__narrow = window.innerWidth < 1120; window.addEventListener('resize', () => { const n = window.innerWidth < 1120; if (n !== this.__narrow) { this.__narrow = n; this.setState({ __narrow: n }); } }); }
@@ -282,6 +323,25 @@ class Component extends DCLogic {
       'Matthew Menard': "Matthew Menard is an Ottawa-born composer and bass singer, and the Assistant Conductor of the ORYC. He began composing at the age of 11 in pop and electronic music before turning to classical composition, which he began studying formally in 2023. His work centres on choral and sacred music, and he serves as Composer-in-Residence at St. Joseph's Parish, where he has written many liturgical works. His music has been performed by the Capital Chamber Choir, the Ontario Youth Choir, the York University Chamber Choir, and the Ottawa Bach Choir. His growth as a composer has been shaped by conductors Jamie Loback and Laurence Ewashko, and his vocal training by baritone Brett Polegato."
     };
     const b = team[this.state.bio];
+    // Section leads: a bio of their own opens below the lead cards; anyone already on the
+    // artistic team links back up to that bio instead of repeating it.
+    const LEAD_BIOS = {
+      'Anouk Marks': "Canadian pianist Anouk Marks is entering her third year of Piano Performance studies at the University of Ottawa, where she studies under David Jalbert, Head of the Piano Department.\n\nBorn into a family of musicians, Anouk began focusing seriously on piano at the age of 11. Since then, she has earned numerous distinctions through the Royal Conservatory of Music examinations, the Kiwanis Music Festival, and the Ottawa Piano Festival. Her former teachers include Jean Desmarais, Professor Emeritus at both the Crane School of Music and the University of Ottawa.\n\nAnouk comes from a musical family that includes many professional musicians performing in Canada\u2019s top orchestras. Through these connections, she has had the privilege of performing alongside seasoned artists \u2013 an experience that has fostered a deep love for chamber music.\n\nShe regularly performs in health care facilities as a member of the Radical Connections Association and has participated in chamber music festivals such as Point Counterpoint (Vermont, USA) and the Scotia Festival of Music (Halifax). She attended Domaine Forget in the summer of 2023 and Orford Music Academy in 2024.\n\nIn December 2024, Anouk and her piano quartet were finalists in the University of Ottawa\u2019s Chamber Music Competition, and they went on to perform the Schumann Piano Quartet at the National Arts Centre in the spring.\n\nAn accomplished singer as well as a pianist, Anouk has been involved in Ottawa-based choirs since the age of 8. She currently sings with the Ottawa Regional Youth Choir, where she also serves as the piano and conducting intern.\n\nIn addition to performing, Anouk teaches piano and runs a small private studio in Wakefield, QC."
+    };
+    const leads = [['S', 'Soprano', 'Anouk Marks'], ['A', 'Alto', 'Brie van der Aa'], ['T', 'Tenor', 'Jace Tessier'], ['B', 'Bass', 'Matthew Menard']].map(([letter, section, name], i) => {
+      const teamIdx = teamRaw.findIndex(([n]) => n === name);
+      const own = !!LEAD_BIOS[name], linked = teamIdx >= 0 && !!BIOS[name];
+      const isOpen = this.state.leadBio === i;
+      return {
+        letter, section, name, slot: 'ABOUT-LEAD-0' + (i + 1),
+        clickable: own || linked, plain: !(own || linked), isOpen,
+        ring: isOpen ? '#E41E26' : '#DFEDEA',
+        cta: linked ? 'Read bio \u2191' : isOpen ? 'Bio open' : 'Read bio',
+        controls: linked ? 'bio-panel' : 'lead-bio-panel',
+        open: () => linked ? this.showTeamBio(teamIdx) : isOpen ? this.closeAnimated('lead-bio-panel', 'leadBio') : this.setState({ leadBio: i })
+      };
+    });
+    const lb = leads[this.state.leadBio];
     const initials = n => n.split(' ').filter(w => /^[A-Z]/.test(w)).map(w => w[0]).slice(0, 2).join('');
     let k = 0;
     const shots = window.ORYC_HEADSHOTS || {};
@@ -296,7 +356,9 @@ class Component extends DCLogic {
       recruiting: ['Education', 'Marketing & Communications', 'Chorister & Volunteer Engagement'],
       board: [grp('Chair', ['James Clemens']), grp('Directors', ['Peter Beaman', 'Ashok Kumar Biswas', 'Brie van der Aa', 'Nassim Barakat', 'Ian Fine', 'Jessica McClay']), grp('Chorister Representatives', ['Alex Kitt', 'Jace Tessier'])],
       volunteers: [1, 2, 3, 4, 5, 6],
-      leads: [['S', 'Soprano', 'Anouk Marks'], ['A', 'Alto', 'Brie van der Aa'], ['T', 'Tenor', 'Jace Tessier'], ['B', 'Bass', 'Matthew Menard']].map(([letter, section, name], i) => ({ letter, section, name, slot: 'ABOUT-LEAD-0' + (i + 1) })),
+      leads, hasLeadBio: !!lb,
+      leadBio: lb ? { ...lb, text: LEAD_BIOS[lb.name] } : { name: '', section: '', slot: 'ABOUT-LEAD-01', text: '' },
+      closeLeadBio: () => this.closeAnimated('lead-bio-panel', 'leadBio'),
       timeline: [['1982–2007', 'Barbara Clark, C.M.', 'Founder'], ['2007–2012', 'Kevin Reeves', 'Artistic Director'], ['2012–2013', 'Marg Stubington', 'Artistic Director'], ['2013–present', 'Jamie Loback', 'Artistic Director']].map(([years, name, role], i) => ({ years, name, role, slot: 'ABOUT-HIST-0' + (i + 1) }))
     };
   }

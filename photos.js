@@ -84,7 +84,8 @@
     'James Clemens': 'photos/team/james-clemens.jpg',
     'Elinor Clement': 'photos/team/elinor-clement.jpg',
     'Brie van der Aa': 'photos/team/brie-van-der-aa.jpg',
-    'Alex Kitt': 'photos/team/alex-kitt.jpg'
+    'Alex Kitt': 'photos/team/alex-kitt.jpg',
+    'Anouk Marks': 'photos/team/anouk-marks.jpg'
   };
   R.forEach(r => {
     if (r.src || !/^ABOUT-(TEAM|MGMT|BOARD|LEAD)-/.test(r.id)) return;
