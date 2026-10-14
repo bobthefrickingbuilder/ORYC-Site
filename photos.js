@@ -38,7 +38,7 @@
   g.forEach(([s, d, r], i) => S('GALLERY-' + String(i + 1).padStart(2, '0'), 'Events · Gallery', s, d, r, r === '3:2' ? '1800×1200' : r === '4:5' ? '1200×1500' : '1200×1200', 'none', 'rect'));
 
   S('SING-HERO-01', 'Sing with Us · Hero', 'Chorister Candid', 'Young singers mid-song, joyful, close range', '16:9', '2560×1440', 'none', 'bleed', 'Young singers singing joyfully');
-  [['Voice placement at the piano', 'A new singer at the piano during a voice placement'], ['Meeting Jamie and Cara', 'A new singer chatting with Jamie and Cara'], ['First rehearsal', 'A new chorister at their first rehearsal']].forEach(([d, a], i) =>
+  [['Voice placement at the piano', 'A new singer at the piano during a voice placement'], ['Meeting Jamie', 'A new singer meeting Jamie Loback'], ['First rehearsal', 'A new chorister at their first rehearsal']].forEach(([d, a], i) =>
     S('SING-STEP-0' + (i + 1), 'Sing with Us · How joining works', 'Rehearsal', d, '1:1', '800×800', 'none', 'circle', a));
   [['Rehearsal', 'Weekly Tuesday rehearsal'], ['Bootcamp / Social', 'Saturday Bootcamp breakfast'], ['Rehearsal', 'Individual voice lesson'], ['Rehearsal', 'ORYC Studio beginner session'], ['Rehearsal', 'Chorister conducting the choir']].forEach(([s, d], i) =>
     S('SING-EXPECT-0' + (i + 1), 'Sing with Us · What to expect', s, d, '3:2', '1800×1200', 'none', 'rect'));
@@ -72,6 +72,7 @@
     'SING-EXPECT-04': ['photos/sing-expect-04.jpg', 'A chorister conducting during an ORYC Studio session'],
     'SING-EXPECT-01': ['photos/sing-expect-01.jpg', 'Choristers singing from their scores as the conductor leads a Tuesday rehearsal'],
     'SING-STEP-01': ['photos/sing-step-01.jpg', 'Sheet music for El Grillo on a music stand'],
+    'SING-STEP-02': ['photos/sing-step-02.jpg', 'Jamie Loback, Artistic Director, laughing at rehearsal'],
     'HOME-HERO-01': ['photos/home-hero-01.jpg', 'The Ottawa Regional Youth Choir performing in concert, with the conductor and instrumentalists in front'],
     'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
     'EVENT-DETAIL-HERO': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],

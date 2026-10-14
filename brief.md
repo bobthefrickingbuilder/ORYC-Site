@@ -152,7 +152,7 @@ The brand is described as **"modern, young and playful."** Assets should be **ph
 
 ### Sing with Us (the most important conversion page)
 1. **Hero:** "Join the choir. No audition required."
-2. **How joining works,** in three steps: Book a vocal check, then Meet Jamie & Cara, then Start rehearsing. Voice placements run on Tuesday evenings only. Intake peaks in September and January.
+2. **How joining works,** in three steps: Book a vocal check, then Meet Jamie, then Start rehearsing. Voice placements run on Tuesday evenings only. Intake peaks in September and January.
 3. **What to expect,** as cards:
    - Weekly rehearsals.
    - Monthly Saturday Bootcamps: breakfast, team-building, sectionals, workshop.
@@ -276,7 +276,7 @@ I will supply and place every photo myself. Do not use stock photography, AI-gen
 | EVENT-DETAIL-VENUE | Event detail template | Venue | Exterior or interior of the venue | 3:2 |
 | GALLERY-01 to 12 | Gallery masonry | Mixed | Mix of Performance – Wide, Performance – Close, Rehearsal, Bootcamp / Social | Mixed |
 | SING-HERO-01 | Sing with Us hero | Chorister Candid | Young singers mid-song, joyful, close range | 16:9 full-bleed |
-| SING-STEP-01 to 03 | How joining works | Rehearsal | Vocal check at piano; meeting Jamie and Cara; first rehearsal | 1:1 · circle |
+| SING-STEP-01 to 03 | How joining works | Rehearsal | Vocal check at piano; meeting Jamie; first rehearsal | 1:1 · circle |
 | SING-EXPECT-01 to 05 | What to expect cards | Rehearsal / Bootcamp / Social | Weekly rehearsal, Saturday bootcamp breakfast, voice lesson, ORYC Studio, chorister conducting | 3:2 |
 | SING-QUOTE-01 to 03 | Chorister testimonials | Headshot | Quoted choristers | 1:1 · circle |
 | SUPPORT-HERO-01 | Support hero | Performance – Close | Soloist or small group in performance | 16:9 · red duotone |
