@@ -71,6 +71,7 @@
     'SING-EXPECT-05': ['photos/sing-expect-05.jpg', 'A chorister and a mentor laughing together over a score at rehearsal'],
     'SING-EXPECT-04': ['photos/sing-expect-04.jpg', 'A chorister conducting during an ORYC Studio session'],
     'SING-EXPECT-01': ['photos/sing-expect-01.jpg', 'Choristers singing from their scores as the conductor leads a Tuesday rehearsal'],
+    'SING-STEP-01': ['photos/sing-step-01.jpg', 'Sheet music for El Grillo on a music stand'],
     'HOME-HERO-01': ['photos/home-hero-01.jpg', 'The Ottawa Regional Youth Choir performing in concert, with the conductor and instrumentalists in front'],
     'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
     'EVENT-DETAIL-HERO': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
