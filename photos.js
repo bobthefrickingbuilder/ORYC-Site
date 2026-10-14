@@ -73,6 +73,7 @@
     'SING-EXPECT-01': ['photos/sing-expect-01.jpg', 'Choristers singing from their scores as the conductor leads a Tuesday rehearsal'],
     'SING-STEP-01': ['photos/sing-step-01.jpg', 'Sheet music for El Grillo on a music stand'],
     'SING-STEP-02': ['photos/sing-step-02.jpg', 'Jamie Loback, Artistic Director, laughing at rehearsal'],
+    'SING-STEP-03': ['photos/sing-step-03.jpg', 'A chorister laughing over her music folder at rehearsal'],
     'HOME-HERO-01': ['photos/home-hero-01.jpg', 'The Ottawa Regional Youth Choir performing in concert, with the conductor and instrumentalists in front'],
     'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
     'EVENT-DETAIL-HERO': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
