@@ -285,8 +285,22 @@ class Component extends DCLogic {
       if (src && src.isConnected && src.focus) src.focus({ preventScroll: true });
     };
     document.addEventListener('keydown', this.__onKey);
+    // After the header's ORYC and tagline fade in, glide down to the first section, unless the
+    // visitor has already scrolled, clicked or pressed a key, or arrived via a #section link.
+    if (!location.hash && !this.motionOff()) {
+      let touched = false;
+      const stop = () => { touched = true; };
+      const evs = ['wheel', 'touchstart', 'pointerdown', 'keydown'];
+      evs.forEach(ev => window.addEventListener(ev, stop, { passive: true, once: true }));
+      this.__intro = setTimeout(() => {
+        evs.forEach(ev => window.removeEventListener(ev, stop));
+        if (touched || window.scrollY > 40) return;
+        const first = document.querySelector('section[aria-labelledby="about-h"]');
+        if (first) this.scrollToEl(first);
+      }, 2300);
+    }
   }
-  componentWillUnmount() { document.removeEventListener('keydown', this.__onKey); }
+  componentWillUnmount() { document.removeEventListener('keydown', this.__onKey); clearTimeout(this.__intro); }
   componentDidUpdate() {
     this.animatePanel('bio-panel', 'bio');
     this.animatePanel('lead-bio-panel', 'leadBio');

@@ -51,3 +51,19 @@
     }, 100);
   }
 })();
+
+// Full-screen headers ([data-fill-screen]) size themselves to the viewport below the sticky site
+// header, which is taller on desktop than on phones; publish its height as --oryc-hdr.
+(function () {
+  const set = () => {
+    const h = [...document.querySelectorAll('[style*="sticky"]')].find(el => getComputedStyle(el).position === 'sticky');
+    if (h) document.documentElement.style.setProperty('--oryc-hdr', Math.round(h.getBoundingClientRect().height) + 'px');
+    // Phones also have a fixed Tickets/Donate bar along the bottom of the screen.
+    const bar = [...document.querySelectorAll('[style*="fixed"],[style*="sticky"]')].find(el => { const cs = getComputedStyle(el), r = el.getBoundingClientRect(); return (cs.position === 'fixed' || cs.position === 'sticky') && r.top > innerHeight / 2 && r.height > 0 && r.height < 200 && Math.abs(r.bottom - innerHeight) < 2 && r.width > innerWidth * 0.8; });
+    document.documentElement.style.setProperty('--oryc-ftr', (bar ? Math.round(bar.getBoundingClientRect().height) : 0) + 'px');
+  };
+  window.addEventListener('resize', set);
+  const mo = new MutationObserver(() => { set(); });
+  const start = () => { set(); mo.observe(document.body, { childList: true, subtree: true }); setTimeout(() => mo.disconnect(), 5000); };
+  document.body ? start() : document.addEventListener('DOMContentLoaded', start);
+})();
