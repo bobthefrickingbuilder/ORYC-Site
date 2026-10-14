@@ -106,10 +106,22 @@
         <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px;">
           <sc-for list="{{ videos }}" as="v" hint-placeholder-count="3">
             <div style="display:flex;flex-direction:column;gap:10px;">
-              <div role="img" aria-label="YouTube video embed: {{ v.title }}" style="position:relative;aspect-ratio:16/9;border-radius:18px;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
-                <span style="width:72px;height:72px;border-radius:50%;background:#E41E26;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
-                <span style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;">YouTube embed · video ID TBC</span>
-              </div>
+              <sc-if value="{{ v.playing }}" hint-placeholder-val="{{ false }}">
+                <div style="position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;"><iframe src="{{ v.embed }}" title="{{ v.title }}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe></div>
+              </sc-if>
+              <sc-if value="{{ v.poster }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ v.play }}" aria-label="Play video: {{ v.title }}" style="font:inherit;cursor:pointer;padding:0;border:0;position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000 center/cover no-repeat;background-image:{{ v.thumb }};color:#fff;display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.2,.7,.2,1);" style-hover="transform:scale(1.015);">
+                  <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.55));"></span>
+                  <span aria-hidden="true" style="position:relative;width:72px;height:72px;border-radius:50%;background:#E41E26;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35);"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span>
+                  <span aria-hidden="true" style="position:absolute;left:16px;bottom:12px;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;">{{ v.note }}</span>
+                </button>
+              </sc-if>
+              <sc-if value="{{ v.tbc }}" hint-placeholder-val="{{ true }}">
+                <div role="img" aria-label="Video coming soon: {{ v.title }}" style="position:relative;aspect-ratio:16/9;border-radius:18px;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;">
+                  <span style="width:72px;height:72px;border-radius:50%;background:#E41E26;opacity:.5;display:flex;align-items:center;justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></span>
+                  <span style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;">Video coming soon</span>
+                </div>
+              </sc-if>
               <span style="font-weight:700;font-size:19px;">{{ v.title }}</span>
             </div>
           </sc-for>
@@ -132,7 +144,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;mobile&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { filter: 'All' };
+  state = { filter: 'All', playing: -1 };
   componentDidMount() { if (!window.ORYC_CONTENT) this._t = setInterval(() => { if (window.ORYC_CONTENT) { clearInterval(this._t); this.forceUpdate(); } }, 60); }
   componentWillUnmount() { clearInterval(this._t); }
   renderVals() {
@@ -143,7 +155,19 @@ class Component extends DCLogic {
       mobile: !!this.props.mobile || !!this.__narrow,
       chips: ['All', 'ORYC Concerts', 'Fundraiser', 'Collaborations'].map(label => ({ label, on: label === f, bg: label === f ? '#000' : '#fff', fg: label === f ? '#fff' : '#000', pick: () => this.setState({ filter: label }) })),
       shown: season.filter(e => f === 'All' || e.cat === f).map(e => e.n),
-      videos: [{ title: 'Monteverdi Vespers by candlelight [video TBC]' }, { title: 'April in Argentina: Palmeri MisaTango [video TBC]' }, { title: 'Brahms Requiem, May 2023 [video TBC]' }],
+      videos: [
+        { title: 'Brahms Requiem · May 2023', id: 'zao00FRNvhs', start: 1523 },
+        { title: 'Monteverdi Vespers by candlelight' },
+        { title: 'April in Argentina: Palmeri MisaTango' }
+      ].map((v, i) => {
+        const playing = this.state.playing === i && !!v.id;
+        const ts = v.start ? Math.floor(v.start / 60) + ':' + String(v.start % 60).padStart(2, '0') : '';
+        return { title: v.title, tbc: !v.id, playing, poster: !!v.id && !playing,
+          thumb: v.id ? "url('https://i.ytimg.com/vi/" + v.id + "/hqdefault.jpg')" : 'none',
+          note: v.start ? 'Highlight · starts at ' + ts : 'Watch on YouTube',
+          embed: v.id ? 'https://www.youtube-nocookie.com/embed/' + v.id + '?autoplay=1&rel=0&start=' + (v.start || 0) : '',
+          play: () => this.setState({ playing: i }) };
+      }),
       gallery: Array.from({ length: 12 }, (_, i) => 'GALLERY-' + String(i + 1).padStart(2, '0'))
     };
   }
