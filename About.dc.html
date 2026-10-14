@@ -112,6 +112,28 @@
       </div>
     </section>
 
+    <section id="leads" aria-labelledby="leads-h" style="padding:0 clamp(20px,5.5cqw,80px) clamp(56px,7cqw,112px);">
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:32px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Section leads</span>
+          <h2 id="leads-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">One voice to follow in every section</h2>
+          <p style="margin:0;font-size:19px;max-width:640px;">Each section is guided by a section lead who supports fellow choristers, helps lead sectionals, and models the preparation and dedication that every ORYC chorister brings to rehearsal.</p>
+        </div>
+        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;">
+          <sc-for list="{{ leads }}" as="s" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;background:#fff;border:2px solid #DFEDEA;border-radius:24px;padding:24px;">
+              <div style="position:relative;width:min(100%,180px);">
+                <dc-import name="PhotoSlot" id="{{ s.slot }}" hint-size="100%,180px"></dc-import>
+                <span aria-hidden="true" style="position:absolute;right:-4px;bottom:4px;width:48px;height:48px;border-radius:50%;background:#E41E26;color:#fff;border:4px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;">{{ s.letter }}</span>
+              </div>
+              <span style="font-weight:700;font-size:23px;line-height:1.1;text-transform:uppercase;">{{ s.name }}</span>
+              <span style="font-style:italic;font-size:17px;">{{ s.section }} section lead</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
     <section id="board" aria-labelledby="board-h" style="padding:0 clamp(20px,5.5cqw,80px) clamp(56px,7cqw,112px);">
       <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:36px;">
         <div style="display:flex;flex-direction:column;gap:16px;">
@@ -160,23 +182,6 @@
           <p style="margin:0;font-size:19px;max-width:420px;">Singers aged 15 to 25 from across the National Capital Region.</p>
         </div>
         <dc-import name="PhotoSlot" id="ABOUT-CHOIR-01" hint-size="100%,700px"></dc-import>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-top:24px;">
-          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Section leads</span>
-          <h3 style="margin:0;font-weight:700;font-size:clamp(32px,3.6cqw,52px);line-height:.95;text-transform:uppercase;">One voice to follow in every section</h3>
-          <p style="margin:0;font-size:19px;max-width:640px;">Each section is guided by a section lead who supports fellow choristers, helps lead sectionals, and models the preparation and dedication that every ORYC chorister brings to rehearsal.</p>
-        </div>
-        <div data-stagger="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px;">
-          <sc-for list="{{ leads }}" as="s" hint-placeholder-count="4">
-            <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;background:#fff;border:2px solid #DFEDEA;border-radius:24px;padding:24px;">
-              <div style="position:relative;width:min(100%,180px);">
-                <dc-import name="PhotoSlot" id="{{ s.slot }}" hint-size="100%,180px"></dc-import>
-                <span aria-hidden="true" style="position:absolute;right:-4px;bottom:4px;width:48px;height:48px;border-radius:50%;background:#E41E26;color:#fff;border:4px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;">{{ s.letter }}</span>
-              </div>
-              <span style="font-weight:700;font-size:23px;line-height:1.1;text-transform:uppercase;">{{ s.name }}</span>
-              <span style="font-style:italic;font-size:17px;">{{ s.section }} section lead</span>
-            </div>
-          </sc-for>
-        </div>
       </div>
     </section>
 
@@ -283,7 +288,7 @@ class Component extends DCLogic {
     const grp = (label, names) => ({ label, people: names.map(name => ({ name, initials: initials(name), slot: 'ABOUT-BOARD-' + String(++k).padStart(2, '0'), bg: shots[name] ? 'url(' + shots[name] + ')' : 'none', hasPhoto: !!shots[name] })) });
     return {
       mobile: !!this.props.mobile || !!this.__narrow,
-      anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Section leads', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
+      anchors: [['Mission', '/about#mission'], ['Artistic team', '/about#team'], ['Management', '/about#management'], ['Section leads', '/about#leads'], ['Board', '/about#board'], ['Volunteers', '/about#volunteers'], ['Meet the choir', '/about#choir'], ['History', '/about#history'], ['In memoriam', '/about#memoriam']].map(([label, href]) => ({ label, href })),
       team, hasBio: !!b,
       bio: b ? { ...b, text: BIOS[b.name] || '[Biography placeholder: 80–120 words to be supplied for ' + b.name + '.]' } : { name: '', role: '', slot: 'ABOUT-TEAM-01', text: '' },
       closeBio: () => this.closeBioAnimated(),
