@@ -61,6 +61,7 @@
     'ABOUT-HIST-04': ['photos/team/jamie-loback.jpg', 'Jamie Loback conducting'],
     'SING-EXPECT-02': ['photos/sing-expect-02.jpg', 'A chorister with her score and pencil during a Saturday Bootcamp session'],
     'SING-EXPECT-03': ['photos/sing-expect-03.jpg', 'A smiling vocal instructor during a lesson'],
+    'ABOUT-CHOIR-01': ['photos/about-choir-01.jpg', 'The Ottawa Regional Youth Choir performing by candlelight to a full church, seen from the back of the nave'],
     'HOME-HERO-01': ['photos/home-hero-01.jpg', 'The Ottawa Regional Youth Choir performing in concert, with the conductor and instrumentalists in front'],
     'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
     'EVENT-DETAIL-HERO': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
