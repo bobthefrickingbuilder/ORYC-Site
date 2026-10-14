@@ -78,6 +78,7 @@
     'SUPPORT-FUNDS-01': ['photos/support-funds-01.jpg', 'Choristers singing together on the risers behind candlelight'],
     'SUPPORT-FUNDS-02': ['photos/support-funds-02.jpg', 'A young chorister conducting the choir'],
     'SUPPORT-FUNDS-03': ['photos/support-funds-03.jpg', 'Choristers singing from their folders in concert'],
+    'SUPPORT-VOL-01': ['photos/support-vol-01.jpg', 'A chorister reading through a score by the window in the music office'],
     'CONTACT-VENUE-01': ['photos/contact-venue-01.jpg', "St. Joseph's Parish on Wilbrod Street in autumn"],
     'EVENT-DETAIL-VENUE': ['photos/event-detail-venue.jpg', 'The Church of St. Barnabas, Apostle and Martyr, on James Street'],
     'GALLERY-01': ['photos/mosaic/15-dress-rehearsal.jpg', 'The choir and instrumentalists setting up for a dress rehearsal', '50% 58%'],
