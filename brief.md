@@ -122,8 +122,8 @@ The brand is described as **"modern, young and playful."** Assets should be **ph
   - Bio cards open into a modal or expanded panel.
 - **Management:**
   - James Clemens, Executive Director.
-  - Matthew Ouellette, Director of Finance.
   - Elinor Clement, Choir Manager.
+  - Matthew Ouellette, Director of Finance.
   - Three vacant roles, shown as "We're recruiting" cards linking to Volunteer: Education; Marketing & Communications; Chorister & Volunteer Engagement.
 - **Board:**
   - Chair: James Clemens.
