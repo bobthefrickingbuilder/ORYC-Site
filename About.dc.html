@@ -275,6 +275,22 @@ class Component extends DCLogic {
     this.animatePanel('bio-panel', 'bio');
     this.animatePanel('lead-bio-panel', 'leadBio');
     this.animatePanel('hist-bio-panel', 'histBio');
+    if (this.__scrollTo) { const el = document.getElementById(this.__scrollTo); this.__scrollTo = null; if (el) this.scrollToEl(el); }
+  }
+  // Scroll so an element sits just below the sticky header.
+  scrollToEl(el) {
+    const hdr = [...document.querySelectorAll('[style*="sticky"]')].find(e => getComputedStyle(e).position === 'sticky');
+    const top = el.getBoundingClientRect().top + window.scrollY - (hdr ? hdr.getBoundingClientRect().height : 0) - 24;
+    window.scrollTo({ top: Math.max(0, top), behavior: this.motionOff() ? 'auto' : 'smooth' });
+  }
+  // Open a bio panel, remember which card opened it, and bring the panel into view.
+  openPanel(key, i, e) {
+    const PANELS = { bio: 'bio-panel', leadBio: 'lead-bio-panel', histBio: 'hist-bio-panel' };
+    this.__src = this.__src || {};
+    if (e && e.currentTarget) this.__src[key] = e.currentTarget;
+    if (this.state[key] === i) { const el = document.getElementById(PANELS[key]); if (el) this.scrollToEl(el); return; }
+    this.__scrollTo = PANELS[key];
+    this.setState({ [key]: i });
   }
   animatePanel(id, key) {
     this.__last = this.__last || {};
@@ -299,37 +315,35 @@ class Component extends DCLogic {
       [...el.children].forEach((c, i) => c.animate([{ opacity: 0, translate: '0 10px' }, { opacity: 1, translate: '0 0' }], { duration: 380, delay: i * 60, easing: ease, fill: 'backwards' }));
     }
   }
+  // Close a bio panel and return the reader to the card that opened it.
   closeAnimated(id, key) {
+    const SECTIONS = { bio: 'team', leadBio: 'leads', histBio: 'history' };
+    const src = this.__src && this.__src[key];
+    const back = () => { const t = src && src.isConnected ? src : document.getElementById(SECTIONS[key]); if (t) this.scrollToEl(t); };
     const el = document.getElementById(id);
-    if (!el || this.motionOff()) return this.setState({ [key]: -1 });
+    if (!el || this.motionOff()) { this.setState({ [key]: -1 }); requestAnimationFrame(() => requestAnimationFrame(back)); return; }
     this.__closing = this.__closing || {};
     if (this.__closing[key]) return;
     this.__closing[key] = true;
+    // A card above the panel can be scrolled to while the panel collapses; one below it moves
+    // up as the panel collapses, so wait until the panel is gone.
+    const srcAbove = !!(src && src.isConnected && (src.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING));
     const cs = getComputedStyle(el), h = el.offsetHeight;
     el.style.overflow = 'hidden';
     const an = el.animate([
       { height: h + 'px', paddingTop: cs.paddingTop, paddingBottom: cs.paddingBottom, opacity: 1 },
       { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 }
     ], { duration: 420, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'forwards' });
-    an.onfinish = () => { this.__closing[key] = false; this.setState({ [key]: -1 }); };
+    if (srcAbove) back();
+    an.onfinish = () => { this.__closing[key] = false; this.setState({ [key]: -1 }); if (!srcAbove) requestAnimationFrame(() => requestAnimationFrame(back)); };
   }
   closeBioAnimated() { this.closeAnimated('bio-panel', 'bio'); }
-  // Open a team member's bio in the Artistic Team section and bring it into view.
-  showTeamBio(i) {
-    if (this.state.bio !== i) this.setState({ bio: i });
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      const el = document.getElementById('bio-panel') || document.getElementById('team');
-      const hdr = [...document.querySelectorAll('[style*="sticky"]')].find(e => getComputedStyle(e).position === 'sticky');
-      const top = el.getBoundingClientRect().top + window.scrollY - (hdr ? hdr.getBoundingClientRect().height : 0) - 24;
-      window.scrollTo({ top, behavior: this.motionOff() ? 'auto' : 'smooth' });
-    }));
-  }
   renderVals() {
     if (!this.__vp) { this.__vp = 1; this.__narrow = window.innerWidth < 1120; window.addEventListener('resize', () => { const n = window.innerWidth < 1120; if (n !== this.__narrow) { this.__narrow = n; this.setState({ __narrow: n }); } }); }
     const teamRaw = [['Jamie Loback', 'Artistic Director (since 2013)'], ['Matthew Menard', 'Assistant Conductor'], ['Aude Urbancic', 'Collaborative Pianist'], ['Cara Gilbertson', 'Vocal Instructor'], ['Victor Toma', 'Assistant Collaborative Pianist']];
     const team = teamRaw.map(([name, role], i) => {
       const isOpen = this.state.bio === i;
-      return { name, role, slot: 'ABOUT-TEAM-0' + (i + 1), isOpen, ring: isOpen ? '#E41E26' : '#fff', cta: isOpen ? 'Bio open' : 'Read bio', open: () => (isOpen ? this.closeBioAnimated() : this.setState({ bio: i })) };
+      return { name, role, slot: 'ABOUT-TEAM-0' + (i + 1), isOpen, ring: isOpen ? '#E41E26' : '#fff', cta: isOpen ? 'Bio open' : 'Read bio', open: e => (isOpen ? this.closeBioAnimated() : this.openPanel('bio', i, e)) };
     });
     const BIOS = {
       'Aude Urbancic': "Aude Urbancic is a collaborative pianist and vocal coach with a particular passion for opera and choral music. She holds a Doctorate of Music in Collaborative Piano, with a specialization in vocal accompaniment, from the Université de Montréal, and a Master's degree in Piano Performance from the University of Ottawa. In addition to her work with the ORYC, she is Music Director at the Church of the Ascension, pianist for the Ottawa Children's Choir Chamber Choir, and a faculty member at the Bytown School of Singing. She has served as rehearsal pianist for major choral works at the National Arts Centre, as pianist for the Ontario Youth Choir, and as music director for the University of Ottawa's 2024 opera production, The Orpheus Project. In 2022, she released her debut album, Batkivshchyna, with Laurence Ewashko.",
@@ -355,7 +369,7 @@ class Component extends DCLogic {
         ring: isOpen ? '#E41E26' : '#DFEDEA',
         cta: linked ? 'Read bio \u2191' : isOpen ? 'Bio open' : 'Read bio',
         controls: linked ? 'bio-panel' : 'lead-bio-panel',
-        open: () => linked ? this.showTeamBio(teamIdx) : isOpen ? this.closeAnimated('lead-bio-panel', 'leadBio') : this.setState({ leadBio: i })
+        open: e => linked ? this.openPanel('bio', teamIdx, e) : isOpen ? this.closeAnimated('lead-bio-panel', 'leadBio') : this.openPanel('leadBio', i, e)
       };
     });
     const lb = leads[this.state.leadBio];
@@ -388,7 +402,7 @@ class Component extends DCLogic {
       timeline: [['1982–2007', 'Barbara Clark, C.M.', 'Founder'], ['2007–2012', 'Kevin Reeves', 'Artistic Director'], ['2012–2013', 'Marg Stubington', 'Artistic Director'], ['2013–present', 'Jamie Loback', 'Artistic Director']].map(([years, name, role], i) => {
         const isOpen = this.state.histBio === i;
         return { years, name, role, slot: 'ABOUT-HIST-0' + (i + 1), isOpen, ring: isOpen ? '#56C4C4' : 'transparent', cta: isOpen ? 'Bio open' : 'Read bio',
-          open: () => (isOpen ? this.closeAnimated('hist-bio-panel', 'histBio') : this.setState({ histBio: i })) };
+          open: e => (isOpen ? this.closeAnimated('hist-bio-panel', 'histBio') : this.openPanel('histBio', i, e)) };
       }),
       hasHistBio: !!hb, histBio: hb || { name: '', role: '', years: '', slot: 'ABOUT-HIST-01', text: '' },
       closeHistBio: () => this.closeAnimated('hist-bio-panel', 'histBio')
