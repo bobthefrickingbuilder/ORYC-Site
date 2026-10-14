@@ -270,6 +270,23 @@ class Component extends DCLogic {
   motionOff() {
     return matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.motion === 'off';
   }
+  componentDidMount() {
+    // Esc closes the most recently opened bio and returns to the card that opened it.
+    this.__onKey = e => {
+      if (e.key !== 'Escape' || e.defaultPrevented) return;
+      const t = e.target; if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+      const PANELS = { bio: 'bio-panel', leadBio: 'lead-bio-panel', histBio: 'hist-bio-panel' };
+      const open = (this.__order || []).filter(k => this.state[k] >= 0);
+      const key = open[open.length - 1] || Object.keys(PANELS).find(k => this.state[k] >= 0);
+      if (!key) return;
+      e.preventDefault();
+      const src = this.__src && this.__src[key];
+      this.closeAnimated(PANELS[key], key);
+      if (src && src.isConnected && src.focus) src.focus({ preventScroll: true });
+    };
+    document.addEventListener('keydown', this.__onKey);
+  }
+  componentWillUnmount() { document.removeEventListener('keydown', this.__onKey); }
   componentDidUpdate() {
     this.animatePanel('bio-panel', 'bio');
     this.animatePanel('lead-bio-panel', 'leadBio');
@@ -287,6 +304,7 @@ class Component extends DCLogic {
     const PANELS = { bio: 'bio-panel', leadBio: 'lead-bio-panel', histBio: 'hist-bio-panel' };
     this.__src = this.__src || {};
     if (e && e.currentTarget) this.__src[key] = e.currentTarget;
+    this.__order = (this.__order || []).filter(k => k !== key).concat(key);
     if (this.state[key] === i) { const el = document.getElementById(PANELS[key]); if (el) this.scrollToEl(el); return; }
     this.__scrollTo = PANELS[key];
     this.setState({ [key]: i });
