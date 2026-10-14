@@ -93,8 +93,8 @@
           <h2 id="rep-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">The canon and brand-new Canadian music</h2>
           <p style="margin:0;font-size:19px;">The ORYC performs the great choral-symphonic masterworks alongside works by Canadian composers, including premieres and new music written by our own choristers.</p>
         </div>
-        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;max-width:980px;">
-          <sc-for list="{{ rep }}" as="r" hint-placeholder-count="8"><li style="border:2px solid #fff;border-radius:999px;padding:10px 20px;font-weight:700;font-size:18px;">{{ r }}</li></sc-for>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));column-gap:clamp(20px,2.5cqw,40px);max-width:860px;">
+          <sc-for list="{{ rep }}" as="r" hint-placeholder-count="8"><li style="border-top:1px solid rgba(255,255,255,.28);padding:16px 0 22px;font-weight:700;font-size:clamp(19px,1.6cqw,23px);line-height:1.25;"><span aria-hidden="true" style="display:block;width:22px;height:3px;background:#E41E26;margin-bottom:12px;"></span>{{ r }}</li></sc-for>
         </ul>
       </div>
     </section>
