@@ -58,6 +58,9 @@
   const SRC = {
     'HOME-LEGACY-01': ['photos/home-legacy-01.jpg', 'A stack of ORYC recordings, including the 20th and 25th anniversary CDs'],
     'HOME-SUPPORT-01': ['photos/home-support-01.jpg', 'Choristers laughing together with their scores at rehearsal'],
+    'ABOUT-HIST-01': ['photos/history/barbara-clark.jpg', 'Barbara Clark, C.M., founder of the ORYC'],
+    'ABOUT-HIST-02': ['photos/history/kevin-reeves.jpg', 'Kevin Reeves, Artistic Director 2007 to 2012'],
+    'ABOUT-HIST-03': ['photos/history/marg-stubington.jpg', 'Marg Stubington, Artistic Director 2012 to 2013'],
     'ABOUT-HIST-04': ['photos/team/jamie-loback.jpg', 'Jamie Loback conducting'],
     'SING-EXPECT-02': ['photos/sing-expect-02.jpg', 'A chorister with her score and pencil during a Saturday Bootcamp session'],
     'SING-EXPECT-03': ['photos/sing-expect-03.jpg', 'A smiling vocal instructor during a lesson'],
