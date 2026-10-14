@@ -76,6 +76,7 @@
 .om-layer span,.om-logo span{display:inline-block;transform:translate(calc(var(--mx,0) * var(--d) * 1px),calc(var(--my,0) * var(--d) * 1px));}
 .om-logo{position:absolute;inset:2px;background:${RED};color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'Glacial Indifference',sans-serif;font-weight:700;line-height:.8;letter-spacing:-.02em;}
 .om-logo div{display:flex;}
+.om-intro .om-layer span{opacity:0;}
 .om-flipper .om-card{transition:transform .7s cubic-bezier(.2,.7,.2,1);}
 .om-flipper.om-flip .om-card{transform:rotateY(180deg);}
 .om-flipper{cursor:pointer;}
@@ -294,18 +295,40 @@
     host.addEventListener('pointerleave', () => { tx = 0; ty = 0; kick(); });
 
     async function intro() {
+      // Letters stay hidden until the font is ready, so the title never flashes before it fades in.
+      root.classList.add('om-intro');
       build(true);
       await Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), sleep(1200)]);
-      const spans = [...root.querySelectorAll('.om-slice .om-layer span')];
-      const byLetter = i => spans.filter((s, k) => k % 4 === i);
-      [0, 1, 2, 3].forEach(i => byLetter(i).forEach(s => s.animate([{ opacity: 0, translate: '0 40px' }, { opacity: i === 1 ? 0.8 : 1, translate: '0 0' }], { duration: 750, delay: i * 90, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' })));
-      const first = [...tiles.values()].map(t => loadImg(PHOTOS[t.photo].src));
-      await Promise.all([sleep(1700), Promise.race([Promise.all(first), sleep(4000)])]);
       if (destroyed) return;
+      const first = [...tiles.values()].map(t => loadImg(PHOTOS[t.photo].src));
+      const spans = [...root.querySelectorAll('.om-slice .om-layer span')];
+      const ease = 'cubic-bezier(.16,1,.3,1)';
+      // 1. Title: each letter rises, sharpens and fades in, one after another.
+      spans.forEach((s, k) => { const i = k % 4; s.animate([
+        { opacity: 0, translate: '0 60px', scale: '.94', filter: 'blur(10px)' },
+        { opacity: i === 1 ? 0.8 : 1, translate: '0 0', scale: '1', filter: 'blur(0px)' }
+      ], { duration: 1150, delay: 120 + i * 130, easing: ease, fill: 'both' }); });
+      root.classList.remove('om-intro');
+      // 2. Hold the finished title for a beat (and give the first photos time to arrive).
+      await Promise.all([sleep(2500), Promise.race([Promise.all(first), sleep(4500)])]);
+      if (destroyed) return;
+      // 3. Break: tiles turn over in a ripple outward from the middle of the wordmark; the ORYC tile lands last.
       const all = [...tiles.values()];
-      const flips = all.map(t => { const R = rect(t.c, t.r, t.shape); const d = (R.x + R.w / 2) / G.W * 750 + rand(0, 160); return t.card.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(180deg)' }], { duration: 760, delay: d, easing: 'cubic-bezier(.65,0,.25,1)', fill: 'forwards' }).finished; });
-      flips.push(logoEl.firstChild.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(180deg)' }], { duration: 760, delay: 1150, easing: 'cubic-bezier(.65,0,.25,1)', fill: 'forwards' }).finished);
-      setTimeout(() => root.classList.add('om-live'), 500);
+      const cx = G.W / 2, cy = G.H / 2;
+      const far = Math.hypot(G.W / 2, G.H / 2);
+      const turn = [
+        { transform: 'rotateY(0deg) scale(1)' },
+        { transform: 'rotateY(90deg) scale(.92)', offset: 0.5 },
+        { transform: 'rotateY(180deg) scale(1)' }
+      ];
+      let last = 0;
+      const flips = all.map(t => {
+        const R = rect(t.c, t.r, t.shape);
+        const d = Math.hypot(R.x + R.w / 2 - cx, R.y + R.h / 2 - cy) / far * 650 + rand(0, 90);
+        last = Math.max(last, d);
+        return t.card.animate(turn, { duration: 950, delay: d, easing: 'cubic-bezier(.65,0,.35,1)', fill: 'forwards' }).finished;
+      });
+      flips.push(logoEl.firstChild.animate(turn, { duration: 950, delay: last + 160, easing: 'cubic-bezier(.65,0,.35,1)', fill: 'forwards' }).finished);
       await Promise.all(flips);
       if (destroyed) return;
       // Swap the double-sided intro tiles for plain photo tiles (no visible change).
