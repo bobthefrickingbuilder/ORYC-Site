@@ -77,6 +77,18 @@
 .om-layer span,.om-logo span{display:inline-block;transform:translate(calc(var(--mx,0) * var(--d) * 1px),calc(var(--my,0) * var(--d) * 1px));}
 .om-logo{position:absolute;inset:2px;background:${RED};color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:'Glacial Indifference',sans-serif;font-weight:700;line-height:.8;letter-spacing:-.02em;}
 .om-logo div{display:flex;}
+.om-flipper .om-card{transition:transform .7s cubic-bezier(.2,.7,.2,1);}
+.om-flipper.om-flip .om-card{transform:rotateY(180deg);}
+.om-flipper{cursor:pointer;}
+.om-hint{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);font-family:'Glacial Indifference',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.85;white-space:nowrap;display:flex;align-items:center;gap:.5em;}
+.om-back{position:absolute;inset:2px;background:#000;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-family:'Glacial Indifference',sans-serif;}
+.om-back p{margin:0;font-style:italic;font-weight:700;line-height:1.1;}
+.om-back nav{display:flex;flex-direction:column;align-items:stretch;}
+.om-btn{display:flex;align-items:center;justify-content:center;border-radius:999px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;border:2px solid #fff;transition:background-color .25s,color .25s,border-color .25s,transform .25s;}
+.om-btn:hover{transform:translateY(-2px);}
+.om-btn-a{background:${RED};border-color:${RED};color:#fff;}.om-btn-a:hover{background:#fff;border-color:#fff;color:#000;}
+.om-btn-b{background:transparent;color:#fff;}.om-btn-b:hover{background:#fff;color:#000;}
+@media (prefers-reduced-motion: reduce){.om-flipper .om-card{transition:none;}}
 `;
 
   function letters(extra) {
@@ -158,6 +170,15 @@
       const R = rect(G.logo.c, G.logo.r, [G.logo.w, G.logo.h]); const f = Math.min(R.w, R.h) * 0.36;
       return `<div class="om-logo" style="font-size:${f}px"><div><span style="--d:4">O</span><span style="--d:-6;margin-left:-.15em;opacity:.8">R</span></div><div><span style="--d:5">Y</span><span style="--d:-3">C</span></div></div>`;
     }
+    function frontHTML() {
+      const R = rect(G.logo.c, G.logo.r, [G.logo.w, G.logo.h]); const f = Math.min(R.w, R.h);
+      return logoHTML().replace(/<\/div>$/, `<span class="om-hint" aria-hidden="true" style="font-size:${Math.max(10, f * 0.032)}px">Sing with us <svg width="1.1em" height="1.1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></span></div>`);
+    }
+    function backHTML() {
+      const R = rect(G.logo.c, G.logo.r, [G.logo.w, G.logo.h]); const f = Math.min(R.w, R.h);
+      const bh = Math.max(36, f * 0.12), bf = Math.max(11, f * 0.034), pad = Math.max(14, f * 0.07);
+      return `<div class="om-back" style="gap:${Math.max(12, f * 0.06)}px;padding:${pad}px;"><p style="font-size:${Math.max(15, f * 0.075)}px">Young Ottawa voices, <span style="white-space:nowrap">15–25.</span></p><nav aria-label="Get involved" style="gap:${Math.max(8, f * 0.025)}px;width:min(100%, ${Math.max(170, f * 0.62)}px)"><a class="om-btn om-btn-a" href="/sing" style="min-height:${bh}px;font-size:${bf}px;padding:0 ${bf * 1.4}px">Join the Choir</a><a class="om-btn om-btn-b" href="/events" style="min-height:${bh}px;font-size:${bf}px;padding:0 ${bf * 1.4}px">See the Season</a></nav></div>`;
+    }
 
     function addTile(spec, withSlice) {
       spec.id = nextId++; spec.el = tileEl(spec, withSlice); spec.card = spec.el.firstChild;
@@ -170,8 +191,26 @@
       logoEl.style.cssText = `left:${R.x}px;top:${R.y}px;width:${R.w}px;height:${R.h}px;z-index:2;`;
       logoEl.innerHTML = withSlice
         ? `<div class="om-card"><div class="om-face om-front om-slice">${sliceHTML(R)}</div><div class="om-face" style="transform:rotateY(180deg)">${logoHTML()}</div></div>`
-        : `<div class="om-card"><div class="om-face">${logoHTML()}</div></div>`;
+        : `<div class="om-card"><div class="om-face">${frontHTML()}</div><div class="om-face" style="transform:rotateY(180deg)">${backHTML()}</div></div>`;
       root.appendChild(logoEl);
+      if (!withSlice) makeFlippable(logoEl);
+    }
+    // ORYC tile: hover (desktop) or tap (touch) flips it to the Join / Season buttons.
+    // Keyboard focus on a button flips it too; tapping elsewhere or Esc flips it back.
+    function makeFlippable(el) {
+      el.classList.add('om-flipper'); el.removeAttribute('aria-hidden');
+      el.setAttribute('role', 'group'); el.setAttribute('aria-label', 'Join the choir or see the season');
+      const front = el.querySelector('.om-card > .om-face'); front.setAttribute('aria-hidden', 'true');
+      const hover = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
+      const set = on => el.classList.toggle('om-flip', on);
+      el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && hover()) set(true); });
+      el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && hover() && !el.contains(document.activeElement)) set(false); });
+      el.addEventListener('click', e => { if (e.target.closest('a')) return; if (!hover() || e.pointerType !== 'mouse') set(!el.classList.contains('om-flip')); });
+      el.addEventListener('focusin', () => set(true));
+      el.addEventListener('focusout', e => { if (!el.contains(e.relatedTarget) && !el.matches(':hover')) set(false); });
+      el.addEventListener('keydown', e => { if (e.key === 'Escape') { set(false); document.activeElement && document.activeElement.blur(); } });
+      const outside = e => { if (!el.isConnected) return document.removeEventListener('pointerdown', outside); if (!el.contains(e.target)) set(false); };
+      document.addEventListener('pointerdown', outside);
     }
 
     function build(withSlice) {
