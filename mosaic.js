@@ -29,7 +29,6 @@
     { src: 'photos/mosaic/17-laughing-pair.jpg', w: 1120, h: 1400, fx: 0.53, fy: 0.42, shapes: 'sbtw', alt: "Two choristers laughing together with their folders" },
     { src: 'photos/mosaic/18-voice-lesson.jpg', w: 1120, h: 1400, fx: 0.46, fy: 0.44, shapes: 'sbt', alt: "A vocal instructor laughing during a lesson" },
     { src: 'photos/mosaic/19-candlelit-nave.jpg', w: 1400, h: 1049, fx: 0.50, fy: 0.64, shapes: 'wb', alt: "A candlelit concert seen from the back of the church" },
-    { src: 'photos/mosaic/20-kyrie-score.jpg', w: 1120, h: 1400, fx: 0.58, fy: 0.42, shapes: 'sbt', alt: "A chorister holding the score of Misa a Buenos Aires" },
     { src: 'photos/mosaic/21-piano-circle.jpg', w: 1120, h: 1400, fx: 0.52, fy: 0.55, shapes: 'bt', alt: "Choristers gathered around the piano at rehearsal" },
     { src: 'photos/mosaic/22-office-sectional.jpg', w: 1400, h: 933, fx: 0.55, fy: 0.45, shapes: 'wsb', alt: "A sectional rehearsing in the music office at St. Joseph's" },
     { src: 'photos/mosaic/23-pencil-laugh.jpg', w: 1120, h: 1400, fx: 0.50, fy: 0.40, shapes: 'sbt', alt: "A chorister laughing with a pencil tucked behind her ear" },
