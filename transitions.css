@@ -1,0 +1,12 @@
+/* Page transitions: a quick frosted-glass hand-off between pages (about a quarter second).
+   Uses the browser's built-in cross-document view transitions; browsers without support
+   simply change pages as normal. */
+@view-transition { navigation: auto; }
+::view-transition-group(root) { animation-duration: 240ms; }
+::view-transition-old(root) { animation: oryc-frost-out 160ms cubic-bezier(.4, 0, 1, 1) both; }
+::view-transition-new(root) { animation: oryc-frost-in 240ms cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes oryc-frost-out { to { opacity: 0; filter: blur(16px) brightness(1.06) saturate(.85); } }
+@keyframes oryc-frost-in { from { opacity: 0; filter: blur(16px) brightness(1.06) saturate(.85); } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
