@@ -25,12 +25,13 @@
 <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
 <section data-parallax-root="" data-fill-screen="" aria-label="About the Ottawa Regional Youth Choir" style="position:relative;height:calc(100vh - var(--oryc-hdr, 124px) - var(--oryc-ftr, 0px));height:calc(100svh - var(--oryc-hdr, 124px) - var(--oryc-ftr, 0px));min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#E41E26;color:#fff;font-family:'Glacial Indifference',sans-serif;">
   <dc-import name="PhotoSlot" id="HOME-HERO-01" fill="{{ true }}" labelPos="top" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import>
-  <div style="position:relative;padding:0 clamp(20px,5.5cqw,80px) clamp(36px,5cqw,72px);display:flex;flex-direction:column;gap:clamp(18px,2.4cqw,32px);">
+  <div style="position:relative;padding:0 clamp(20px,5.5cqw,80px) max(clamp(36px,5cqw,72px), 96px);display:flex;flex-direction:column;gap:clamp(18px,2.4cqw,32px);">
     <div aria-hidden="true" style="margin:0;font-weight:700;font-size:clamp(128px,30cqw,450px);line-height:.78;letter-spacing:-.03em;display:flex;"><span data-reveal="" data-delay="0" data-depth="10">O</span><span data-reveal="" data-delay="90" data-depth="-16" style="margin-left:-.15em;opacity:.8;">R</span><span data-reveal="" data-delay="180" data-depth="14">Y</span><span data-reveal="" data-delay="270" data-depth="-9">C</span></div>
     <div data-reveal="" data-delay="450" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 40px;">
       <p style="margin:0;font-style:italic;font-weight:700;font-size:clamp(28px,3.2cqw,46px);line-height:1.1;">Young Ottawa voices, <span style="white-space:nowrap;">15–25.</span></p>
     </div>
   </div>
+<a href="/about#who" aria-label="Scroll to Who we are" data-reveal="fade" data-delay="900" data-float="" style="position:absolute;left:50%;bottom:clamp(18px,2.4cqw,32px);margin-left:-26px;width:52px;height:52px;border-radius:50%;border:2px solid rgba(255,255,255,.85);background:rgba(0,0,0,.18);color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background-color .25s,color .25s,border-color .25s;" style-hover="background:#fff;color:#E41E26;border-color:#fff;"><span style="display:flex;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></a>
 </section>
 </sc-if>
 <sc-if value="{{ isB }}" hint-placeholder-val="{{ false }}">
