@@ -18,7 +18,7 @@
   S('ABOUT-HERO-01', 'About · Hero', 'Group Portrait', 'Full choir posed group photo', '21:9', '2560×1100', 'none', 'bleed', 'The full Ottawa Regional Youth Choir');
   ['Jamie Loback', 'Matthew Menard', 'Aude Urbancic', 'Cara Gilbertson', 'Victor Toma'].forEach((n, i) =>
     S('ABOUT-TEAM-0' + (i + 1), 'About · Artistic team', 'Headshot', n + ', head and shoulders, plain background', '1:1', '800×800', 'none', 'circle', 'Portrait of ' + n));
-  ['James Clemens', 'Elinor Clement', 'Matthew Ouellette'].forEach((n, i) =>
+  ['James Clemens', 'Elinor Clement', 'Matthew Ouellette', 'Cara Gilbertson', 'Jace Tessier'].forEach((n, i) =>
     S('ABOUT-MGMT-0' + (i + 1), 'About · Management', 'Headshot', n + ', head and shoulders, plain background', '1:1', '800×800', 'none', 'circle', 'Portrait of ' + n));
   ['James Clemens', 'Peter Beaman', 'Ashok Kumar Biswas', 'Brie van der Aa', 'Nassim Barakat', 'Ian Fine', 'Jessica McClay', 'Alex Kitt', 'Jace Tessier'].forEach((n, i) =>
     S('ABOUT-BOARD-' + String(i + 1).padStart(2, '0'), 'About · Board', 'Headshot', n + ' (optional — falls back to initials)', '1:1', '600×600', 'none', 'circle', 'Portrait of ' + n));

@@ -124,7 +124,9 @@ The brand is described as **"modern, young and playful."** Assets should be **ph
   - James Clemens, Executive Director.
   - Elinor Clement, Choir Manager.
   - Matthew Ouellette, Director of Finance.
-  - Three vacant roles, shown as "We're recruiting" cards linking to Volunteer: Education; Marketing & Communications; Chorister & Volunteer Engagement.
+  - Cara Gilbertson, Education.
+  - Jace Tessier, Marketing & Communications.
+  - One vacant role, shown as a "We're recruiting" card linking to Volunteer: Chorister & Volunteer Engagement.
 - **Board:**
   - Chair: James Clemens.
   - Directors: Peter Beaman, Ashok Kumar Biswas, Brie van der Aa, Nassim Barakat, Ian Fine, Jessica McClay.
