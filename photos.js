@@ -100,6 +100,7 @@
     'EVENT-CARD-03': ['photos/posters/maestros.jpg', "Poster for the Young Maestros' Showcase"],
     'EVENT-CARD-04': ['photos/posters/supper-table.jpg', "Poster for Songs for St. Joe's Supper Table"],
     'EVENT-CARD-05': ['photos/posters/darkness-to-light.jpg', 'Poster for From Darkness to Light: Rachmaninoff All-Night Vigil and Gjeilo Sunrise Mass'],
+    'EVENT-CARD-06': ['photos/posters/oryc-red.jpg', 'ORYC logo'],
     'HOME-JOIN-01': ['photos/home-join-01.jpg', 'A chorister holding an open score of Misa a Buenos Aires at the Kyrie'],
   };
   R.forEach(r => { const x = SRC[r.id]; if (x) { r.src = x[0]; if (x[1]) r.alt = x[1]; if (x[2]) r.pos = x[2]; } });
