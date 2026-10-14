@@ -67,7 +67,7 @@
     'SING-EXPECT-03': ['photos/sing-expect-03.jpg', 'A smiling vocal instructor during a lesson'],
     'ABOUT-CHOIR-01': ['photos/about-choir-01.jpg', 'The Ottawa Regional Youth Choir performing by candlelight to a full church, seen from the back of the nave'],
     'ABOUT-HERO-01': ['photos/about-hero-01.jpg', 'The Ottawa Regional Youth Choir and chamber ensemble in concert by candlelight, the conductor at the centre'],
-    'EVENTS-HERO-01': ['photos/events-hero-01.jpg', 'The choir and string players in rehearsal at St. Joseph\'s Parish, with the conductor in front'],
+    'EVENTS-HERO-01': ['photos/events-hero-01.jpg', 'The choir and string players in rehearsal at St. Joseph\'s Parish, with the conductor in front', 'center bottom'],
     'HOME-HERO-01': ['photos/home-hero-01.jpg', 'The Ottawa Regional Youth Choir performing in concert, with the conductor and instrumentalists in front'],
     'HOME-NEXT-01': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
     'EVENT-DETAIL-HERO': ['photos/posters/durufle.jpg', "Poster for Duruflé's Requiem, Sunday November 8, 2026, 3 pm, St. Barnabas Apostle and Martyr"],
@@ -78,7 +78,7 @@
     'EVENT-CARD-05': ['photos/posters/darkness-to-light.jpg', 'Poster for From Darkness to Light: Rachmaninoff All-Night Vigil and Gjeilo Sunrise Mass'],
     'HOME-JOIN-01': ['photos/home-join-01.jpg', 'A chorister holding an open score of Misa a Buenos Aires at the Kyrie'],
   };
-  R.forEach(r => { const x = SRC[r.id]; if (x) { r.src = x[0]; if (x[1]) r.alt = x[1]; } });
+  R.forEach(r => { const x = SRC[r.id]; if (x) { r.src = x[0]; if (x[1]) r.alt = x[1]; if (x[2]) r.pos = x[2]; } });
 
   // Headshots by person. Every About-page slot for that person (artistic team, management,
   // board, section leads) picks up the same photo, so someone with several roles appears consistently.

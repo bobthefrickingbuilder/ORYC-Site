@@ -10,7 +10,7 @@
 <helmet><script src="photos.js"></script></helmet>
 <div role="img" aria-label="{{ alt }}" data-slot-id="{{ id }}" title="{{ tip }}" style="position:relative;width:100%;height:{{ h }};aspect-ratio:{{ ar }};border-radius:{{ radius }};overflow:hidden;background:{{ bg }};color:{{ fg }};font-family:'Glacial Indifference',sans-serif;">
   <sc-if value="{{ hasSrc }}" hint-placeholder-val="{{ false }}">
-    <img src="{{ src }}" alt="{{ alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:{{ filter }};">
+    <img src="{{ src }}" alt="{{ alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ pos }};filter:{{ filter }};">
     <sc-if value="{{ isDuo }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:#E41E26;mix-blend-mode:multiply;"></div></sc-if>
   </sc-if>
   <sc-if value="{{ showFull }}" hint-placeholder-val="{{ true }}">
@@ -64,7 +64,7 @@ class Component extends DCLogic {
       ar: p.fill ? 'auto' : rw + ' / ' + rh,
       h: p.fill ? '100%' : 'auto',
       radius, bg: pal[0], fg: pal[1],
-      src: d.src, hasSrc: !!d.src,
+      src: d.src, hasSrc: !!d.src, pos: d.pos || 'center',
       filter: d.treat === 'none' ? 'none' : 'grayscale(1) contrast(1.05)',
       isDuo: d.treat === 'duotone',
       showFull: !d.src && !centered && !!window.ORYC_SHOW_SLOT_SPECS, showCenter: !d.src && centered && !!window.ORYC_SHOW_SLOT_SPECS,
