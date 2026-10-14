@@ -312,8 +312,8 @@
         { opacity: i === 1 ? 0.8 : 1, translate: '0 0', scale: '1', filter: 'blur(0px)' }
       ], { duration: 1150, delay: 120 + i * 130, easing: ease, fill: 'both' }); });
       root.classList.remove('om-intro');
-      // 2. Hold the finished title for a beat (and give the first photos time to arrive).
-      await Promise.all([sleep(2000), Promise.race([Promise.all(first), sleep(3600)])]);
+      // 2. Hold the finished title ~1.2 s (letters settle ~1 s in). Fixed: no longer waits on photo loading.
+      await sleep(2200);
       if (destroyed) return;
       // 3. Break: tiles turn over in a ripple outward from the middle of the wordmark; the ORYC tile lands last.
       const all = [...tiles.values()];
