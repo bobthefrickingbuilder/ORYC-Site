@@ -17,6 +17,7 @@
 <script src="/site.js"></script>
 <script src="/content.js"></script>
 <script src="/photos.js"></script>
+<script src="/about-mosaic.js" defer></script>
 <script src="/support.js"></script>
 </head>
 <body>
@@ -25,7 +26,7 @@
 <div data-screen-label="About" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
   <dc-import name="SiteHeader" mobile="{{ mobile }}" active="about" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
   <main>
-    <div style="position:relative;height:clamp(300px,42.86cqw,620px);"><dc-import name="PhotoSlot" id="ABOUT-HERO-01" fill="{{ true }}" style="position:absolute;inset:0;" hint-size="100%,100%"></dc-import></div>
+    <div id="about-mosaic" role="img" aria-label="Photos of ORYC choristers, staff and concerts" style="position:relative;height:clamp(300px,42.86cqw,620px);overflow:hidden;background:#E41E26;"></div>
     <section data-parallax-root="" aria-labelledby="about-h" style="padding:clamp(48px,6cqw,96px) clamp(20px,5.5cqw,80px) 0;">
       <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:28px;">
         <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">About ORYC</span>
