@@ -22,7 +22,7 @@
 </head>
 <body>
 <x-dc>
-<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular-v2.woff2') format('woff2');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold-v2.woff2') format('woff2');font-weight:700;font-display:swap}body{margin:0}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="motion.js"></script></helmet>
+<helmet><style>@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Regular-v2.woff2') format('woff2');font-weight:400;font-display:swap}@font-face{font-family:'Glacial Indifference';src:url('fonts/GlacialIndifference-Bold-v2.woff2') format('woff2');font-weight:700;font-display:swap}body{margin:0}a{color:inherit;text-underline-offset:3px}a:hover{color:inherit;text-decoration-thickness:2px}*:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 3px #fff}.oc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0;border-top:2px solid #000}.oc-stats>div{padding:18px 20px 0 0}.oc-stats dt{font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-style:italic;color:#E41E26}.oc-stats dd{margin:6px 0 0;font-weight:700;font-size:clamp(34px,4cqw,60px);line-height:1}.oc-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,17cqw,240px);gap:clamp(10px,1.2cqw,16px)}.oc-bento figure{margin:0;border-radius:18px;overflow:hidden;background:#dfece8}.oc-bento img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1)}.oc-bento figure:hover img{transform:scale(1.04)}.oc-a{grid-column:1/4;grid-row:1/3}.oc-b{grid-column:4;grid-row:1/3}.oc-c{grid-column:1/3;grid-row:3}.oc-d{grid-column:3;grid-row:3/5}.oc-e{grid-column:4;grid-row:3/5}.oc-f{grid-column:1/3;grid-row:4}@media (max-width:760px){.oc-stats{grid-template-columns:repeat(2,1fr)}.oc-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px;grid-auto-flow:dense}.oc-a{grid-column:1/3;grid-row:auto/span 2}.oc-b,.oc-d,.oc-e,.oc-f{grid-column:auto;grid-row:auto/span 2}.oc-c{grid-column:1/3;grid-row:auto/span 2}}@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}</style><script src="motion.js"></script></helmet>
 <div data-screen-label="About" style="container-type:inline-size;background:#fff;color:#000;font-family:'Glacial Indifference',sans-serif;font-size:18px;line-height:1.55;">
   <dc-import name="SiteHeader" mobile="{{ mobile }}" active="about" style="position:sticky;top:0;z-index:50;" hint-size="100%,124px"></dc-import>
   <main>
@@ -198,15 +198,25 @@
     </section>
 
     <section id="choir" aria-labelledby="choir-h" style="padding:clamp(56px,7cqw,112px) clamp(20px,5.5cqw,80px);">
-      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:32px;">
-        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;">
-          <div style="display:flex;flex-direction:column;gap:16px;">
-            <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Meet the choir</span>
-            <h2 id="choir-h" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">About 50 voices, four sections</h2>
-          </div>
-          <p style="margin:0;font-size:19px;max-width:420px;">Singers aged 15 to 25 from across the National Capital Region.</p>
+      <div data-stagger="" style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(28px,3.5cqw,48px);">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <span style="font-style:italic;font-size:17px;letter-spacing:.1em;text-transform:uppercase;color:#E41E26;">Meet the choir</span>
+          <h2 id="choir-h" data-title="" style="margin:0;font-weight:700;font-size:clamp(40px,5cqw,76px);line-height:.92;text-transform:uppercase;">Four sections. One sound.</h2>
         </div>
-        <dc-import name="PhotoSlot" id="ABOUT-CHOIR-01" hint-size="100%,700px"></dc-import>
+        <dl class="oc-stats">
+          <div><dt>Singers, approx.</dt><dd>50</dd></div>
+          <div><dt>Ages</dt><dd>15–25</dd></div>
+          <div><dt>Sections</dt><dd>SATB</dd></div>
+          <div><dt>Singing since</dt><dd>1982</dd></div>
+        </dl>
+        <div class="oc-bento">
+          <figure class="oc-a"><img src="photos/about-choir-01.jpg" alt="The Ottawa Regional Youth Choir performing by candlelight to a full church, seen from the back of the nave" loading="lazy" style="object-position:50% 60%;"></figure>
+          <figure class="oc-b"><img src="photos/mosaic/12-chorister-smile.jpg" alt="A chorister smiling at a friend during rehearsal" loading="lazy" style="object-position:55% 35%;"></figure>
+          <figure class="oc-c"><img src="photos/mosaic/26-folder-pews.jpg" alt="Two choristers reading their folders in the pews" loading="lazy" style="object-position:40% 45%;"></figure>
+          <figure class="oc-d"><img src="photos/mosaic/17-laughing-pair.jpg" alt="Choristers laughing together with their folders" loading="lazy" style="object-position:50% 40%;"></figure>
+          <figure class="oc-e"><img src="photos/mosaic/04-three-laughing.jpg" alt="Three choristers laughing at the front of the church" loading="lazy" style="object-position:45% 45%;"></figure>
+          <figure class="oc-f"><img src="photos/mosaic/21-piano-circle.jpg" alt="A sectional gathered around the piano" loading="lazy" style="object-position:50% 55%;"></figure>
+        </div>
       </div>
     </section>
 
